@@ -2,7 +2,7 @@
  * File:   Screen.h
  * Author: haniferidaputra
  *
- * Created on March 14, 2013, 10:08 PM
+ * Created on March 14, 2013, 11:12 PM
  */
 
 #ifndef SCREEN_H
@@ -15,8 +15,8 @@ public:
     Screen(const Screen&);
     ~Screen();
 
-    void drawScreen();
-    
+    virtual void drawScreen();
+
 private:
     int xLength;
     int yLength;

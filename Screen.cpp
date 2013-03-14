@@ -2,7 +2,7 @@
  * File:   Screen.cpp
  * Author: haniferidaputra
  * 
- * Created on March 14, 2013, 10:08 PM
+ * Created on March 14, 2013, 11:12 PM
  */
 
 #include "Screen.h"
@@ -27,6 +27,6 @@ Screen::~Screen() {
 }
 
 void Screen::drawScreen(){
-    
+    //menggambar screen
 }
 
