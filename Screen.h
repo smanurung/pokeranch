@@ -19,9 +19,9 @@ public:
     ~Screen();
 
     void drawMatriks();
-    void drawScreen(int);
+    virtual void drawScreen(int);
 
-private:
+protected:
     int xLength;
     int yLength;
     char ** matriks;
