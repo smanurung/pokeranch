@@ -57,12 +57,17 @@ AreaLuar& AreaLuar::operator =(const AreaLuar& AL){
 }
 
 void AreaLuar::drawScreen(int s){
-    for(int i=0; i<yLength; i++){
-        for(int j=0; j<xLength; j++){
-            cout << matriks[i][j] ;
-        }
-        cout<< endl;
-    }//end for
+    switch (s){
+        case 0:
+            cout << "AREA LUAR" << endl;
+            for(int i=0; i<yLength; i++){
+                for(int j=0; j<xLength; j++){
+                    cout << matriks[i][j] ;
+                }
+                cout<< endl;
+            }//end for
+        break;
+    }
 }
 
 int AreaLuar::isSteppable(Point P){
