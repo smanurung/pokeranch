@@ -45,6 +45,8 @@ class Monster{
         Monster Combine(Monster);
         void addExperience(Monster);
         void addLevel();
+        int isSekarat();
+        void changeSpecies();
         void ShowStatus();
 
         private :
