@@ -8,19 +8,28 @@
 #include "Kota.h"
 
 Kota::Kota() {
-
+    xLength = 30;
+    yLength = 30;
 }
 
-Kota::Kota(int, int){
-
+Kota::Kota(int x, int y){
+    xLength = x;
+    yLength = y;
 }
 
 Kota::Kota(const Kota& K) {
-
+    xLength = K.xLength;
+    yLength = K.yLength;
 }
 
 Kota::~Kota() {
 
+}
+
+Kota& Kota::operator =(const Kota& K){
+    xLength = K.xLength;
+    yLength = K.yLength;
+    return *this;
 }
 
 void Kota::drawScreen(){

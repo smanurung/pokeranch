@@ -8,23 +8,32 @@
 #include "AreaLuar.h"
 
 AreaLuar::AreaLuar() {
-
+    xLength = 30;
+    yLength = 30;
 }
 
-AreaLuar::AreaLuar(int, int){
-
+AreaLuar::AreaLuar(int x, int y){
+    xLength = x;
+    yLength = y;
 }
 
 AreaLuar::AreaLuar(const AreaLuar& AL) {
-
+    xLength = AL.xLength;
+    yLength = AL.yLength;
 }
 
 AreaLuar::~AreaLuar() {
 
 }
 
-void AreaLuar::drawScreen(){
+AreaLuar& AreaLuar::operator =(const AreaLuar& AL){
+    xLength = AL.xLength;
+    yLength = AL.yLength;
+    return *this;
+}
 
+void AreaLuar::drawScreen(){
+    
 }
 
 int AreaLuar::isSteppable(Point P){
