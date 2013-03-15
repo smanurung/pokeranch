@@ -2,10 +2,8 @@
 
 #include "Monster.h"
 #include <iostream>
-//#include <string>
 
 using namespace std;
-//using std::string;
 
 Monster::Monster(){
     Nama = "xxxx";
@@ -15,17 +13,16 @@ Monster::Monster(){
     Elm = "xxxx";
     HP = 0;
     MP = 0;
+    Speed = 0;
     BonusUang = 0;
     BonusExp = 0;
     CurrentHP = 0;
-    MaxHP = 0;
     CurrentMP = 0;
-    MaxMP = 0;
     Umur = 0;
     WarnaMonster = "xxxx";
 }
 
-Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int _mp, int bu, int be, int ch, int mh, int cm, int mm, int um, string wm){
+Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int _mp, int spd, int bu, int be, int ch, int cm, int um, string wm){
     Nama = nm;
     Level = lvl;
     Exp = ex;
@@ -33,12 +30,11 @@ Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int 
     Elm = el;
     HP = _hp;
     MP = _mp;
+    Speed = spd;
     BonusUang = bu;
     BonusExp = be;
     CurrentHP = ch;
-    MaxHP = mh;
     CurrentMP = cm;
-    MaxMP = mm;
     Umur = um;
     WarnaMonster = wm;
 }
@@ -51,12 +47,11 @@ Monster::Monster(const Monster& M){
     Elm = M.Elm;
     HP = M.HP;
     MP = M.MP;
+    Speed = M.Speed;
     BonusUang = M.BonusUang;
     BonusExp = M.BonusExp;
     CurrentHP = M.CurrentHP;
-    MaxHP = M.MaxHP;
     CurrentMP = M.CurrentMP;
-    MaxMP = M.MaxMP;
     Umur = M.Umur;
     WarnaMonster = M.WarnaMonster;
 }
@@ -69,12 +64,11 @@ Monster& Monster::operator=(const Monster& M){
     Elm = M.Elm;
     HP = M.HP;
     MP = M.MP;
+    Speed = M.Speed;
     BonusUang = M.BonusUang;
     BonusExp = M.BonusExp;
     CurrentHP = M.CurrentHP;
-    MaxHP = M.MaxHP;
     CurrentMP = M.CurrentMP;
-    MaxMP = M.MaxMP;
     Umur = M.Umur;
     WarnaMonster = M.WarnaMonster;
     return *this;
@@ -140,6 +134,14 @@ void Monster::setMP(int _mp){
     MP = _mp;
 }
 
+int Monster::getSpeed(){
+    return Speed;
+}
+
+void Monster::setSpeed(int spd){
+    Speed = spd;
+}
+
 int Monster::getBonusUang(){
     return BonusUang;
 }
@@ -164,28 +166,12 @@ void Monster::setCurrentHP(int ch){
     CurrentHP = ch;
 }
 
-int Monster::getMaxHP(){
-    return MaxHP;
-}
-
-void Monster::setMaxHP(int mh){
-    MaxHP = mh;
-}
-
 int Monster::getCurrentMP(){
     return CurrentMP;
 }
 
 void Monster::setCurrentMP(int cm){
     CurrentMP = cm;
-}
-
-int Monster::getMaxMP(){
-    return MaxMP;
-}
-
-void Monster::setMaxMP(int mm){
-    MaxMP = mm;
 }
 
 int Monster::getUmur(){
@@ -204,12 +190,41 @@ void Monster::setWarnaMonster(string wm){
     WarnaMonster = wm;
 }
 
+//fungsi combine monster
+//menghasilkan monster baru
 Monster Monster::Combine(Monster M){
     Monster M3;
     M3 = M;
     return M3;
 }
 
+//fungsi menambah exp monster player
 void Monster::addExperience(Monster M){
     Exp += M.getBonusExp();
+}
+
+//fungsi naik level
+//ketika naik level, hp dan mp penuh kembali
+void Monster::addLevel(){
+    Level++;
+    HP += Level*10;
+    MP += Level*5;
+    Speed += Level*2;
+    CurrentHP = HP;
+    CurrentMP = MP;
+}
+
+void Monster::ShowStatus(){
+    cout << "Nama : " << Nama << endl;
+    cout << "Level : " << Level << endl;
+    cout << "Experience : " << Exp << endl;
+    cout << "Spesies : " << Species << endl;
+    cout << "HP : " << HP << endl;
+    cout << "MP : " << MP << endl;
+    cout << "Speed : " << Speed << endl;
+    cout << "Bonus Uang : " << BonusUang << endl;
+    cout << "Bonus Exp : " << BonusExp << endl;
+    cout << "Current HP : " << CurrentHP << endl;
+    cout << "Current MP : " << CurrentMP << endl;
+    cout << "Umur : " << Umur << endl;
 }

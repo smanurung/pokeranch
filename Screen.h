@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Screen.h
  * Author: haniferidaputra
  *
@@ -7,6 +7,9 @@
 
 #ifndef SCREEN_H
 #define	SCREEN_H
+#include <string>
+#include <iostream>
+using namespace std;
 
 class Screen {
 public:
@@ -15,12 +18,13 @@ public:
     Screen(const Screen&);
     ~Screen();
 
-    virtual void drawScreen();
+    void drawMatriks();
+    void drawScreen(int);
 
 private:
     int xLength;
     int yLength;
-    int matriks[][];
+    char ** matriks;
 };
 
 #endif	/* SCREEN_H */
