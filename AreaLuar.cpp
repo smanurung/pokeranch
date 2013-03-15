@@ -8,13 +8,37 @@
 #include "AreaLuar.h"
 
 AreaLuar::AreaLuar() {
-    xLength = 30;
-    yLength = 30;
+    xLength = 50;
+    yLength = 20;
+
+    matriks = new char * [yLength];
+    for(int i=0; i<yLength; i++){
+        matriks[i]= new char[xLength];
+    }
+
+    for(int i=0; i<yLength; i++){
+        for(int j=0; j<xLength; j++){
+            matriks[i][j] = '.';
+        }
+    }
+
 }
 
 AreaLuar::AreaLuar(int x, int y){
     xLength = x;
     yLength = y;
+
+    matriks = new char * [yLength];
+    for(int i=0; i<yLength; i++){
+        matriks[i]= new char[xLength];
+    }
+
+    for(int i=0; i<yLength; i++){
+        for(int j=0; j<xLength; j++){
+            matriks[i][j] = '.';
+        }
+    }
+
 }
 
 AreaLuar::AreaLuar(const AreaLuar& AL) {
@@ -32,8 +56,13 @@ AreaLuar& AreaLuar::operator =(const AreaLuar& AL){
     return *this;
 }
 
-void AreaLuar::drawScreen(){
-    
+void AreaLuar::drawScreen(int s){
+    for(int i=0; i<yLength; i++){
+        for(int j=0; j<xLength; j++){
+            cout << matriks[i][j] ;
+        }
+        cout<< endl;
+    }//end for
 }
 
 int AreaLuar::isSteppable(Point P){

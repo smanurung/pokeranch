@@ -9,7 +9,7 @@
 #define	AREALUAR_H
 
 #include "Screen.h"
-#include "Point.h"
+#include "point.h"
 
 class AreaLuar:public Screen {
 public:
@@ -19,12 +19,11 @@ public:
     ~AreaLuar();
     AreaLuar& operator=(const AreaLuar&);
 
-    void drawScreen();
+    void drawScreen(int);
     int isSteppable(Point);
     void implementRandom();
 
 private:
-    Screen SAreaLuar;
     Point monsterPositionList[];
     Point unsteppableList[];
 };
