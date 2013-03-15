@@ -11,18 +11,20 @@
 #include "Screen.h"
 #include "Point.h"
 
-class AreaLuar {
+class AreaLuar:public Screen {
 public:
     AreaLuar();
     AreaLuar(int,int);
-    AreaLuar(const AreaLuar& orig);
+    AreaLuar(const AreaLuar&);
     ~AreaLuar();
+    AreaLuar& operator=(const AreaLuar&);
 
     void drawScreen();
     int isSteppable(Point);
     void implementRandom();
 
 private:
+    Screen SAreaLuar;
     Point monsterPositionList[];
     Point unsteppableList[];
 };

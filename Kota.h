@@ -18,6 +18,7 @@ public:
     Kota(int,int);
     Kota(const Kota&);
     ~Kota();
+    Kota& operator=(const Kota&);
 
     void drawScreen();
     int isSteppable();
