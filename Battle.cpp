@@ -33,5 +33,13 @@ Battle::Battle(const Battle& _b){
 
 //dtor
 Battle::~Battle(){
-	
+	cout << "dtor kelas Battle" << endl;
+}
+
+//operator=
+Battle& Battle::operator=(const Battle& _b){
+	this->pemain = _b.pemain;
+	this->monsterLuar = _b.monsterLuar;
+	this->NPCBattle = _b.NPCBattle;
+	this->btlScreen = _b.btlScreen;
 }

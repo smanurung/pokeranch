@@ -16,6 +16,7 @@ class Battle {
 		Battle(string, Player, Monster, NPC);
 		Battle(const Battle&);
 		~Battle();
+		Battle& operator=(const Battle&);
 		
 	private :
 		Player pemain;

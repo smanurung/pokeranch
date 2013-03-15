@@ -8,6 +8,7 @@
 #ifndef KOTA_H
 #define	KOTA_H
 
+#include <map>
 #include "Screen.h"
 #include "Point.h"
 #include <string>
@@ -20,11 +21,11 @@ public:
     ~Kota();
     Kota& operator=(const Kota&);
 
-    void drawScreen();
+    void drawScreen(); //override dari kelas Screen
     int isSteppable();
 
 private:
-    //Map<String,Point> elmtPosition
+    map<string,Point> elmtPosition;
 };
 
 #endif	/* KOTA_H */
