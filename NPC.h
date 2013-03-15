@@ -5,11 +5,16 @@
 #ifndef NPC_H
 #define NPC_H
 
+#include <string>
+#include "Monster.h"
+
+using namespace std;
+
 class NPC{
 	public :
 		//ctor
 		NPC();
-		NPC(char*, char*);
+		NPC(string, string); //nama dan warna NPC; monster NPC diacak
 		
 		//cctor
 		NPC(const NPC&);
@@ -22,11 +27,13 @@ class NPC{
 		
 		//function member
 		void talk();
+		int getRandom();
 	
 	private :
-		char* nama;
-		//Monster MonsterNPC[];
-		char* warnaNPC;
+		string nama;
+		Monster * monsterNPC;
+		int jmlMonster;
+		string warnaNPC;
 };
 
 #endif

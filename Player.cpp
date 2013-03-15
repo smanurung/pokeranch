@@ -8,7 +8,7 @@
         jumlahMenang=0;
         jumlahKalah=0;
         jumlahEscape=0;
-        waktu=0;
+        waktu=0; //detik
         warnaPlayer="putih";
     }
 
