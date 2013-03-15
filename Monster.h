@@ -3,12 +3,12 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 #include <string>
-using std::string;
+using namespace std;
 
 class Monster{
     public :
         Monster();
-        Monster(string,int,int,string,string,int,int,int,int,int,int,int,int,int,string);
+        Monster(string,int,int,string,string,int,int,int,int,int,int,int,int,string);
         Monster(const Monster&);
         Monster& operator=(const Monster&);
         ~Monster();
@@ -27,18 +27,16 @@ class Monster{
         void setHP(int);
         int getMP();
         void setMP(int);
+        int getSpeed();
+        void setSpeed(int);
         int getBonusUang();
         void setBonusUang(int);
         int getBonusExp();
         void setBonusExp(int);
         int getCurrentHP();
         void setCurrentHP(int);
-        int getMaxHP();
-        void setMaxHP(int);
         int getCurrentMP();
         void setCurrentMP(int);
-        int getMaxMP();
-        void setMaxMP(int);
         int getUmur();
         void setUmur(int);
         string getWarnaMonster();
@@ -46,6 +44,8 @@ class Monster{
 
         Monster Combine(Monster);
         void addExperience(Monster);
+        void addLevel();
+        void ShowStatus();
 
         private :
         string Nama;
@@ -55,12 +55,11 @@ class Monster{
         string Elm;
         int HP;
         int MP;
+        int Speed;
         int BonusUang;
         int BonusExp;
         int CurrentHP;
-        int MaxHP;
         int CurrentMP;
-        int MaxMP;
         int Umur;
         string WarnaMonster;
 };
