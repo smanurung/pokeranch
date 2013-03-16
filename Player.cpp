@@ -26,6 +26,46 @@
 
     Player::~Player(){}
 
+    /*-------------------------------------------------------------------------------------------getter---------------------------------------------------------------------------------------- */
+    string Player::getNama(){
+        return nama;
+    }
+
+    int Player::getUang(){
+        return uang;
+    }
+
+    int Player::getCurX(){
+        return curX;
+    }
+
+    int Player::getCurY(){
+        return curY;
+    }
+
+    int Player::getJumlahMenang(){
+        return jumlahMenang;
+    }
+
+    int Player::getJumlahKalah(){
+        return jumlahKalah;
+    }
+
+    int Player::getJumlahEscape(){
+        return jumlahEscape;
+    }
+
+    int Player::getWaktu(){
+        return jumlahEscape;
+    }
+
+    string Player::getWarnaPlayer(){
+        return warnaPlayer;
+    }
+
+
+/*----------------------------------------------------------------------------------method utama------------------------------------------------------------------------------- */
+
     void Player::bet(int jmlBet, bool isMenang){
         if (isMenang==true){
             uang=uang+jmlBet;
@@ -45,15 +85,29 @@
         //nunggu monster
     }
 
-    void Player::sell(string s, int i){
-
+    void Player::sell(Item item){
+        for (int i=0; i< listItem.size(); i++){
+            if(listItem.at(i)==item){
+                    listItem.erase(listItem.begin()+i);
+                    cout << item.getItemName() << " dijual"<< endl;
+                    uang=uang + item.getHarga();
+            }else if(i==(listItem.size()-1)){
+                    cout << "item tidak tersedia" << endl;
+            }
+        }//end for
     }
 
-    void Player::buy(string, int){
-
+    void Player::buy(Item i){
+        if(uang >= i.getHarga()){
+            addToListItem(i);
+            uang= uang - i.getHarga();
+            cout << i.getItemName() << " dibeli" << endl;
+        }else{
+            cout << "uang tidak cukup" << endl;
+        }
     }
 
-    void Player::teleport(string){
+    void Player::teleport(){
 
     }
 
@@ -92,28 +146,35 @@
     }
 
 
-/*--------------------method tambahan---------------------*/
+/*-------------------------------------------------------------------------------------method baru---------------------------------------------------------------------------------- */
+    void addMonster(Monster&);
+
+
+
+
+
+/*--------------------------------------------------------------------------------------method tambahan---------------------------------------------------------------------------------------*/
 
 void Player::printListItem(){
-    typedef map<string,int>::const_iterator mapIter;
-    for(mapIter iter = listItem.begin(); iter != listItem.end(); iter++){
-        cout << iter->first << ",";
-        cout << iter->second << endl;
+    cout << endl;
+    for(int i=0; i<listItem.size();i++){
+        Item &a = listItem.at(i);                                   //masih ngga pasti benar
+        cout << a.getItemName()<<endl;
     }//end for
 }
 
 void Player::printListMonster(){
-    typedef map<string,int>::const_iterator mapIter;
+    cout << endl;
+    typedef map<string,Monster>::const_iterator mapIter;
     for(mapIter iter = listMonster.begin(); iter != listMonster.end(); iter++){
-        cout << iter->first << ",";
-        cout << iter->second << endl;
+        cout << iter->first << endl;
     }//end for
 }
 
-void Player::addToListItem(string namaItem, int item){
-        listItem.insert(make_pair(namaItem, item));
+void Player::addToListItem(Item item){
+        listItem.push_back(item);
 }
 
-void Player::addToListMonster(string namaMonster, int monster){
+void Player::addToListMonster(string namaMonster, Monster monster){
         listMonster.insert(make_pair(namaMonster, monster));
 }
