@@ -258,7 +258,7 @@ int Monster::isSekarat(){
 }
 
 //fungsi mengubah spesies
-void Monster::ChangeSpecies(){
+void Monster::changeSpecies(){
     if (Elm == "Api") {
         if (Species == "Yi"){
             this->setSpecies("Er");
