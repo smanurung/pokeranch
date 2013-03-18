@@ -7,6 +7,9 @@
 
 #include "Screen.h"
 
+#define STORE_HEIGHT 70
+#define STORE_WIDTH 10
+
 Screen::Screen() {
     xLength = 50;
     yLength = 20;
@@ -69,20 +72,65 @@ void Screen::drawMatriks(){
                 cout<< endl;
 }
 
+void Screen::drawMatriksStore(){
+	Screen _s(STORE_HEIGHT, STORE_WIDTH);
+	
+	char subs;
+	for (int i=0; i<5; i++){
+		switch (i) {
+			
+			case 0 : {
+				subs = 'E';
+				break;
+			}
+			
+			case 1 : {
+				subs = 'R';
+				break;
+			}
+			
+			case 2 : {
+				subs = 'O';
+				break;
+			}
+			
+			case 3 : {
+				subs = 'T';
+				break;
+			}
+			
+			case 4 : {
+				subs = 'S';
+				break;
+			}
+		}
+		
+		//_s.matriks[HOME_WIDTH-i,i] = subs;
+		_s.setMatriks(0,STORE_HEIGHT-i-1,subs);
+	}
+	
+    for(int i=0; i<_s.yLength; i++){
+        for(int j=0; j<_s.xLength; j++){
+            cout << _s.matriks[i][j] ;
+        }
+        cout<< endl;
+    }//end for
+    cout<< endl;
+    cout<< endl;
+}
+
 void Screen::drawScreen(int s){
     //menggambar screen dengan masukan integer tempat
 
     switch (s){
-        case 1:                     //store
-                drawMatriks();
-
-        break;
-
+        case 1:                 //store
+			drawMatriks();
+			break;
+			
         case 2:                 //home
-                drawMatriks();
-        break;
-
-    }//end switch
+			drawMatriksStore();
+			break;
+    }
 }
 
 void Screen::setMatriks(int _x, int _y, char _c){

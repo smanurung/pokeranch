@@ -1,12 +1,12 @@
-#include "Home.h"
+#include "Store.h"
 #include <iostream>
 
 using namespace std;
 
 int main(){
-	Home _h;
+	Store _s;
 	
-	_h.drawHome();
+	_s.drawStore();
 	
 	return 0;
 }
