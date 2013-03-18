@@ -14,15 +14,19 @@
 class BattleScreen:public Screen {
 public:
     BattleScreen();
-    BattleScreen(int,int);
+    BattleScreen(int,int,int,int);
     BattleScreen(const BattleScreen&);
     ~BattleScreen();
     BattleScreen& operator=(const BattleScreen&);
 
-    void drawScreen();
+    void drawScreen(int);
 
 private:
-    Point position;
+    Screen S;
+    int xPlayer;
+    int yPlayer;
+    int xMonster;
+    int yMonster;
 };
 
 #endif	/* BATTLESCREEN_H */
