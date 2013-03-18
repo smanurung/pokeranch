@@ -12,7 +12,6 @@ Home::Home(){
 	
 	char subs;
 	for (int i=0; i<4; i++){
-//		cout << "oke" << endl;
 		switch (i) {
 			
 			case 0 : {
@@ -36,8 +35,6 @@ Home::Home(){
 			}
 		}
 		
-		cout << subs << endl;
-			
 		//_s.matriks[HOME_WIDTH-i,i] = subs;
 		screenHome.setMatriks(0,HOME_WIDTH-i-1,subs);
 	}

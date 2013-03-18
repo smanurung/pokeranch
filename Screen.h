@@ -23,7 +23,6 @@ public:
 	
 	//SETTER
 	void setMatriks(int,int,char); // X, Y, char pengganti
-    void drawScreen(int);
 
     int getXLength();
     int getYLength();
@@ -32,6 +31,9 @@ protected:
     int xLength;
     int yLength;
     char ** matriks;
+
+private:
+	void drawMatriksStore();
 };
 
 #endif	/* SCREEN_H */
