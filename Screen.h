@@ -19,7 +19,10 @@ public:
     ~Screen();
 
     void drawMatriks();
-    virtual void drawScreen(int);
+    void drawScreen(int);
+
+    int getXLength();
+    int getYLength();
 
 protected:
     int xLength;
