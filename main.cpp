@@ -3,23 +3,29 @@
 
 
 
-int main()
-{
-//    Player p1;
-//    p1.addToListItem("a",5);
-//    p1.addToListItem("b",2);
-//    p1.addToListItem("c",1);
-//    p1.printListItem();
-//
-//    p1.addToListMonster("m",1);
-//    p1.addToListMonster("n",2);
-//    p1.printListMonster();
-
-//    Store s;
-//    s.printAvailableItem();
-
-
-
-
+int main(int argc, char *argv[]) {
+    string command;
+    cin >> command;
+    
+    int state;
+    switch (state) {
+        case 1:
+            //kota
+            break;
+        case 2:
+            //luar
+            break;
+        case 3:
+            //store
+            break;
+        case 4:
+            //stadium
+            break;
+            
+        default:
+            //home
+            break;
+    }
+    
     return 0;
-}//end main
+}
