@@ -49,6 +49,15 @@ Screen::~Screen() {
 
 }
 
+int Screen::getXLength(){
+    return xLength;
+}
+
+int Screen::getYLength(){
+    return yLength;
+}
+
+
 void Screen::drawMatriks(){
                 for(int i=0; i<yLength; i++){
                     for(int j=0; j<xLength; j++){
@@ -56,10 +65,12 @@ void Screen::drawMatriks(){
                     }
                     cout<< endl;
                 }//end for
+                cout<< endl;
+                cout<< endl;
 }
 
 void Screen::drawScreen(int s){
-    //menggambar screen
+    //menggambar screen dengan masukan integer tempat
 
     switch (s){
         case 1:                     //store

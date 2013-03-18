@@ -9,6 +9,8 @@
 #include "Potion.h"
 #include "Monster.h"
 #include "Item.h"
+#include "Kota.h"
+#include "Screen.h"
 
 using namespace std;
 
@@ -52,8 +54,8 @@ public:
     void sleep();
     void sell(Item);
     void buy(Item);
-    void teleport();                        //parameter string dihapus
-    void move(string, int);
+    int teleport(int,int,int);                        //parameter string dihapus
+    void move(string, int, Screen);
     void showMonsterList();
     void showItemList();
     void setMonster(string);
@@ -64,8 +66,8 @@ public:
 
     /*-----------------method baru-------------- */
     void addMonster(Monster&);
-
-
+    void delMoney(int);
+    void delItem(Item);
 
 
     /*-----------------method tambahan-------------- */

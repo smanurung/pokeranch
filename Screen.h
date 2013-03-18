@@ -23,7 +23,11 @@ public:
 	
 	//SETTER
 	void setMatriks(int,int,char); // X, Y, char pengganti
+    void drawScreen(int);
 
+    int getXLength();
+    int getYLength();
+	
 protected:
     int xLength;
     int yLength;
