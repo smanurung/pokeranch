@@ -95,7 +95,27 @@ void SkillMonster::setMPCost(int mc){
 
 void SkillMonster::CastSkill(Monster M){
     int currhp = M.getCurrentHP();
-    M.setCurrentHP(currhp - Damage);
+    if (ElmSkill == M.getElm()){
+       M.setCurrentHP(currhp - (Damage/2));
+    } else if (ElmSkill == "Fire" && M.getElm() == "Water"){
+        M.setCurrentHP(currhp - (Damage/2));
+    } else if (ElmSkill == "Fire" && M.getElm() == "Earth"){
+        M.setCurrentHP(currhp - (Damage*3/2));
+    } else if (ElmSkill == "Water" && M.getElm() == "Wind"){
+        M.setCurrentHP(currhp - (Damage/2));
+    } else if (ElmSkill == "Water" && M.getElm() == "Fire"){
+        M.setCurrentHP(currhp - (Damage*3/2));
+    } else if (ElmSkill == "Wind" && M.getElm() == "Earth"){
+        M.setCurrentHP(currhp - (Damage/2));
+    } else if (ElmSkill == "Wind" && M.getElm() == "Water"){
+        M.setCurrentHP(currhp - (Damage*3/2));
+    } else if (ElmSkill == "Earth" && M.getElm() == "Fire"){
+        M.setCurrentHP(currhp - (Damage/2));
+    } else if (ElmSkill == "Earth" && M.getElm() == "Wind"){
+        M.setCurrentHP(currhp - (Damage*3/2));
+    } else {
+        M.setCurrentHP(currhp - Damage);
+    }
 }
 
 void SkillMonster::ShowSkillStatus(){

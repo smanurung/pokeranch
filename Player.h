@@ -4,6 +4,11 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include <vector>
+
+#include "Potion.h"
+#include "Monster.h"
+#include "Item.h"
 
 using namespace std;
 
@@ -12,8 +17,8 @@ private:
 
     string nama;
     int uang;
-    map<string, int> listItem;            //sementara pake int
-    map<string, int> listMonster;        //sementara pake int
+    vector<Item> listItem;
+    map<string,Monster > listMonster;
     int curX;
     int curY;
     int jumlahMenang;
@@ -27,14 +32,27 @@ public:
     Player();
     Player(string nama);
     ~Player();
+
+    /*-----------------getter-------------- */
+    string getNama();
+    int getUang();
+    int getCurX();
+    int getCurY();
+    int getJumlahMenang();
+    int getJumlahKalah();
+    int getJumlahEscape();
+    int getWaktu();
+    string getWarnaPlayer();
+
+    /*-----------------method utama-------------- */
     void bet(int, bool);                //parameter nambah bool
 //    void battle(string, NPC);
 //    void battle(string, Monster);
     void save(string);
     void sleep();
-    void sell(string, int);
-    void buy(string, int);
-    void teleport(string);
+    void sell(Item);
+    void buy(Item);
+    void teleport();                        //parameter string dihapus
     void move(string, int);
     void showMonsterList();
     void showItemList();
@@ -44,14 +62,17 @@ public:
     void change(string);
     void addMoney(int);
 
+    /*-----------------method baru-------------- */
+    void addMonster(Monster&);
 
-/*-----------------method tambahan-------------- */
+
+
+
+    /*-----------------method tambahan-------------- */
     void printListItem();
     void printListMonster();
-    void addToListItem(string, int);           //sementara string & int
-    void addToListMonster(string, int);           //sementara string & int
-
-
+    void addToListItem(Item);
+    void addToListMonster(string, Monster);
 
 
 };//end class
