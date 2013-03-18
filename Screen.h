@@ -20,6 +20,9 @@ public:
 
     void drawMatriks();
     virtual void drawScreen(int);
+	
+	//SETTER
+	void setMatriks(int,int,char); // X, Y, char pengganti
 
 protected:
     int xLength;

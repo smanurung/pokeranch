@@ -21,8 +21,6 @@ Screen::Screen() {
             matriks[i][j] = '.';
         }
     }
-
-
 }
 
 Screen::Screen(int x, int y){
@@ -74,4 +72,8 @@ void Screen::drawScreen(int s){
         break;
 
     }//end switch
+}
+
+void Screen::setMatriks(int _x, int _y, char _c){
+	this->matriks[_x][_y] = _c;
 }
