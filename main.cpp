@@ -3,7 +3,9 @@
 
 
 
-int main() {
+int main(int argc, char *argv[]) {
+    string command;
+    cin >> command;
     
     int state;
     switch (state) {
