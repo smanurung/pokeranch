@@ -18,11 +18,12 @@ Monster::Monster(){
     BonusExp = 0;
     CurrentHP = 0;
     CurrentMP = 0;
+    Status = "xxxx";
     Umur = 0;
     WarnaMonster = "xxxx";
 }
 
-Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int _mp, int spd, int bu, int be, int ch, int cm, int um, string wm){
+Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int _mp, int spd, int bu, int be, int ch, int cm, string st, int um, string wm){
     Nama = nm;
     Level = lvl;
     Exp = ex;
@@ -35,6 +36,7 @@ Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int 
     BonusExp = be;
     CurrentHP = ch;
     CurrentMP = cm;
+    Status = st;
     Umur = um;
     WarnaMonster = wm;
 }
@@ -52,6 +54,7 @@ Monster::Monster(const Monster& M){
     BonusExp = M.BonusExp;
     CurrentHP = M.CurrentHP;
     CurrentMP = M.CurrentMP;
+    Status = M.Status;
     Umur = M.Umur;
     WarnaMonster = M.WarnaMonster;
 }
@@ -69,6 +72,7 @@ Monster& Monster::operator=(const Monster& M){
     BonusExp = M.BonusExp;
     CurrentHP = M.CurrentHP;
     CurrentMP = M.CurrentMP;
+    Status = M.Status;
     Umur = M.Umur;
     WarnaMonster = M.WarnaMonster;
     return *this;
@@ -174,6 +178,14 @@ void Monster::setCurrentMP(int cm){
     CurrentMP = cm;
 }
 
+string Monster::getStatus(){
+    return Status;
+}
+
+void Monster::setStatus(string st){
+    Status = st;
+}
+
 int Monster::getUmur(){
     return Umur;
 }
@@ -255,6 +267,17 @@ int Monster::isSekarat(){
         return boo;
     }
     else return boo;
+}
+
+void Monster::StatusEfek(){
+    int damageefek;
+    if (Status == "Burning"){
+        damageefek = HP/10;
+        CurrentHP -= damageefek;
+    } else if (Status == "Frozen"){
+        damageefek = HP/20;
+        CurrentHP -= damageefek;
+    }
 }
 
 //fungsi mengubah spesies

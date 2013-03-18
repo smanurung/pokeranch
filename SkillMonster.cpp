@@ -116,6 +116,7 @@ void SkillMonster::CastSkill(Monster M){
     } else {
         M.setCurrentHP(currhp - Damage);
     }
+    M.setStatus(Efek);
 }
 
 void SkillMonster::ShowSkillStatus(){

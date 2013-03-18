@@ -8,7 +8,7 @@ using namespace std;
 class Monster{
     public :
         Monster();
-        Monster(string,int,int,string,string,int,int,int,int,int,int,int,int,string);
+        Monster(string,int,int,string,string,int,int,int,int,int,int,int,string,int,string);
         Monster(const Monster&);
         Monster& operator=(const Monster&);
         ~Monster();
@@ -37,6 +37,8 @@ class Monster{
         void setCurrentHP(int);
         int getCurrentMP();
         void setCurrentMP(int);
+        string getStatus();
+        void setStatus(string);
         int getUmur();
         void setUmur(int);
         string getWarnaMonster();
@@ -46,6 +48,7 @@ class Monster{
         void addExperience(Monster);
         void addLevel();
         int isSekarat();
+        void StatusEfek();
         void changeSpecies();
         void ShowStatus();
 
@@ -62,6 +65,7 @@ class Monster{
         int BonusExp;
         int CurrentHP;
         int CurrentMP;
+        string Status;
         int Umur;
         string WarnaMonster;
 };
