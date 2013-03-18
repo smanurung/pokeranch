@@ -107,11 +107,48 @@
         }
     }
 
-    void Player::teleport(){
+    int Player::teleport(int currentState, int xPosition, int yPosition){
+    // return state tujuan player                                                                   belum selesai
+        if (currentState==0){
+            return 1;
+        }else if(currentState==1){
+            return 2;
+        }
 
     }
 
-    void Player::move(string, int){
+    void Player::move(string s, int i, Screen sc){
+        if(s=="bawah"){
+            if( (curX+i)>sc.getXLength() ){
+            curX=sc.getXLength();
+            cout << "mentok cuy"<<endl;
+            }else {
+                curX= curX+i;
+            }
+
+        }else if(s=="atas"){
+            if( (curX-i)<0){
+            curX=0;
+            cout << "mentok cuy"<<endl;
+            }else {
+                curX= curX-i;
+            }
+        }else if(s=="kiri"){
+            if( (curY-i)<0){
+            curY=0;
+            cout << "mentok cuy"<<endl;
+            }else {
+                curY= curY-i;
+            }
+        }else if(s=="kanan"){
+            if( (curY+i)>sc.getYLength()){
+            curY=sc.getYLength();
+            cout << "mentok cuy"<<endl;
+            }else {
+                curY= curY+i;
+            }
+        }
+
 
     }
 
@@ -124,11 +161,12 @@
     }
 
     void Player::setMonster(string){
-
+        //set default pokemon untuk battle
     }
 
-    void Player::dismiss(string){
-
+    void Player::dismiss(string s){
+        //menghapus monster bernama s dari listMonster
+        listMonster.erase(s);
     }
 
     void Player::escape(){
@@ -137,7 +175,7 @@
         jumlahEscape++;
     }
 
-    void Player::change(string){
+    void Player::change(string s){
 
     }
 
@@ -149,7 +187,20 @@
 /*-------------------------------------------------------------------------------------method baru---------------------------------------------------------------------------------- */
     void addMonster(Monster&);
 
+    void Player::delMoney(int i){
+        //mengurangi uang sebesar i
+        uang = uang - i;
+    }
 
+    void Player::delItem(Item item){
+        //menghapus item dari listItem
+        for(int i=0; i< listItem.size();i++){
+            if(listItem.at(i)==item){
+                listItem.erase(listItem.begin() + i);
+            }//end if
+        }//end for
+
+    }
 
 
 
@@ -157,14 +208,16 @@
 
 void Player::printListItem(){
     cout << endl;
+    cout << "list item: "<<endl;
     for(int i=0; i<listItem.size();i++){
-        Item &a = listItem.at(i);                                   //masih ngga pasti benar
+        Item &a = listItem.at(i);                                   //reference???
         cout << a.getItemName()<<endl;
     }//end for
 }
 
 void Player::printListMonster(){
     cout << endl;
+    cout << "list monster: "<<endl;
     typedef map<string,Monster>::const_iterator mapIter;
     for(mapIter iter = listMonster.begin(); iter != listMonster.end(); iter++){
         cout << iter->first << endl;
@@ -172,7 +225,7 @@ void Player::printListMonster(){
 }
 
 void Player::addToListItem(Item item){
-        listItem.push_back(item);
+        listItem.push_back(item);               //push item ke akhir vector listItem
 }
 
 void Player::addToListMonster(string namaMonster, Monster monster){

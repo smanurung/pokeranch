@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Kota.h
  * Author: haniferidaputra
  *
@@ -21,11 +21,18 @@ public:
     ~Kota();
     Kota& operator=(const Kota&);
 
-    void drawScreen(); //override dari kelas Screen
+    void setXPlayer(int);
+    void setYPlayer(int);
+
+    void setPosisiPlayer(int,int);
+
+    void drawScreen(int); //override dari kelas Screen
     int isSteppable();
 
 private:
     map<string,Point> elmtPosition;
+    int xPlayer;
+    int yPlayer;
 };
 
 #endif	/* KOTA_H */
