@@ -8,15 +8,8 @@
 #include "BattleScreen.h"
 
 BattleScreen::BattleScreen() {
-    xPlayer = xLength/4;
-    yPlayer = yLength/4;
-    xMonster = xPlayer+(xLength/2);
-    yMonster = yPlayer+(yLength/2);
-
-    S = Screen();
-
-    matriks[xPlayer][yPlayer]='P';
-    matriks[xMonster][yMonster]='M';
+    matriks[12][5]='P';
+    matriks[37][15]='M';
 }
 
 BattleScreen::BattleScreen(int xp, int yp, int xm, int ym){
@@ -25,10 +18,8 @@ BattleScreen::BattleScreen(int xp, int yp, int xm, int ym){
     xMonster = xm;
     yMonster = ym;
 
-    S = Screen();
-
-    matriks[xp][yp]='P';
-    matriks[xm][xp]='M';
+    matriks[xPlayer][yPlayer]='P';
+    matriks[xMonster][yMonster]='M';
 }
 
 BattleScreen::BattleScreen(const BattleScreen& BS) {
@@ -37,10 +28,8 @@ BattleScreen::BattleScreen(const BattleScreen& BS) {
     xMonster = BS.xMonster;
     yMonster = BS.yMonster;
 
-    S = BS.S;
-
-    matriks[BS.xPlayer][BS.yPlayer]='P';
-    matriks[BS.xMonster][BS.yMonster]='M';
+    matriks[xPlayer][yPlayer]='P';
+    matriks[xMonster][yMonster]='M';
 }
 
 BattleScreen::~BattleScreen() {
@@ -53,18 +42,12 @@ BattleScreen& BattleScreen::operator=(const BattleScreen& BS) {
     xMonster = BS.xMonster;
     yMonster = BS.yMonster;
 
-    S = BS.S;
-
-    matriks[BS.xPlayer][BS.yPlayer]='P';
-    matriks[BS.xMonster][BS.yMonster]='M';
+    matriks[xPlayer][yPlayer]='P';
+    matriks[xMonster][yMonster]='M';
 
     return *this;
 }
 
-void BattleScreen::drawScreen(int s){
-    switch(s){
-        case 1:
-                drawMatriks();
-        break;
-    }
+void BattleScreen::drawScreen(){
+    drawMatriks();
 }
