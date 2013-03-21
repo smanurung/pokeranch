@@ -33,6 +33,7 @@ protected:
     char ** matriks;
 
 private:
+	void drawMatriksHome();
 	void drawMatriksStore();
 };
 

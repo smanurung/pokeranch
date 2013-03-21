@@ -6,9 +6,9 @@
 Home::Home(){
 	cout << "masuk" << endl;
 	
-	Screen _s(HOME_WIDTH,HOME_HEIGHT);
+//	Screen _s(HOME_WIDTH,HOME_HEIGHT);
 	/*_s.drawScreen(1);*/
-	screenHome = _s;
+/*	screenHome = _s;
 	
 	char subs;
 	for (int i=0; i<4; i++){
@@ -37,7 +37,7 @@ Home::Home(){
 		
 		//_s.matriks[HOME_WIDTH-i,i] = subs;
 		screenHome.setMatriks(0,HOME_WIDTH-i-1,subs);
-	}
+	} */
 }
 
 Home::~Home(){

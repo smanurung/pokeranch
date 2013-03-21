@@ -13,6 +13,9 @@
 #include <fstream> 
 #include <sstream> 
 
+#define HOME_HEIGHT 20
+#define HOME_WIDTH 20
+
 #define STORE_HEIGHT 70
 #define STORE_WIDTH 10
 
@@ -31,6 +34,7 @@ char green[] = { 0x1b, '[', '1', ';', '3', '2', 'm', 0 };
 char bblack[] = { 0x1b, '[', '1', ';', '4', '0', 'm', 0 };
 char black[] = { 0x1b, '[', '1', ';', '3', '0', 'm', 0 };
 char white[] = { 0x1b, '[', '0', ';', '3', '7', 'm', 0 };
+char bgray[] = { 0x1b, '[', '1', ';', '4', '7', 'm', 0 };
 char bnormal[] = { 0x1b, '[', '0', ';', '4', '9', 'm', 0 };
 char normal[] = { 0x1b, '[', '0', ';', '3', '9', 'm', 0 };
 
@@ -88,9 +92,11 @@ int Screen::getYLength(){
 void Screen::drawMatriks(){
                 for(int i=0; i<yLength; i++){
                     for(int j=0; j<xLength; j++){
-                        if (matriks[i][j] == '.'){
+                        if (matriks[i][j] == '.'){ //unsteppable place
+            				cout <<bgray<< matriks[i][j]<<normal<<bnormal ;
+            			} else if (matriks[i][j] == '0'){ //orang/user
             				cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
-            			} else {
+            			} else { //Lain-lain bisa ditambah
             				cout <<byellow<<red<< matriks[i][j]<<normal<<bnormal ;
             			}
                     }
@@ -98,6 +104,54 @@ void Screen::drawMatriks(){
                 }//end for
                 cout<< endl;
                 cout<< endl;
+}
+
+void Screen::drawMatriksHome(){
+	Screen _s(HOME_HEIGHT,HOME_WIDTH);
+	
+	char subs;
+	for (int i=0; i<4; i++){
+		switch (i) {
+			
+			case 0 : {
+				subs = 'E';
+				break;
+			}
+			
+			case 1 : {
+				subs = 'M';
+				break;
+			}
+			
+			case 2 : {
+				subs = 'O';
+				break;
+			}
+			
+			case 3 : {
+				subs = 'H';
+				break;
+			}
+		}
+		
+		//_s.matriks[HOME_WIDTH-i,i] = subs;
+		_s.setMatriks(0,HOME_WIDTH-i-1,subs);
+	}
+	
+	for(int i=0; i<_s.yLength; i++){
+        for(int j=0; j<_s.xLength; j++){
+        	if (_s.matriks[i][j] == '.'){ //unsteppable place
+            	cout <<bcyan<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
+            } else {
+            	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
+            }
+        }
+        cout<< endl;
+    }//end for
+    cout<< endl;
+    cout<< endl;
 }
 
 void Screen::drawMatriksStore(){
@@ -139,8 +193,10 @@ void Screen::drawMatriksStore(){
 	
     for(int i=0; i<_s.yLength; i++){
         for(int j=0; j<_s.xLength; j++){
-        	if (_s.matriks[i][j] == '.'){
-            	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
+        	if (_s.matriks[i][j] == '.'){ //unsteppable place
+            	cout <<bgray<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
             }
@@ -155,11 +211,11 @@ void Screen::drawScreen(int s){
     //menggambar screen dengan masukan integer tempat
 
     switch (s){
-        case 1:                 //store
-			drawMatriks();
+        case 1:                 //Home
+			drawMatriksHome();
 			break;
 			
-        case 2:                 //home
+        case 2:                 //Store
 			drawMatriksStore();
 			break;
     }
