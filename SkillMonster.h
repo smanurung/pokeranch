@@ -3,8 +3,10 @@
 #ifndef SKILLMONSTER_H
 #define SKILLMONSTER_H
 
-#include "Monster.h"
+class Monster;
+
 #include <string>
+#include "Monster.h"
 
 using namespace std;
 
@@ -29,7 +31,7 @@ class SkillMonster{
     int getMPCost();
     void setMPCost(int);
 
-    void CastSkill(Monster);
+    void CastSkill(Monster*);
     void ShowSkillStatus();
 
     private :

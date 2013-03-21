@@ -1,7 +1,7 @@
 /*
 	author Sonny Theo Tumbur
 */
-
+/*
 #include "Battle.h"
 #include <string>
 #include <cstring>
@@ -42,4 +42,4 @@ Battle& Battle::operator=(const Battle& _b){
 	this->monsterLuar = _b.monsterLuar;
 	this->NPCBattle = _b.NPCBattle;
 	this->btlScreen = _b.btlScreen;
-}
+}*/

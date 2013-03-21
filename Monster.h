@@ -2,7 +2,13 @@
 
 #ifndef MONSTER_H
 #define MONSTER_H
+
+class SkillMonster;
+
 #include <string>
+#include <vector>
+#include "SkillMonster.h"
+
 using namespace std;
 
 class Monster{
@@ -52,7 +58,7 @@ class Monster{
         void changeSpecies();
         void ShowStatus();
 
-        private :
+     private :
         string Nama;
         int Level;
         int Exp;
@@ -68,5 +74,6 @@ class Monster{
         string Status;
         int Umur;
         string WarnaMonster;
+        vector<SkillMonster*> Skill;
 };
 #endif

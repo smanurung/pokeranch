@@ -1,7 +1,7 @@
 //file : Monster.cpp
 
-#include "Monster.h"
 #include <iostream>
+#include "Monster.h"
 
 using namespace std;
 

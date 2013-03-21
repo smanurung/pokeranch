@@ -1,7 +1,7 @@
 all : pokeranch
 
-pokeranch : AreaLuar.o Battle.o BattleScreen.o Home.o Item.o Kota.o main.o Monster.o MonsterBall.o MonsterEgg.o NPC.o Player.o Point.o Potion.o Screen.o SkillMonster.o StatusIncrease.o Store.o
-	g++ -o pokeranch AreaLuar.o Battle.o BattleScreen.o Home.o Item.o Kota.o main.o Monster.o MonsterBall.o MonsterEgg.o NPC.o Player.o Point.o Potion.o Screen.o SkillMonster.o StatusIncrease.o Store.o
+pokeranch : AreaLuar.o Battle.o BattleScreen.o Home.o Item.o Kota.o main2.o Monster.o MonsterBall.o MonsterEgg.o NPC.o Player.o Point.o Potion.o Screen.o SkillMonster.o StatusIncrease.o Store.o
+	g++ -o pokeranch AreaLuar.o Battle.o BattleScreen.o Home.o Item.o Kota.o main2.o Monster.o MonsterBall.o MonsterEgg.o NPC.o Player.o Point.o Potion.o Screen.o SkillMonster.o StatusIncrease.o Store.o
 
 AreaLuar.o : AreaLuar.cpp
 	g++ -c AreaLuar.cpp
@@ -21,8 +21,8 @@ Item.o : Item.cpp
 Kota.o : Kota.cpp
 	g++ -c Kota.cpp
 	
-main.o : main.cpp
-	g++ -c main.cpp
+main2.o : main2.cpp
+	g++ -c main2.cpp
 	
 Monster.o : Monster.cpp
 	g++ -c Monster.cpp
