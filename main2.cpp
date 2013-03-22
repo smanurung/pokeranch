@@ -19,17 +19,6 @@ int main() {
 
     Player p1;
     Kota k(p1.getCurX(),p1.getCurY());
-//        k.drawScreen();
-
-//        p1.move("bawah",1,k);
-//        cout<<p1.getCurX()<<endl;
-//        cout<<p1.getCurY()<<endl;
-
-
-
-        //k.setPosisiPlayer(p1.getCurX(), p1.getCurY());
-//        k.drawScreen();
-
 
     while (strcmp(command, "exit")!=0) {
         gets(input);
@@ -90,7 +79,7 @@ int main() {
             if(strcmp(argument[0], "kota")==0) {
                 state = p1.teleport(state,0,0);
                 if(state==1){
-                    k.drawScreen();
+                    k.drawScreen(1);
                 }else{
                     cout << "gagal"<<endl;
                 }
@@ -174,7 +163,7 @@ int main() {
             int step = atoi(argument[1]);
             p1.move(argument[0],step,k);
             k.setPosisiPlayer(p1.getCurX(), p1.getCurY());
-            k.drawScreen();
+            k.drawScreen(1);
 
         } else if(strcmp(command, "list-monster")==0) {
             //list-monster

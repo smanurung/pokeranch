@@ -15,7 +15,7 @@
 
 class MonsterEgg:public Item {
 public:
-    MonsterEgg(int = 0, string = "noname", Monster& = NULL);
+    MonsterEgg(int = 0, string = "noname", Monster& = (*(Monster*)0));
     MonsterEgg(const MonsterEgg&);
     ~MonsterEgg();
     MonsterEgg& operator=(const MonsterEgg&);

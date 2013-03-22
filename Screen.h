@@ -32,9 +32,11 @@ protected:
     int yLength;
     char ** matriks;
 
-private:
 	void drawMatriksHome();
 	void drawMatriksStore();
+
+private:
+	
 };
 
 #endif	/* SCREEN_H */

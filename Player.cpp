@@ -1,4 +1,6 @@
 #include "Player.h"
+#include <iostream>
+using namespace std;
 
     Player::Player(){
         nama="pemain";
@@ -185,7 +187,9 @@
 
 
 /*-------------------------------------------------------------------------------------method baru---------------------------------------------------------------------------------- */
-    void addMonster(Monster&);
+    void Player::addMonster(Monster& _m){
+		cout << "method add monster" << endl;
+	}
 
     void Player::delMoney(int i){
         //mengurangi uang sebesar i
