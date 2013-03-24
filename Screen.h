@@ -31,8 +31,6 @@ protected:
     int xLength;
     int yLength;
     char ** matriks;
-
-private:
 	void drawMatriksHome();
 	void drawMatriksStore();
 	void drawMatriksCombinatorium();

@@ -111,14 +111,14 @@ void parseFile(Player& _p){
 			}
 		}
 		
-		cout << isiFile[idx] << endl;
+		//cout << isiFile[idx] << endl;
 		idx += 1;
 		//jumlah menang
 		_p.setJumlahMenang(atoi(isiFile[idx++].c_str()));
 		_p.setJumlahKalah(atoi(isiFile[idx++].c_str()));
 		_p.setJumlahEscape(atoi(isiFile[idx++].c_str()));
 		_p.setWaktu(atoi(isiFile[idx++].c_str()));
-		//_p.setWarna(isiFile[idx++]);
+		_p.setWarna(isiFile[idx++]);
 		
 	} else {
 		cout << ">>Warning!! File tidak bisa dibuka" << endl;

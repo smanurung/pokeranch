@@ -13,7 +13,7 @@
 #include "Monster.h"
 #include "Player.h"
 
-class MonsterEgg:public Item {
+class MonsterEgg : public Item {
 public:
     MonsterEgg(int = 0, string = "noname", Monster& = (*(Monster*)0));
 	MonsterEgg(Monster&);
