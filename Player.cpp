@@ -71,35 +71,35 @@ using namespace std;
 	void Player::setNama(string _n){
 		this->nama = _n;
 	}
-	
+
 	void Player::setUang(int _u){
 		this->uang = _u;
 	}
-	
+
 	void Player::addItem(Item& _i){
 		this->listItem.push_back(_i);
 	}
-	
+
 	void Player::addMonster(string _nama, Monster& _mon){
 		this->listMonster.insert(pair<string,Monster>(_nama,_mon));
 	}
-	
+
 	void Player::setJumlahMenang(int _win){
 		this->jumlahMenang = _win;
 	}
-	
+
 	void Player::setJumlahKalah(int _lose){
 		this->jumlahKalah = _lose;
 	}
-	
+
 	void Player::setJumlahEscape(int _esc) {
 		this->jumlahEscape = _esc;
 	}
-	
+
 	void Player::setWaktu(int _time){
 		this->waktu = _time;
 	}
-	
+
 	void Player::setWarna(string _w){
 		this->warnaPlayer = _w;
 	}
@@ -125,7 +125,7 @@ using namespace std;
         //nunggu monster
     }
 
-        void Player::sell(Item item, int n){
+    void Player::sell(Item item, int n){
 
         for (int ii=0; ii<n;ii++){
             for (int i=0; i< listItem.size(); i++){
@@ -150,20 +150,21 @@ using namespace std;
         }
     }
 
-    void Player::teleport(int &currentState, int toState int xPosition, int yPosition, Screen &s) {
+    void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
         if (currentState==1) { //kota
             currentState = toState;
             s.drawScreen(currentState);
         } else {
             if (toState==1) {
                 currentState = toState;
-                s.drawScreen(currentState);
+                cout<<tes;
+       //         s.drawScreen(currentState);
             } else {
                 cout << "Tidak bisa teleport" << endl;
             }
         }
     }
-	
+
     void Player::move(string s, int i, Screen sc){
         if(s=="bawah"){
             if( (curX+i)>sc.getXLength() ){

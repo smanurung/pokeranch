@@ -56,7 +56,7 @@ public:
 	void setJumlahEscape(int);
 	void setWaktu(int);
 	void setWarna(string);
-	
+
     /*-----------------method utama-------------- */
     void bet(int, bool);                //parameter nambah bool
 //    void battle(string, NPC);
