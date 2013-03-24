@@ -36,6 +36,7 @@ private:
 	void drawMatriksHome();
 	void drawMatriksStore();
 	void drawMatriksCombinatorium();
+	void drawMatriksStadium();
 };
 
 #endif	/* SCREEN_H */

@@ -22,6 +22,9 @@
 #define COMBINATORIUM_HEIGHT 20
 #define COMBINATORIUM_WIDTH 40
 
+#define STADIUM_HEIGHT 25
+#define STADIUM_WIDTH 70
+
 using namespace std;
 
 char bred[] = { 0x1b, '[', '1', ';', '4', '1', 'm', 0 };
@@ -303,6 +306,69 @@ void Screen::drawMatriksCombinatorium(){
     cout<< endl;
 }
 
+void Screen::drawMatriksStadium(){
+	Screen _s(STADIUM_WIDTH, STADIUM_HEIGHT);
+	
+	char subs;
+	for (int i=0; i<7; i++){
+		switch (i) {
+			
+			case 0 : {
+				subs = 'M';
+				break;
+			}
+			
+			case 1 : {
+				subs = 'U';
+				break;
+			}
+			
+			case 2 : {
+				subs = 'I';
+				break;
+			}
+			
+			case 3 : {
+				subs = 'D';
+				break;
+			}
+			
+			case 4 : {
+				subs = 'A';
+				break;
+			}
+			
+			case 5 : {
+				subs = 'T';
+				break;
+			}
+			
+			case 6 : {
+				subs = 'S';
+				break;
+			}
+		}
+		
+		//_s.matriks[HOME_WIDTH-i,i] = subs;
+		_s.setMatriks(0,STADIUM_WIDTH-i-1,subs);
+	}
+	
+    for(int i=0; i<_s.yLength; i++){
+        for(int j=0; j<_s.xLength; j++){
+        	if (_s.matriks[i][j] == '.'){ //unsteppable place
+            	cout <<bred<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
+            } else {
+            	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
+            }
+        }
+        cout<< endl;
+    }//end for
+    cout<< endl;
+    cout<< endl;
+}
+
 void Screen::drawScreen(int s){
     //menggambar screen dengan masukan integer tempat
 
@@ -316,6 +382,9 @@ void Screen::drawScreen(int s){
 			break;
 		case 3:					//Combinatorium
 			drawMatriksCombinatorium();
+			break;
+		case 4:					//Stadium
+			drawMatriksStadium();
 			break;
     }
 }
