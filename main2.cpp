@@ -150,9 +150,10 @@ int main() {
 
     Kota kota(p1.getCurX(),p1.getCurY());
     AreaLuar areaLuar(50,50);
+
 //    BattleScreen battleScreen;
 //    Combinatorium combinatorium;
-//    Home home;
+   Home home;
 //    Stadium stadium;
 //    Store store;
 
@@ -238,21 +239,25 @@ int main() {
             }else
             //teleport
             //assign state
-            if(argument[0] == "kota") {				 //toState  1
+            if(argument[0] == "home") {				 //toState  0
+                p1.teleport(state, 0, p1.getCurX(), p1.getCurY(), home);
+            }//end if home
+
+            else if(argument[0] == "kota") {				 //toState  1
                 p1.teleport(state, 1, p1.getCurX(), p1.getCurY(), kota);
             }//end if kota
 
-			else if((argument[0], "luar")==0) {                      //toState  2
+			else if((argument[0]== "luar")==0) {                      //toState  2
                 p1.teleport(state, 2, p1.getCurX(), p1.getCurY(), areaLuar);
 
             }//end if luar
 
 
-            else if((argument[0], "store")==0) {                  //toState  3
+            else if((argument[0]=="store")==0) {                  //toState  3
 //                p1.teleport(state, 3, p1.getCurX(), p1.getCurY(), store);
 
             }
-            else if((argument[0], "stadium")==0) {            //toState  4
+            else if((argument[0]=="stadium")==0) {            //toState  4
                 //p1.teleport(state, 4, p1.getCurX(), p1.getCurY(), stadium);
 
             }
