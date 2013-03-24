@@ -9,5 +9,5 @@ Home::~Home(){
 }
 
 void Home::drawHome(){
-	this->screenHome.drawScreen(1);
+	this->screenHome.drawScreen(0);
 }
