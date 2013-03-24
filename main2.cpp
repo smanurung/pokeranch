@@ -24,31 +24,35 @@ void parseFile(Player& _p){
 			getline(f,_s);
 			isiFile.push_back(_s);
 		}
-		
+
 		int idx = 1;
 		//nama
 		_p.setNama(isiFile[idx++]);
-		
+
 		//uang
 		int _uang = atoi(isiFile[idx++].c_str());
 		_p.setUang(_uang);
-		
+
 		//player item
 		const string END_ITEM = "enditem";
 		/*while (isiFile[idx].compare(END_ITEM)){
 			if (!isiFile[idx].compare("potion")) {
 				idx += 1;
 				string potAttr = isiFile[idx];
-				
+
 				//Potion _pot();
 			}
 		}*/
-		
+
 	} else {
 		cout << ">>Warning!! File tidak bisa dibuka" << endl;
 	}
-	
+
 	f.close();
+}
+
+void DatabaseMonster(){
+    fstream s;
 }
 
 int main() {
@@ -59,12 +63,12 @@ int main() {
 
     Player p1;
 	parseFile(p1);
-	
+
 	cout << p1.getNama() << endl;
 	cout << p1.getUang() << endl;
-	
+
     Kota k(p1.getCurX(),p1.getCurY());
-	
+
 	cout << "---POKERANCH---" << endl;
 
     while (strcmp(command, "exit")!=0) {
