@@ -52,6 +52,12 @@ void parseFile(Player& _p){
 			if (!isiFile[idx].compare("potion")) {
 				idx += 1;
 
+				string potAttr = isiFile[idx];
+
+				//Potion _pot();
+			}
+		}
+
 				istringstream iss(isiFile[idx]);
 				vector<string> tokens;
 				copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(tokens));
@@ -135,6 +141,10 @@ void parseFile(Player& _p){
 	f.close();
 }
 
+void DatabaseMonster(){
+    fstream s;
+}
+
 int main() {
     //char input[500];
     //char command[100];
@@ -148,6 +158,12 @@ int main() {
     Player p1;
 	parseFile(p1);
 
+<<<<<<< HEAD
+	cout << p1.getNama() << endl;
+	cout << p1.getUang() << endl;
+
+    Kota k(p1.getCurX(),p1.getCurY());
+=======
     Kota kota(p1.getCurX(),p1.getCurY());
     AreaLuar areaLuar(50,50);
     BattleScreen battleScreen;
@@ -156,6 +172,7 @@ int main() {
     Stadium stadium;
     Store store;
 
+>>>>>>> 0c95650c29974971469762d4a5349bafffdb9231
 
 	cout << "---POKERANCH---" << endl;
 
