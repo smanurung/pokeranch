@@ -52,12 +52,6 @@ void parseFile(Player& _p){
 			if (!isiFile[idx].compare("potion")) {
 				idx += 1;
 
-				string potAttr = isiFile[idx];
-
-				//Potion _pot();
-			}
-		}
-
 				istringstream iss(isiFile[idx]);
 				vector<string> tokens;
 				copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(tokens));
@@ -141,10 +135,6 @@ void parseFile(Player& _p){
 	f.close();
 }
 
-void DatabaseMonster(){
-    fstream s;
-}
-
 int main() {
     //char input[500];
     //char command[100];
@@ -158,21 +148,14 @@ int main() {
     Player p1;
 	parseFile(p1);
 
-<<<<<<< HEAD
-	cout << p1.getNama() << endl;
-	cout << p1.getUang() << endl;
-
-    Kota k(p1.getCurX(),p1.getCurY());
-=======
     Kota kota(p1.getCurX(),p1.getCurY());
     AreaLuar areaLuar(50,50);
-    BattleScreen battleScreen;
-    Combinatorium combinatorium;
-    Home home;
-    Stadium stadium;
-    Store store;
+//    BattleScreen battleScreen;
+//    Combinatorium combinatorium;
+//    Home home;
+//    Stadium stadium;
+//    Store store;
 
->>>>>>> 0c95650c29974971469762d4a5349bafffdb9231
 
 	cout << "---POKERANCH---" << endl;
 
@@ -264,11 +247,11 @@ int main() {
 
 
             else if((argument[0], "store")==0) {                  //toState  3
-                p1.teleport(state, 3, p1.getCurX(), p1.getCurY(), store);
+//                p1.teleport(state, 3, p1.getCurX(), p1.getCurY(), store);
 
             }
             else if((argument[0], "stadium")==0) {            //toState  4
-                p1.teleport(state, 4, p1.getCurX(), p1.getCurY(), stadium);
+                //p1.teleport(state, 4, p1.getCurX(), p1.getCurY(), stadium);
 
             }
             else {
@@ -330,9 +313,9 @@ int main() {
             }
             //move
             int step = atoi(argument[1].c_str());
-            p1.move(argument[0],step,k);
-            k.setPosisiPlayer(p1.getCurX(), p1.getCurY());
-            k.drawScreen(1);
+            p1.move(argument[0],step,kota);
+            kota.setPosisiPlayer(p1.getCurX(), p1.getCurY());
+            kota.drawScreen(1);
 
         }
         else if(command == "list-monster") {
