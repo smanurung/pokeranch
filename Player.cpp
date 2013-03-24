@@ -1,5 +1,7 @@
 #include "Player.h"
 #include <iostream>
+#include <map>
+
 using namespace std;
 
     Player::Player(){
@@ -74,6 +76,33 @@ using namespace std;
 		this->uang = _u;
 	}
 
+	void Player::addItem(Item& _i){
+		this->listItem.push_back(_i);
+	}
+
+	void Player::addMonster(string _nama, Monster& _mon){
+		this->listMonster.insert(pair<string,Monster>(_nama,_mon));
+	}
+
+	void Player::setJumlahMenang(int _win){
+		this->jumlahMenang = _win;
+	}
+
+	void Player::setJumlahKalah(int _lose){
+		this->jumlahKalah = _lose;
+	}
+
+	void Player::setJumlahEscape(int _esc) {
+		this->jumlahEscape = _esc;
+	}
+
+	void Player::setWaktu(int _time){
+		this->waktu = _time;
+	}
+
+	void Player::setWarna(string _w){
+		this->warnaPlayer = _w;
+	}
 
 /*----------------------------------------------------------------------------------method utama------------------------------------------------------------------------------- */
 
@@ -151,6 +180,7 @@ using namespace std;
             }            
         } else {
             if (toState==1) {
+<<<<<<< HEAD
                 if (currentState==0) {
                     if (xPosition==xHomeBound && yPosition==yHomeBound) {
                         allowTeleport = true;
@@ -177,6 +207,13 @@ using namespace std;
                     }
                 }
                 
+=======
+                currentState = toState;
+                cout<<tes;
+       //         s.drawScreen(currentState);
+            } else {
+                cout << "Tidak bisa teleport" << endl;
+>>>>>>> 326595c78e38852d22a6fee79210e5c21e03faba
             }
         }        
         
@@ -187,7 +224,6 @@ using namespace std;
             cout << "Tidak bisa teleport" << endl;
         }
     }
-
 
     void Player::move(string s, int i, Screen sc){
         if(s=="bawah"){
