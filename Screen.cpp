@@ -8,10 +8,10 @@
 #include "Screen.h"
 
 #include <iostream>
-#include <fstream>
+//#include <fstream>
 #include <string>
-#include <fstream> 
-#include <sstream> 
+//#include <fstream> 
+//#include <sstream> 
 
 #define HOME_HEIGHT 20
 #define HOME_WIDTH 20
@@ -45,8 +45,8 @@ char bnormal[] = { 0x1b, '[', '0', ';', '4', '9', 'm', 0 };
 char normal[] = { 0x1b, '[', '0', ';', '3', '9', 'm', 0 };
 
 Screen::Screen() {
-    xLength = 50;
-    yLength = 20;
+    xLength = 100;
+    yLength = 100;
 
     matriks = new char * [yLength];
     for(int i=0; i<yLength; i++){
@@ -115,6 +115,10 @@ void Screen::drawMatriks(){
 void Screen::drawMatriksHome(){
 	Screen _s(HOME_WIDTH,HOME_HEIGHT);
 	
+	char N;
+	N = 'N';
+	_s.setMatriks(10,10,N);
+	
 	char subs;
 	for (int i=0; i<4; i++){
 		switch (i) {
@@ -148,8 +152,8 @@ void Screen::drawMatriksHome(){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bcyan<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == '0'){ //orang/user
-            	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
             }
@@ -201,8 +205,8 @@ void Screen::drawMatriksStore(){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bgray<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == '0'){ //orang/user
-            	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
             }
@@ -294,8 +298,8 @@ void Screen::drawMatriksCombinatorium(){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bmagenta<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == '0'){ //orang/user
-            	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
             }
@@ -308,6 +312,11 @@ void Screen::drawMatriksCombinatorium(){
 
 void Screen::drawMatriksStadium(){
 	Screen _s(STADIUM_WIDTH, STADIUM_HEIGHT);
+	
+	char N;
+	N = 'N';
+	_s.setMatriks(19,50,N);
+	_s.setMatriks(10,10,N);
 	
 	char subs;
 	for (int i=0; i<7; i++){
@@ -348,8 +357,6 @@ void Screen::drawMatriksStadium(){
 				break;
 			}
 		}
-		
-		//_s.matriks[HOME_WIDTH-i,i] = subs;
 		_s.setMatriks(0,STADIUM_WIDTH-i-1,subs);
 	}
 	
@@ -357,8 +364,10 @@ void Screen::drawMatriksStadium(){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bred<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == '0'){ //orang/user
-            	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == 'N'){ //NPC
+            	cout <<byellow<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
             }
@@ -380,9 +389,11 @@ void Screen::drawScreen(int s){
         case 3:                 //Store
 			drawMatriksStore();
 			break;
+			
 		case 6:					//Combinatorium
 			drawMatriksCombinatorium();
 			break;
+			
 		case 4:					//Stadium
 			drawMatriksStadium();
 			break;

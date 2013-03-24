@@ -151,16 +151,70 @@ using namespace std;
     }
 
     void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
+        bool allowTeleport = false;
         if (currentState==1) { //kota
+            if (toState==0) {
+                if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==2) {
+                if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==3) {
+                if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==4) {
+                if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==5) {
+                if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==6) {
+                if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+                    allowTeleport = true;
+                }
+            }            
+        } else {
+            if (toState==1) {
+
+                if (currentState==0) {
+                    if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==2) {
+                    if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==3) {
+                    if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==4) {
+                    if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==5) {
+                    if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==6) {
+                    if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+                        allowTeleport = true;
+                    }
+                }
+
+            }
+        }        
+        
+        if (allowTeleport) {
             currentState = toState;
             s.drawScreen(currentState);
         } else {
-            if (toState==1) {
-                currentState = toState;
-                s.drawScreen(currentState);
-            } else {
-                cout << "Tidak bisa teleport" << endl;
-            }
+            cout << "Tidak bisa teleport" << endl;
         }
     }
 
