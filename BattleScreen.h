@@ -18,7 +18,7 @@ public:
     ~BattleScreen();
     BattleScreen& operator=(const BattleScreen&);
 
-    void drawScreen();
+    void drawScreen(int);
 
 private:
     int xPlayer;

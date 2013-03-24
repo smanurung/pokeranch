@@ -48,6 +48,6 @@ BattleScreen& BattleScreen::operator=(const BattleScreen& BS) {
     return *this;
 }
 
-void BattleScreen::drawScreen(){
+void BattleScreen::drawScreen(int i){
     drawMatriks();
 }

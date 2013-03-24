@@ -147,20 +147,20 @@ using namespace std;
         }
     }
 
-    void Player::teleport(int &currentState, int toState, int xPosition, int yPosition) {    
+    void Player::teleport(int &currentState, int toState int xPosition, int yPosition, Screen &s) {
         if (currentState==1) { //kota
             currentState = toState;
-            //draw;
+            s.drawScreen(currentState);
         } else {
             if (toState==1) {
                 currentState = toState;
-                //draw
+                s.drawScreen(currentState);
             } else {
                 cout << "Tidak bisa teleport" << endl;
             }
         }
     }
-
+	
     void Player::move(string s, int i, Screen sc){
         if(s=="bawah"){
             if( (curX+i)>sc.getXLength() ){

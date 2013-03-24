@@ -373,14 +373,14 @@ void Screen::drawScreen(int s){
     //menggambar screen dengan masukan integer tempat
 
     switch (s){
-        case 1:                 //Home
+        case 0:                 //Home
 			drawMatriksHome();
 			break;
 			
-        case 2:                 //Store
+        case 3:                 //Store
 			drawMatriksStore();
 			break;
-		case 3:					//Combinatorium
+		case 6:					//Combinatorium
 			drawMatriksCombinatorium();
 			break;
 		case 4:					//Stadium
