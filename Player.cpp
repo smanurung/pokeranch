@@ -125,16 +125,19 @@ using namespace std;
         //nunggu monster
     }
 
-    void Player::sell(Item item){
-        for (int i=0; i< listItem.size(); i++){
-            if(listItem.at(i)==item){
-                    listItem.erase(listItem.begin()+i);
-                    cout << item.getItemName() << " dijual"<< endl;
-                    uang=uang + item.getHarga();
-            }else if(i==(listItem.size()-1)){
-                    cout << "item tidak tersedia" << endl;
-            }
-        }//end for
+        void Player::sell(Item item, int n){
+
+        for (int ii=0; ii<n;ii++){
+            for (int i=0; i< listItem.size(); i++){
+                if(listItem.at(i)==item){
+                        listItem.erase(listItem.begin()+i);
+                        cout << item.getItemName() << " dijual"<< endl;
+                        uang=uang + item.getHarga();
+                }else if(i==(listItem.size()-1)){
+                        cout << "item tidak tersedia" << endl;
+                }
+            }//end for 2
+        }//end for 1
     }
 
     void Player::buy(Item i){
