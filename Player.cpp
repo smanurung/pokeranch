@@ -150,7 +150,7 @@ using namespace std;
         }
     }
 
-    void Player::teleport(int &currentState, int toState int xPosition, int yPosition, Screen &s) {
+    void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
         bool allowTeleport = false;
         if (currentState==1) { //kota
             if (toState==0) {
