@@ -52,35 +52,48 @@ void parseFile(Player& _p){
 }
 
 int main() {
-    char input[500];
-    char command[100];
-    char argument[4][100];
+    //char input[500];
+    //char command[100];
+    //char argument[4][100];
+	
+	string input;
+	string command;
+	vector<string> argument;
     int state = 0;
 
     Player p1;
 	parseFile(p1);
 
-	cout << p1.getNama() << endl;
-	cout << p1.getUang() << endl;
-
     Kota k(p1.getCurX(),p1.getCurY());
 
 	cout << "---POKERANCH---" << endl;
 
-    while (strcmp(command, "exit")!=0) {
+    while (command != "exit") {
 		cout << "command :";
-        gets(input);
-        //cout << input << endl;
-        //cin >> input;
-        int i = 0;
+        cin >> input;
+		
+		//////////////////
+		istringstream iss(input);
+		vector<string> strInput;
+		copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+		
+		for (int j=0; j<strInput.size(); j++){
+			cout << strInput[j] << endl;
+		}
+		
+		command = strInput[0];
+		for (int i = 1; i<strInput.size(); i++){
+			argument.push_back(strInput[i]);
+		}
+		///////////////////
+		
+        /*int i = 0;
         //memasukkan command
         while (input[i]!='\0' && input[i]!=' ') {
             command[i] = input[i];
             i++;
         }
         command[i] = '\0';
-        //argument[0][i] = '\0';
-//        cout << command << endl;
         i++;
 
         int arg_start = 0;
@@ -264,7 +277,7 @@ int main() {
         }
         else { //command kosong
             cout << "command tidak ada" << endl;
-        }
+        }*/
 
 
 

@@ -135,6 +135,7 @@ using namespace std;
         }
     }
 
+
     void Player::move(string s, int i, Screen sc){
         if(s=="bawah"){
             if( (curX+i)>sc.getXLength() ){
