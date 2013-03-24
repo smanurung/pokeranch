@@ -15,6 +15,7 @@
 class Potion:public Item {
 public:
     Potion(int = 0, string = "noname", int = 0, int = 0);
+	Potion(int,int);
     Potion(const Potion&);
     ~Potion();
     Potion& operator=(const Potion&);

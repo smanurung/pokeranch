@@ -23,7 +23,7 @@ Monster::Monster(){
     WarnaMonster = "xxxx";
 }
 
-Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int _mp, int spd, int bu, int be, int ch, int cm, string st, int um, string wm){
+Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int _mp, int spd, int bu, int be, string st, int um, string wm){
     Nama = nm;
     Level = lvl;
     Exp = ex;
@@ -34,8 +34,8 @@ Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int 
     Speed = spd;
     BonusUang = bu;
     BonusExp = be;
-    CurrentHP = ch;
-    CurrentMP = cm;
+    CurrentHP = _hp;
+    CurrentMP = _mp;
     Status = st;
     Umur = um;
     WarnaMonster = wm;

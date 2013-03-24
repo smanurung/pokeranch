@@ -1,5 +1,7 @@
 #include "Player.h"
 #include <iostream>
+#include <map>
+
 using namespace std;
 
     Player::Player(){
@@ -74,6 +76,33 @@ using namespace std;
 		this->uang = _u;
 	}
 	
+	void Player::addItem(Item& _i){
+		this->listItem.push_back(_i);
+	}
+	
+	void Player::addMonster(string _nama, Monster& _mon){
+		this->listMonster.insert(pair<string,Monster>(_nama,_mon));
+	}
+	
+	void Player::setJumlahMenang(int _win){
+		this->jumlahMenang = _win;
+	}
+	
+	void Player::setJumlahKalah(int _lose){
+		this->jumlahKalah = _lose;
+	}
+	
+	void Player::setJumlahEscape(int _esc) {
+		this->jumlahEscape = _esc;
+	}
+	
+	void Player::setWaktu(int _time){
+		this->waktu = _time;
+	}
+	
+	void Player::setWarna(string _w){
+		this->warnaPlayer = _w;
+	}
 
 /*----------------------------------------------------------------------------------method utama------------------------------------------------------------------------------- */
 

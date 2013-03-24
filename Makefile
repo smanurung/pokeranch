@@ -61,4 +61,4 @@ run :
 	./pokeranch
 
 clean :
-	rm -rf pokeranch *.o *.exe
+	rm -rf pokeranch *.o *.exe *.h.gch

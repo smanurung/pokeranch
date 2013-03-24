@@ -3,12 +3,16 @@
 #include "Screen.h"
 #include "Item.h"
 #include "Potion.h"
+#include "StatusIncrease.h"
+#include "MonsterEgg.h"
 #include "Kota.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
 #include <vector>
+#include <sstream>
+#include <iterator>
 
 using namespace std;
 
@@ -35,14 +39,86 @@ void parseFile(Player& _p){
 		
 		//player item
 		const string END_ITEM = "enditem";
-		/*while (isiFile[idx].compare(END_ITEM)){
+		const string END_MONSTER = "endmonster";
+		while (isiFile[idx].compare(END_ITEM)){
 			if (!isiFile[idx].compare("potion")) {
 				idx += 1;
-				string potAttr = isiFile[idx];
 				
-				//Potion _pot();
+				istringstream iss(isiFile[idx]);
+				vector<string> tokens;
+				copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(tokens));
+				int mp = atoi(tokens[0].c_str());
+				int hp = atoi(tokens[1].c_str());
+				Potion _pot(mp,hp);
+				_p.addItem(_pot);
+				//item potion telah berhasil ditambahkan ke listitem player
+				//cout << tokens[0] << " " << tokens[1] << "berhasil aman" << endl;
+				
+				idx += 1;
+			} else if (!isiFile[idx].compare("statusincrease")) {
+				idx += 1;
+				
+				istringstream iss(isiFile[idx]);
+				vector<string> tokens;
+				copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(tokens));
+				int mpp = atoi(tokens[0].c_str());
+				int hpp = atoi(tokens[1].c_str());
+				StatusIncrease _statInc(mpp,hpp);
+				_p.addItem(_statInc);
+				//item status increase telah berhasil ditambahkan ke listitem player
+				
+				idx += 1;
+			} else if (!isiFile[idx].compare("monsteregg")) {
+				idx += 1;
+				
+				istringstream iss(isiFile[idx]);
+				vector<string> tokens;
+				copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(tokens));
+				
+				/*for (int i=0; i<tokens.size(); i++){
+					cout << "halah : " << tokens[i] << endl;
+				}*/
+				
+				Monster _m(tokens[0],atoi(tokens[1].c_str()),atoi(tokens[2].c_str()),tokens[3],tokens[4],atoi(tokens[5].c_str()),atoi(tokens[6].c_str()),atoi(tokens[7].c_str()),atoi(tokens[8].c_str()),atoi(tokens[9].c_str()),tokens[10],atoi(tokens[11].c_str()),tokens[12]);
+				MonsterEgg _megg(_m);
+				
+				_p.addItem(_megg);
+				
+				idx += 1;
+			} else {
+				idx += 2;
 			}
-		}*/
+		}
+			
+		//player monster
+		idx += 1;
+		while (isiFile[idx].compare(END_MONSTER)) {
+			if (!isiFile[idx].compare("monster")) {
+				//cout << isiFile[idx] << endl;
+				idx += 1;
+				
+				istringstream iss(isiFile[idx]);
+				vector<string> tokens;
+				copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(tokens));
+				
+				Monster _m(tokens[0],atoi(tokens[1].c_str()),atoi(tokens[2].c_str()),tokens[3],tokens[4],atoi(tokens[5].c_str()),atoi(tokens[6].c_str()),atoi(tokens[7].c_str()),atoi(tokens[8].c_str()),atoi(tokens[9].c_str()),tokens[10],atoi(tokens[11].c_str()),tokens[12]);
+				
+				_p.addMonster(_m.getNama(),_m);
+				
+				idx += 1;
+			} else {
+				idx += 2;
+			}
+		}
+		
+		cout << isiFile[idx] << endl;
+		idx += 1;
+		//jumlah menang
+		_p.setJumlahMenang(atoi(isiFile[idx++].c_str()));
+		_p.setJumlahKalah(atoi(isiFile[idx++].c_str()));
+		_p.setJumlahEscape(atoi(isiFile[idx++].c_str()));
+		_p.setWaktu(atoi(isiFile[idx++].c_str()));
+		//_p.setWarna(isiFile[idx++]);
 		
 	} else {
 		cout << ">>Warning!! File tidak bisa dibuka" << endl;
@@ -60,8 +136,8 @@ int main() {
     Player p1;
 	parseFile(p1);
 	
-	cout << p1.getNama() << endl;
-	cout << p1.getUang() << endl;
+	//cout << p1.getNama() << endl;
+	//cout << p1.getUang() << endl;
 	
     Kota k(p1.getCurX(),p1.getCurY());
 	

@@ -13,6 +13,11 @@ Potion::Potion(int x, string s, int mp, int hp) { //ini kok x sama s ngga ada gu
     hpTambah = hp;
 }
 
+Potion::Potion(int _mp, int _hp){
+	this->mpTambah = _mp;
+	this->hpTambah = _hp;
+}
+
 Potion::Potion(const Potion& p) {
     mpTambah = p.mpTambah;
     hpTambah = p.hpTambah;

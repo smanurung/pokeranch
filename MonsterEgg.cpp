@@ -15,6 +15,10 @@ MonsterEgg::MonsterEgg(int x, string s, Monster& m) {
         cout << "Telur kosong" << endl;*/
 }
 
+MonsterEgg::MonsterEgg(Monster& _megg){
+	this->isiEgg = _megg;
+}
+
 MonsterEgg::MonsterEgg(const MonsterEgg& me) {
     isiEgg = me.isiEgg;
 }

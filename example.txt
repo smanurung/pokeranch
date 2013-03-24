@@ -6,5 +6,16 @@ potion
 statusincrease
 200 200
 monsteregg
-monsterX
+jo 1 0 yi api 50 25 5 120 30 xxxx 0 merah
+potion
+300 400
 enditem
+monster
+jo 1 0 yi api 50 25 5 120 30 xxxx 0 merah
+monster
+johannes 6 0 er api 100 50 16 230 70 burning 0 merah
+endmonster
+6
+5
+7
+35
