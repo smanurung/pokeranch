@@ -23,7 +23,7 @@
 #define COMBINATORIUM_WIDTH 40
 
 #define STADIUM_HEIGHT 25
-#define STADIUM_WIDTH 70
+#define STADIUM_WIDTH 35
 
 using namespace std;
 
@@ -346,7 +346,7 @@ void Screen::drawMatriksStadium(){
 	
 	char N;
 	N = 'N';
-	_s.setMatriks(19,50,N);
+	_s.setMatriks(19,30,N);
 	_s.setMatriks(10,10,N);
 	
 	char subs;
