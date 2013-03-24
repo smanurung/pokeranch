@@ -4,135 +4,144 @@
 
 using namespace std;
 
-    Player::Player(){
-        nama="pemain";
-        uang = 1000;
-        curX=0;
-        curY=0;
-        jumlahMenang=0;
-        jumlahKalah=0;
-        jumlahEscape=0;
-        waktu=0; //detik
-        warnaPlayer="putih";
+Player::Player(){
+    nama="pemain";
+    uang = 1000;
+    curX=0;
+    curY=0;
+    jumlahMenang=0;
+    jumlahKalah=0;
+    jumlahEscape=0;
+    waktu=0; //detik
+    warnaPlayer="putih";
+}
+
+Player::Player(string a){
+    nama="a";
+    uang = 1000;
+    curX=0;
+    curY=0;
+    jumlahMenang=0;
+    jumlahKalah=0;
+    jumlahEscape=0;
+    waktu=0;
+    warnaPlayer="putih";
+}
+
+Player::~Player(){}
+
+/*-------------------------------------------------------------------------------------------getter---------------------------------------------------------------------------------------- */
+string Player::getNama(){
+    return nama;
+}
+
+int Player::getUang(){
+    return uang;
+}
+
+int Player::getCurX(){
+    return curX;
+}
+
+int Player::getCurY(){
+    return curY;
+}
+
+int Player::getJumlahMenang(){
+    return jumlahMenang;
+}
+
+int Player::getJumlahKalah(){
+    return jumlahKalah;
+}
+
+int Player::getJumlahEscape(){
+    return jumlahEscape;
+}
+
+int Player::getWaktu(){
+    return jumlahEscape;
+}
+
+string Player::getWarnaPlayer(){
+    return warnaPlayer;
+}
+
+/*-------------------------------------------------------------------------------------------setter---------------------------------------------------------------------------------------- */
+void Player::setNama(string _n){
+    this->nama = _n;
+}
+
+void Player::setUang(int _u){
+    this->uang = _u;
+}
+
+void Player::addItem(Item& _i){
+    this->listItem.push_back(_i);
+}
+
+void Player::addMonster(string _nama, Monster& _mon){
+    this->listMonster.insert(pair<string,Monster>(_nama,_mon));
+}
+
+void Player::setJumlahMenang(int _win){
+    this->jumlahMenang = _win;
+}
+
+void Player::setJumlahKalah(int _lose){
+    this->jumlahKalah = _lose;
+}
+
+void Player::setJumlahEscape(int _esc) {
+    this->jumlahEscape = _esc;
+}
+
+void Player::setWaktu(int _time){
+    this->waktu = _time;
+}
+
+void Player::setWarna(string _w){
+    this->warnaPlayer = _w;
+}
+
+	void Player::setCurX(int i){
+        curX=i;
     }
 
-    Player::Player(string a){
-        nama="a";
-        uang = 1000;
-        curX=0;
-        curY=0;
-        jumlahMenang=0;
-        jumlahKalah=0;
-        jumlahEscape=0;
-        waktu=0;
-        warnaPlayer="putih";
+    void Player::setCurY(int i){
+        curY=i;
     }
-
-    Player::~Player(){}
-
-    /*-------------------------------------------------------------------------------------------getter---------------------------------------------------------------------------------------- */
-    string Player::getNama(){
-        return nama;
-    }
-
-    int Player::getUang(){
-        return uang;
-    }
-
-    int Player::getCurX(){
-        return curX;
-    }
-
-    int Player::getCurY(){
-        return curY;
-    }
-
-    int Player::getJumlahMenang(){
-        return jumlahMenang;
-    }
-
-    int Player::getJumlahKalah(){
-        return jumlahKalah;
-    }
-
-    int Player::getJumlahEscape(){
-        return jumlahEscape;
-    }
-
-    int Player::getWaktu(){
-        return jumlahEscape;
-    }
-
-    string Player::getWarnaPlayer(){
-        return warnaPlayer;
-    }
-
-	/*-------------------------------------------------------------------------------------------setter---------------------------------------------------------------------------------------- */
-	void Player::setNama(string _n){
-		this->nama = _n;
-	}
-
-	void Player::setUang(int _u){
-		this->uang = _u;
-	}
-
-	void Player::addItem(Item& _i){
-		this->listItem.push_back(_i);
-	}
-
-	void Player::addMonster(string _nama, Monster& _mon){
-		this->listMonster.insert(pair<string,Monster>(_nama,_mon));
-	}
-
-	void Player::setJumlahMenang(int _win){
-		this->jumlahMenang = _win;
-	}
-
-	void Player::setJumlahKalah(int _lose){
-		this->jumlahKalah = _lose;
-	}
-
-	void Player::setJumlahEscape(int _esc) {
-		this->jumlahEscape = _esc;
-	}
-
-	void Player::setWaktu(int _time){
-		this->waktu = _time;
-	}
-
-	void Player::setWarna(string _w){
-		this->warnaPlayer = _w;
-	}
 
 /*----------------------------------------------------------------------------------method utama------------------------------------------------------------------------------- */
 
-    void Player::bet(int jmlBet, bool isMenang){
-        if (isMenang==true){
-            uang=uang+jmlBet;
-        }else{
-            uang=uang-jmlBet;
-        }
+void Player::bet(int jmlBet, bool isMenang){
+    if (isMenang==true){
+        uang=uang+jmlBet;
+    }else{
+        uang=uang-jmlBet;
     }
+}
 
 //    void Player::battle(string, NPC)
 //    void Player::battle(string, Monster);
 
-    void Player::save(string){
-        //disimpan dg btk apa?
-    }
+void Player::save(string){
+    //disimpan dg btk apa?
+}
 
-    void Player::sleep(){
-        //nunggu monster
-    }
+void Player::sleep(){
+    //nunggu monster
+}
 
-    void Player::sell(Item item, int n){
+
+    void Player::sell(string item, int n){
 
         for (int ii=0; ii<n;ii++){
             for (int i=0; i< listItem.size(); i++){
-                if(listItem.at(i)==item){
+                if(listItem[i].getItemName()==item){
                         listItem.erase(listItem.begin()+i);
-                        cout << item.getItemName() << " dijual"<< endl;
-                        uang=uang + item.getHarga();
+                        cout << listItem[i].getItemName() << " dijual"<< endl;
+                        uang=uang + listItem[i].getHarga();
                 }else if(i==(listItem.size()-1)){
                         cout << "item tidak tersedia" << endl;
                 }
@@ -140,17 +149,67 @@ using namespace std;
         }//end for 1
     }
 
-    void Player::buy(Item i){
-        if(uang >= i.getHarga()){
-            addToListItem(i);
-            uang= uang - i.getHarga();
-            cout << i.getItemName() << " dibeli" << endl;
-        }else{
-            cout << "uang tidak cukup" << endl;
+void Player::buy(Item i){
+    if(uang >= i.getHarga()){
+        addToListItem(i);
+        uang= uang - i.getHarga();
+        cout << i.getItemName() << " dibeli" << endl;
+    }else{
+        cout << "uang tidak cukup" << endl;
+    }
+}
+
+void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
+    bool allowTeleport = false;
+    if (currentState==1) { //kota
+        if (toState==0) {
+            if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==2) {
+            if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==3) {
+            if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==4) {
+            if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==5) {
+            if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==6) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
+                allowTeleport = true;
+            }
+        }
+    } else {
+        if (toState==1) {
+            if (currentState==0) {
+                allowTeleport = true;
+            } else if (currentState==2) {
+                if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==3) {
+                allowTeleport = true;
+            } else if (currentState==4) {
+                if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==5) {
+                allowTeleport = true;
+            } else if (currentState==6) {
+                allowTeleport = true;
+            }
         }
     }
 
-    void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
+void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
         if (currentState==1) { //kota
             currentState = toState;
             s.drawScreen(currentState);
@@ -159,96 +218,390 @@ using namespace std;
                 currentState = toState;
             } else {
                 cout << "Tidak bisa teleport" << endl;
+    if (allowTeleport) {
+        currentState = toState;
+        s.drawScreen(currentState);
+    } else {
+        cout << "Tidak bisa teleport" << endl;
+    }
+}
+
+void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Stadium &s) {
+    bool allowTeleport = false;
+    if (currentState==1) { //kota
+        if (toState==0) {
+            if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==2) {
+            if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==3) {
+            if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==4) {
+            if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==5) {
+            if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==6) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
+                allowTeleport = true;
+            }
+        }
+    } else {
+        if (toState==1) {
+            if (currentState==0) {
+                allowTeleport = true;
+            } else if (currentState==2) {
+                if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==3) {
+                allowTeleport = true;
+            } else if (currentState==4) {
+                if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==5) {
+                allowTeleport = true;
+            } else if (currentState==6) {
+                allowTeleport = true;
             }
         }
     }
 
-    void Player::move(string s, int i, Screen sc){
-        if(s=="bawah"){
-            if( (curX+i)>sc.getXLength() ){
-            curX=sc.getXLength();
-            cout << "mentok cuy"<<endl;
-            }else {
-                curX= curX+i;
-            }
+    if (allowTeleport) {
+        currentState = toState;
+        s.drawStadium();
+    } else {
+        cout << "Tidak bisa teleport" << endl;
+    }
+}
 
-        }else if(s=="atas"){
-            if( (curX-i)<0){
-            curX=0;
-            cout << "mentok cuy"<<endl;
-            }else {
-                curX= curX-i;
+void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Combinatorium &s) {
+    bool allowTeleport = false;
+    if (currentState==1) { //kota
+        if (toState==0) {
+            if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                allowTeleport = true;
             }
-        }else if(s=="kiri"){
-            if( (curY-i)<0){
-            curY=0;
-            cout << "mentok cuy"<<endl;
-            }else {
-                curY= curY-i;
+        } else if (toState==2) {
+            if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                allowTeleport = true;
             }
-        }else if(s=="kanan"){
-            if( (curY+i)>sc.getYLength()){
-            curY=sc.getYLength();
-            cout << "mentok cuy"<<endl;
-            }else {
-                curY= curY+i;
+        } else if (toState==3) {
+            if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==4) {
+            if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==5) {
+            if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==6) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
+                allowTeleport = true;
             }
         }
-
-
+    } else {
+        if (toState==1) {
+            if (currentState==0) {
+                allowTeleport = true;
+            } else if (currentState==2) {
+                if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==3) {
+                allowTeleport = true;
+            } else if (currentState==4) {
+                if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==5) {
+                allowTeleport = true;
+            } else if (currentState==6) {
+                allowTeleport = true;
+            }
+        }
     }
 
-    void Player::showMonsterList(){
+    if (allowTeleport) {
+        currentState = toState;
+        s.drawCombinatorium();
+    } else {
+        cout << "Tidak bisa teleport" << endl;
+    }
+}
 
+void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Home &s) {
+    bool allowTeleport = false;
+    if (currentState==1) { //kota
+        if (toState==0) {
+            if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==2) {
+            if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==3) {
+            if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==4) {
+            if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==5) {
+            if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==6) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
+                allowTeleport = true;
+            }
+        }
+    } else {
+        if (toState==1) {
+            if (currentState==0) {
+                allowTeleport = true;
+            } else if (currentState==2) {
+                if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==3) {
+                allowTeleport = true;
+            } else if (currentState==4) {
+                if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==5) {
+                allowTeleport = true;
+            } else if (currentState==6) {
+                allowTeleport = true;
+            }
+        }
     }
 
-    void Player::showItemList(){
+    if (allowTeleport) {
+        currentState = toState;
+        s.drawHome();
+    } else {
+        cout << "Tidak bisa teleport" << endl;
+    }
+}
 
+void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Store &s) {
+    bool allowTeleport = false;
+    if (currentState==1) { //kota
+        if (toState==0) {
+            if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==2) {
+            if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==3) {
+            if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==4) {
+            if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==5) {
+            if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==6) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
+                allowTeleport = true;
+            }
+        }
+    } else {
+        if (toState==1) {
+            if (currentState==0) {
+                allowTeleport = true;
+            } else if (currentState==2) {
+                if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==3) {
+                allowTeleport = true;
+            } else if (currentState==4) {
+                if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==5) {
+                allowTeleport = true;
+            } else if (currentState==6) {
+                allowTeleport = true;
+            }
+        }
     }
 
-    void Player::setMonster(string){
-        //set default pokemon untuk battle
+    if (allowTeleport) {
+        currentState = toState;
+        s.drawStore();
+    } else {
+        cout << "Tidak bisa teleport" << endl;
+    }
+}
+
+void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, BattleScreen &s) {
+    bool allowTeleport = false;
+    if (currentState==1) { //kota
+        if (toState==0) {
+            if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==2) {
+            if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==3) {
+            if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==4) {
+            if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==5) {
+            if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==6) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
+                allowTeleport = true;
+            }
+        }
+    } else {
+        if (toState==1) {
+            if (currentState==0) {
+                allowTeleport = true;
+            } else if (currentState==2) {
+                if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==3) {
+                allowTeleport = true;
+            } else if (currentState==4) {
+                if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                    allowTeleport = true;
+                }
+            } else if (currentState==5) {
+                allowTeleport = true;
+            } else if (currentState==6) {
+                allowTeleport = true;
+            }
+        }
     }
 
-    void Player::dismiss(string s){
-        //menghapus monster bernama s dari listMonster
-        listMonster.erase(s);
+    if (allowTeleport) {
+        currentState = toState;
+        s.drawScreen(currentState);
+    } else {
+        cout << "Tidak bisa teleport" << endl;
+    }
+}
+
+void Player::move(string s, int i, Screen sc){
+    if(s=="bawah"){
+        if( (curX+i)>sc.getXLength() ){
+        curX=sc.getXLength();
+        cout << "mentok cuy"<<endl;
+        }else {
+            curX= curX+i;
+        }
+
+    }else if(s=="atas"){
+        if( (curX-i)<0){
+        curX=0;
+        cout << "mentok cuy"<<endl;
+        }else {
+            curX= curX-i;
+        }
+    }else if(s=="kiri"){
+        if( (curY-i)<0){
+        curY=0;
+        cout << "mentok cuy"<<endl;
+        }else {
+            curY= curY-i;
+        }
+    }else if(s=="kanan"){
+        if( (curY+i)>sc.getYLength()){
+        curY=sc.getYLength();
+        cout << "mentok cuy"<<endl;
+        }else {
+            curY= curY+i;
+        }
     }
 
-    void Player::escape(){
+
+}
+
+void Player::showMonsterList(){
+
+}
+
+void Player::showItemList(){
+
+}
+
+void Player::setMonster(string){
+    //set default pokemon untuk battle
+}
+
+void Player::dismiss(string s){
+    //menghapus monster bernama s dari listMonster
+    listMonster.erase(s);
+}
+
+void Player::escape(){
 ////////////////////////////// belum selesai
 
-        jumlahEscape++;
-    }
+    jumlahEscape++;
+}
 
-    void Player::change(string s){
+void Player::change(string s){
 
-    }
+}
 
-    void Player::addMoney(int i){
-        uang=uang+i;
-    }
+void Player::addMoney(int i){
+    uang=uang+i;
+}
 
 
 /*-------------------------------------------------------------------------------------method baru---------------------------------------------------------------------------------- */
-    void Player::addMonster(Monster& _m){
-		cout << "method add monster" << endl;
-	}
+void Player::addMonster(Monster& _m){
+    cout << "method add monster" << endl;
+}
 
-    void Player::delMoney(int i){
-        //mengurangi uang sebesar i
-        uang = uang - i;
-    }
+void Player::delMoney(int i){
+    //mengurangi uang sebesar i
+    uang = uang - i;
+}
 
-    void Player::delItem(Item item){
-        //menghapus item dari listItem
-        for(int i=0; i< listItem.size();i++){
-            if(listItem.at(i)==item){
-                listItem.erase(listItem.begin() + i);
-            }//end if
-        }//end for
+void Player::delItem(Item item){
+    //menghapus item dari listItem
+    for(int i=0; i< listItem.size();i++){
+        if(listItem.at(i)==item){
+            listItem.erase(listItem.begin() + i);
+        }//end if
+    }//end for
 
-    }
+}
 
 
 

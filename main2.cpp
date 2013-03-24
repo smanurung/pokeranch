@@ -14,6 +14,14 @@
 #include <sstream>
 #include <iterator>
 
+
+#include "AreaLuar.h"
+#include "BattleScreen.h"
+#include "Combinatorium.h"
+#include "Home.h"
+#include "Kota.h"
+#include "Stadium.h"
+
 using namespace std;
 
 void parseFile(Player& _p){
@@ -135,7 +143,15 @@ int main() {
     Player p1;
 	parseFile(p1);
 
-    Kota k(p1.getCurX(),p1.getCurY());
+    Kota kota(p1.getCurX(),p1.getCurY());
+    AreaLuar areaLuar(50,50);
+
+//    BattleScreen battleScreen;
+//    Combinatorium combinatorium;
+   Home home;
+//    Stadium stadium;
+//    Store store;
+
 
 	cout << "---POKERANCH---" << endl;
 
@@ -176,14 +192,22 @@ int main() {
         }
         else if(command == "teleport"){
             if(argument.size() == 0) {
-            } else if(argument[0] == "kota") {
-                //p1.teleport(state, 1, p1.getCurX(), p1.getCurY(), k);
-            } else if(argument[0] == "luar") {
-                p1.teleport(state, 2, p1.getCurX(), p1.getCurY(), k);
+                cout << "argumen kurang" << endl;
+                cout<<argument[0];
+				}else
+				//teleport
+				//assign state
+				if(argument[0] == "home") {				 //toState  0
+					p1.teleport(state, 0, p1.getCurX(), p1.getCurY(), home);
+				}//end if home
 
+				else if(argument[0] == "kota") {				 //toState  1
+					p1.teleport(state, 1, p1.getCurX(), p1.getCurY(), kota);
+				}//end if kota
+
+				else if((argument[0]== "luar")==0) {                      //toState  2
+					p1.teleport(state, 2, p1.getCurX(), p1.getCurY(), areaLuar);
             }//end if luar
-
-
             else if(argument[0] == "store") {                  //toState  3
                 if(state==1){
                     state = 3;
@@ -198,14 +222,20 @@ int main() {
                 }else{
                     cout << "tempat tidak dapat diakses"<<endl;
                 }
-
-            } else {
+            }
+            else {
                 cout << "tidak ada tempat tersebut" << endl;
             }
-        }
+        }//end if teleport
+
+
+/*----------------------------------------------------------------------------------------------------------------------sell----------------------------------------------------------------------------------------------------------------------*/
         else if(command == "sell") {
             if(argument.size() < 2) {
                 cout << "argumen kurang" << endl;
+             }
+            else{
+                p1.sell(argument[0],atoi(argument[1].c_str()));
             }
             //sell
         }
@@ -236,9 +266,9 @@ int main() {
             }
             //move
             int step = atoi(argument[1].c_str());
-            p1.move(argument[0],step,k);
-            k.setPosisiPlayer(p1.getCurX(), p1.getCurY());
-            k.drawScreen(1);
+            p1.move(argument[0],step,kota);
+            kota.setPosisiPlayer(p1.getCurX(), p1.getCurY());
+            kota.drawScreen(1);
         }
         else if(command == "list-monster") {
             //list-monster
