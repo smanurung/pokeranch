@@ -5,6 +5,24 @@
 
 using namespace std;
 
+Monster::Monster(){
+	Nama = "defaultMonsterName";
+    Level = 0;
+    Exp = 0;
+    Species = "xxxx";
+    Elm = "xxxx";
+    HP = 0;
+    MP = 0;
+    Speed = 0;
+    BonusUang = 0;
+    BonusExp = 0;
+    CurrentHP = 0;
+    CurrentMP = 0;
+    Status = "xxxx";
+    Umur = 0;
+    WarnaMonster = "xxxx";
+}
+
 Monster::Monster(string nm){
     Nama = nm;
     Level = 0;

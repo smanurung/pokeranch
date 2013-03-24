@@ -1,5 +1,7 @@
 #include "Player.h"
 #include <iostream>
+#include <map>
+
 using namespace std;
 
     Player::Player(){
@@ -69,11 +71,38 @@ using namespace std;
 	void Player::setNama(string _n){
 		this->nama = _n;
 	}
-	
+
 	void Player::setUang(int _u){
 		this->uang = _u;
 	}
-	
+
+	void Player::addItem(Item& _i){
+		this->listItem.push_back(_i);
+	}
+
+	void Player::addMonster(string _nama, Monster& _mon){
+		this->listMonster.insert(pair<string,Monster>(_nama,_mon));
+	}
+
+	void Player::setJumlahMenang(int _win){
+		this->jumlahMenang = _win;
+	}
+
+	void Player::setJumlahKalah(int _lose){
+		this->jumlahKalah = _lose;
+	}
+
+	void Player::setJumlahEscape(int _esc) {
+		this->jumlahEscape = _esc;
+	}
+
+	void Player::setWaktu(int _time){
+		this->waktu = _time;
+	}
+
+	void Player::setWarna(string _w){
+		this->warnaPlayer = _w;
+	}
 
 /*----------------------------------------------------------------------------------method utama------------------------------------------------------------------------------- */
 
@@ -96,16 +125,19 @@ using namespace std;
         //nunggu monster
     }
 
-    void Player::sell(Item item){
-        for (int i=0; i< listItem.size(); i++){
-            if(listItem.at(i)==item){
-                    listItem.erase(listItem.begin()+i);
-                    cout << item.getItemName() << " dijual"<< endl;
-                    uang=uang + item.getHarga();
-            }else if(i==(listItem.size()-1)){
-                    cout << "item tidak tersedia" << endl;
-            }
-        }//end for
+    void Player::sell(Item item, int n){
+
+        for (int ii=0; ii<n;ii++){
+            for (int i=0; i< listItem.size(); i++){
+                if(listItem.at(i)==item){
+                        listItem.erase(listItem.begin()+i);
+                        cout << item.getItemName() << " dijual"<< endl;
+                        uang=uang + item.getHarga();
+                }else if(i==(listItem.size()-1)){
+                        cout << "item tidak tersedia" << endl;
+                }
+            }//end for 2
+        }//end for 1
     }
 
     void Player::buy(Item i){
@@ -118,14 +150,72 @@ using namespace std;
         }
     }
 
-    int Player::teleport(int currentState, int xPosition, int yPosition){
-    // return state tujuan player                                                                   belum selesai
-        if (currentState==0){
-            return 1;
-        }else if(currentState==1){
-            return 2;
-        }
+    void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
+        bool allowTeleport = false;
+        if (currentState==1) { //kota
+            if (toState==0) {
+                if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==2) {
+                if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==3) {
+                if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==4) {
+                if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==5) {
+                if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                    allowTeleport = true;
+                }
+            } else` if (toState==6) {
+                if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+                    allowTeleport = true;
+                }
+            }            
+        } else {
+            if (toState==1) {
 
+                if (currentState==0) {
+                    if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==2) {
+                    if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==3) {
+                    if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==4) {
+                    if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==5) {
+                    if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                        allowTeleport = true;
+                    }
+                } else` if (currentState==6) {
+                    if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+                        allowTeleport = true;
+                    }
+                }
+
+            }
+        }        
+        
+        if (allowTeleport) {
+            currentState = toState;
+            s.drawScreen(currentState);
+        } else {
+            cout << "Tidak bisa teleport" << endl;
+        }
     }
 
     void Player::move(string s, int i, Screen sc){

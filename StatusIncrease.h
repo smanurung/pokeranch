@@ -15,6 +15,7 @@
 class StatusIncrease:public Item {
 public:
     StatusIncrease(int = 0, string = "noname", int = 0, int = 0);
+	StatusIncrease(int,int);
     StatusIncrease(const StatusIncrease&);
     ~StatusIncrease();
     StatusIncrease& operator=(const StatusIncrease&);

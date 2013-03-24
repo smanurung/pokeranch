@@ -1,7 +1,10 @@
 #include"Home.h"
 
+#define HOME_HEIGHT 20
+#define HOME_WIDTH 20
+
 Home::Home(){
-	cout << "masuk" << endl;
+	cout << "Masuk" << endl;
 }
 
 Home::~Home(){
@@ -9,5 +12,5 @@ Home::~Home(){
 }
 
 void Home::drawHome(){
-	this->screenHome.drawScreen(1);
+	this->screenHome.drawScreen(0);
 }

@@ -13,6 +13,11 @@ StatusIncrease::StatusIncrease(int x, string s, int mp, int hp) {
     hpMaxAddition = hp;
 }
 
+StatusIncrease::StatusIncrease(int mpp,int hpp){
+	this->mpMaxAddition = mpp;
+	this->hpMaxAddition = hpp;
+}
+
 StatusIncrease::StatusIncrease(const StatusIncrease& s) {
     mpMaxAddition = s.mpMaxAddition;
     hpMaxAddition = s.hpMaxAddition;

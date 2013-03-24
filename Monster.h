@@ -13,6 +13,7 @@ using namespace std;
 
 class Monster{
     public :
+		Monster();
         Monster(string);
         Monster(string,int,int,string,string,int,int,int,int,int,string,int,string);
         Monster(const Monster&);
