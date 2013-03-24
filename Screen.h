@@ -11,18 +11,18 @@
 #include <iostream>
 using namespace std;
 
-static int xHomeBound = 10;
-static int yHomeBound = 10;
+static int xHomeBound = 5;
+static int yHomeBound = 5;
 static int xLuarBound = 0;
-static int yLuarBound = 10;
-static int xStoreBound = 70;
-static int yStoreBound = 10;
-static int xStadiumBound = 70;
-static int yStadiumBound = 70;
-static int xBattlescreenBound = 10;
-static int yBattlescreenBound = 70;
-static int xCombinatoriumBound = 50;
-static int yCombinatoriumBound = 50;
+static int yLuarBound = 5;
+static int xStoreBound = 30;
+static int yStoreBound = 5;
+static int xStadiumBound = 30;
+static int yStadiumBound = 30;
+static int xBattlescreenBound = 5;
+static int yBattlescreenBound = 30;
+static int xCombinatoriumBound = 20;
+static int yCombinatoriumBound = 20;
 
 class Screen {
 public:
