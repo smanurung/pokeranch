@@ -8,7 +8,7 @@
 
 #include "Potion.h"
 
-Potion::Potion(int x, string s, int mp, int hp) {
+Potion::Potion(int x, string s, int mp, int hp) { //ini kok x sama s ngga ada gunanya?
     mpTambah = mp;
     hpTambah = hp;
 }
@@ -27,6 +27,14 @@ Potion& Potion::operator=(const Potion& p) {
     hpTambah = p.hpTambah;
     
     return *this;
+}
+
+void Potion::setMP(int _mp){
+	this->mpTambah = _mp;
+}
+
+void Potion::setHP(int _hp){
+	this->hpTambah = _hp;
 }
 
 void Potion::execute(Monster& m) {

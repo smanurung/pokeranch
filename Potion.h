@@ -20,6 +20,9 @@ public:
     Potion& operator=(const Potion&);
     
     void execute(Monster&);
+	
+	void setMP(int);
+	void setHP(int);
     
 private:
     int mpTambah;

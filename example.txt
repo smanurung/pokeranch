@@ -1,3 +1,10 @@
 --pokeranch--
 sonnytheo
 1000
+potion
+100 100
+statusincrease
+200 200
+monsteregg
+monsterX
+enditem

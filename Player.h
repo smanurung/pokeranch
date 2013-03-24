@@ -48,6 +48,7 @@ public:
 
 	/*-----------------setter-------------- */
 	void setNama(string);
+	void setUang(int);
 	
     /*-----------------method utama-------------- */
     void bet(int, bool);                //parameter nambah bool
