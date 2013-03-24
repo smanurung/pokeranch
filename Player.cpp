@@ -1,4 +1,8 @@
 #include "Player.h"
+#include <iostream>
+#include <map>
+
+using namespace std;
 
     Player::Player(){
         nama="pemain";
@@ -63,6 +67,42 @@
         return warnaPlayer;
     }
 
+	/*-------------------------------------------------------------------------------------------setter---------------------------------------------------------------------------------------- */
+	void Player::setNama(string _n){
+		this->nama = _n;
+	}
+	
+	void Player::setUang(int _u){
+		this->uang = _u;
+	}
+	
+	void Player::addItem(Item& _i){
+		this->listItem.push_back(_i);
+	}
+	
+	void Player::addMonster(string _nama, Monster& _mon){
+		this->listMonster.insert(pair<string,Monster>(_nama,_mon));
+	}
+	
+	void Player::setJumlahMenang(int _win){
+		this->jumlahMenang = _win;
+	}
+	
+	void Player::setJumlahKalah(int _lose){
+		this->jumlahKalah = _lose;
+	}
+	
+	void Player::setJumlahEscape(int _esc) {
+		this->jumlahEscape = _esc;
+	}
+	
+	void Player::setWaktu(int _time){
+		this->waktu = _time;
+	}
+	
+	void Player::setWarna(string _w){
+		this->warnaPlayer = _w;
+	}
 
 /*----------------------------------------------------------------------------------method utama------------------------------------------------------------------------------- */
 
@@ -189,7 +229,9 @@
 
 
 /*-------------------------------------------------------------------------------------method baru---------------------------------------------------------------------------------- */
-    void addMonster(Monster&);
+    void Player::addMonster(Monster& _m){
+		cout << "method add monster" << endl;
+	}
 
     void Player::delMoney(int i){
         //mengurangi uang sebesar i

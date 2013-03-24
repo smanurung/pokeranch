@@ -48,7 +48,7 @@ Kota& Kota::operator =(const Kota& K){
 }
 
 void Kota::drawScreen(int i){
-    drawMatriks();
+    drawMatriksHome(); //misalkan aja angka satu
 }
 
 int Kota::isSteppable(){

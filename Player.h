@@ -20,7 +20,7 @@ private:
     string nama;
     int uang;
     vector<Item> listItem;
-    map<string,Monster > listMonster;
+    map<string,Monster> listMonster;
     int curX;
     int curY;
     int jumlahMenang;
@@ -46,6 +46,17 @@ public:
     int getWaktu();
     string getWarnaPlayer();
 
+	/*-----------------setter-------------- */
+	void setNama(string);
+	void setUang(int);
+	void addItem(Item&);
+	void addMonster(Monster&);
+	void setJumlahMenang(int);
+	void setJumlahKalah(int);
+	void setJumlahEscape(int);
+	void setWaktu(int);
+	void setWarna(string);
+	
     /*-----------------method utama-------------- */
     void bet(int, bool);                //parameter nambah bool
 //    void battle(string, NPC);
@@ -65,7 +76,7 @@ public:
     void addMoney(int);
 
     /*-----------------method baru-------------- */
-    void addMonster(Monster&);
+    void addMonster(string,Monster&);
     void delMoney(int);
     void delItem(Item);
 

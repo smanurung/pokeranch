@@ -3,6 +3,8 @@
 #ifndef SKILLMONSTER_H
 #define SKILLMONSTER_H
 
+class Monster;
+
 #include "Monster.h"
 #include <string>
 

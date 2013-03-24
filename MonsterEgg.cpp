@@ -9,10 +9,14 @@
 #include "MonsterEgg.h"
 
 MonsterEgg::MonsterEgg(int x, string s, Monster& m) {
-    if(m! == NULL)
+    /*if(m != NULL)
         isiEgg = m;
     else
-        cout << "Telur kosong" << endl;
+        cout << "Telur kosong" << endl;*/
+}
+
+MonsterEgg::MonsterEgg(Monster& _megg){
+	this->isiEgg = _megg;
 }
 
 MonsterEgg::MonsterEgg(const MonsterEgg& me) {

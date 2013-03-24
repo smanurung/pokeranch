@@ -17,7 +17,7 @@ Point :: Point(int Ta, int Tb){
 }
 
 Point :: ~Point(){
-    cout << "dtor.." << endl;
+    //cout << "dtor.." << endl;
 }
 
 int Point :: getX(){

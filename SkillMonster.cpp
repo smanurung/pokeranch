@@ -39,6 +39,7 @@ SkillMonster& SkillMonster::operator=(const SkillMonster& SM){
     Efek = SM.Efek;
     HPCost = SM.HPCost;
     MPCost = SM.MPCost;
+    return *this;
 }
 
 SkillMonster::~SkillMonster(){

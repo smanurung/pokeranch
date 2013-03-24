@@ -19,15 +19,22 @@ public:
     ~Screen();
 
     void drawMatriks();
-    void drawScreen(int);
+    virtual void drawScreen(int);
+	
+	//SETTER
+	void setMatriks(int,int,char); // X, Y, char pengganti
 
     int getXLength();
     int getYLength();
-
+	
 protected:
     int xLength;
     int yLength;
     char ** matriks;
+	void drawMatriksHome();
+	void drawMatriksStore();
+	void drawMatriksCombinatorium();
+	void drawMatriksStadium();
 };
 
 #endif	/* SCREEN_H */

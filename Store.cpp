@@ -14,10 +14,9 @@ Store::Store(int* i){
 
 }
 
-Store::~Store(){}
-
-
-
+Store::~Store(){
+	
+}
 
 void Store::printAvailableItem(){
     for(int j=0; j<10;j++){
@@ -25,6 +24,6 @@ void Store::printAvailableItem(){
     }
 }
 
-
-
-
+void Store::drawStore(){
+	this->screenStore.drawScreen(2);
+}

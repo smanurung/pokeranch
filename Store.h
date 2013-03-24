@@ -2,14 +2,15 @@
 #define STORE_H_INCLUDED
 
 #include <iostream>
+#include "Screen.h"
 using namespace std;
 
 class Store{
 
 private:
     int itemAvaliable[10];      // sementara int
-//    Screen screenStore;
-
+    Screen screenStore;
+	
 public:
     Store();
     Store(int[]);
@@ -17,7 +18,8 @@ public:
 
     void showAvailableItem();
     void printAvailableItem();
-
+	
+	void drawStore();
 
 }; //end class
 

@@ -9,7 +9,6 @@
 #define	BATTLESCREEN_H
 
 #include "Screen.h"
-#include "Point.h"
 
 class BattleScreen:public Screen {
 public:
@@ -19,10 +18,9 @@ public:
     ~BattleScreen();
     BattleScreen& operator=(const BattleScreen&);
 
-    void drawScreen(int);
+    void drawScreen();
 
 private:
-    Screen S;
     int xPlayer;
     int yPlayer;
     int xMonster;

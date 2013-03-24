@@ -2,13 +2,20 @@
 
 #ifndef MONSTER_H
 #define MONSTER_H
+
+class SkillMonster;
+
+#include "SkillMonster.h"
 #include <string>
+#include <vector>
+
 using namespace std;
 
 class Monster{
     public :
-        Monster();
-        Monster(string,int,int,string,string,int,int,int,int,int,int,int,string,int,string);
+		Monster();
+        Monster(string);
+        Monster(string,int,int,string,string,int,int,int,int,int,string,int,string);
         Monster(const Monster&);
         Monster& operator=(const Monster&);
         ~Monster();
@@ -51,6 +58,7 @@ class Monster{
         void StatusEfek();
         void changeSpecies();
         void ShowStatus();
+        void addSkill();
 
         private :
         string Nama;
@@ -68,5 +76,6 @@ class Monster{
         string Status;
         int Umur;
         string WarnaMonster;
+        vector<SkillMonster> ListSkill;
 };
 #endif
