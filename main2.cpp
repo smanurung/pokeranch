@@ -7,9 +7,34 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include <fstream>
+#include <vector>
 
 using namespace std;
 
+void parseFile(Player& _p){
+	//cout << "parse" << endl;
+	fstream f;
+	f.open("example.txt", ios::in | ios::out);
+	string _s;
+	vector<string> isiFile;
+	if (f.is_open()) {
+		cout << ">>file berhasil dibuka" << endl;
+		while (f.good()){ //kondisi file ready
+			getline(f,_s);
+			isiFile.push_back(_s);
+		}
+		
+		int nIsiFile = isiFile.size();
+		for (int i=0; i<nIsiFile; i++){
+			cout << isiFile[i] << endl;
+		}
+	} else {
+		cout << ">>Warning!! File tidak bisa dibuka" << endl;
+	}
+	
+	f.close();
+}
 
 int main() {
     char input[500];
@@ -18,9 +43,13 @@ int main() {
     int state = 0;
 
     Player p1;
+	parseFile(p1);
     Kota k(p1.getCurX(),p1.getCurY());
+	
+	cout << "---POKERANCH---" << endl;
 
     while (strcmp(command, "exit")!=0) {
+		cout << "command :";
         gets(input);
         //cout << input << endl;
         //cin >> input;
