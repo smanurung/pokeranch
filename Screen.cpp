@@ -45,8 +45,8 @@ char bnormal[] = { 0x1b, '[', '0', ';', '4', '9', 'm', 0 };
 char normal[] = { 0x1b, '[', '0', ';', '3', '9', 'm', 0 };
 
 Screen::Screen() {
-    xLength = 50;
-    yLength = 20;
+    xLength = 100;
+    yLength = 100;
 
     matriks = new char * [yLength];
     for(int i=0; i<yLength; i++){
@@ -152,7 +152,7 @@ void Screen::drawMatriksHome(){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bcyan<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == '0'){ //orang/user
+            } else if (_s.matriks[i][j] == '0'){ //orang/user
             	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
@@ -205,7 +205,7 @@ void Screen::drawMatriksStore(){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bgray<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == '0'){ //orang/user
+            } else if (_s.matriks[i][j] == '0'){ //orang/user
             	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
@@ -298,7 +298,7 @@ void Screen::drawMatriksCombinatorium(){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bmagenta<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == '0'){ //orang/user
+            } else if (_s.matriks[i][j] == '0'){ //orang/user
             	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
@@ -364,10 +364,10 @@ void Screen::drawMatriksStadium(){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bred<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == '0'){ //orang/user
+            } else if (_s.matriks[i][j] == '0'){ //orang/user
             	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
-            } else if (matriks[i][j] == 'N'){ //NPC
-            	cout <<bmagenta<<magenta<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == 'N'){ //NPC
+            	cout <<byellow<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
             }
