@@ -63,7 +63,7 @@ public:
 //    void battle(string, Monster);
     void save(string);
     void sleep();
-    void sell(Item);
+    void sell(Item,int);
     void buy(Item);
     void teleport(int&,int,int,int, Screen&);                        //parameter string dihapus
     void move(string, int, Screen);

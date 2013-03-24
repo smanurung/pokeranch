@@ -3,12 +3,16 @@
 #include "Screen.h"
 #include "Item.h"
 #include "Potion.h"
+#include "StatusIncrease.h"
+#include "MonsterEgg.h"
 #include "Kota.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
 #include <vector>
+#include <sstream>
+#include <iterator>
 
 using namespace std;
 
@@ -150,7 +154,7 @@ int main() {
 		copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
 		
 		for (int j=0; j<strInput.size(); j++){
-			cout << strInput[j] << endl;
+			cout << "he" << strInput[j] << "halo" << endl;
 		}
 		
 		command = strInput[0];
@@ -159,9 +163,9 @@ int main() {
 		}
 		///////////////////
 		
-        /*int i = 0;
+        int i = 0;
         //memasukkan command
-        while (input[i]!='\0' && input[i]!=' ') {
+        /*while (input[i]!='\0' && input[i]!=' ') {
             command[i] = input[i];
             i++;
         }
@@ -188,37 +192,37 @@ int main() {
             i++;
             arg_start++;
         }
-        argument[1][arg_start] = '\0';
+        argument[1][arg_start] = '\0';*/
 
-        if(strcmp(command, "new")==0) {
+        if(command == "new") {
             //new game
         }
-        else if(strcmp(command, "load")==0) {
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "load") {
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
             }
             //load game
         }
-        else if(strcmp(command, "sleep")==0) {
+        else if(command == "sleep") {
             //sleep
         }
-        else if(strcmp(command, "save")==0) {
+        else if(command == "save") {
             //save
         }
-        else if(strcmp(command, "sleep")==0) {
+        else if(command == "sleep") {
             //sleep
         }
 
 
 /*----------------------------------------------------------------------------------------------------------------------teleport----------------------------------------------------------------------------------------------------------------------*/
-        /*else if(strcmp(command, "teleport")==0){
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "teleport"){
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
             }
             //teleport
             //assign state
-            if(strcmp(argument[0], "kota")==0) {
-                state = p1.teleport(state,0,0);
+            if(argument[0] == "kota") {
+                //state = p1.teleport(state,0,0);
                 if(state==1){
                     k.drawScreen(1);
                 }else{
@@ -226,8 +230,8 @@ int main() {
                 }
             }//end if kota
 
-            else if(strcmp(argument[0], "luar")==0) {
-                state = p1.teleport(state,0,0);
+            else if(argument[0] == "luar") {
+                //state = p1.teleport(state,0,0);
                 if(state==2){
 
 
@@ -237,7 +241,7 @@ int main() {
                 }
 
             }
-            else if(strcmp(argument[0], "store")==0) {
+            else if(argument[0] == "store") {
                 if(state==1){
                     state = 3;
 
@@ -247,7 +251,7 @@ int main() {
                 }
 
             }
-            else if(strcmp(argument[0], "stadium")==0) {
+            else if(argument[0] == "stadium") {
                 if(state==1){
                     state = 4;
 
@@ -259,103 +263,99 @@ int main() {
             } else {
                 cout << "tidak ada tempat tersebut" << endl;
             }
-        }*/
+        }
 
 
 /*----------------------------------------------------------------------------------------------------------------------sell----------------------------------------------------------------------------------------------------------------------*/
-        /*else if(strcmp(command, "sell")==0) {
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "sell") {
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
             }else
-            if(strcmp(argument[1], "")==0) {
+            if(argument[1] == "") {
                 cout << "argumen kurang" << endl;
              }
             else{
-                p1.sell(argument[0],atoi(argument[1]));
+                //p1.sell(argument[0],atoi(argument[1]));
             }
 
             //sell
         }
-        else if(strcmp(command, "buy")==0) {
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "buy") {
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
                 break;
             }
-            if(strcmp(argument[1], "")==0) {
+            if(argument[1] == "") {
                 cout << "argumen kurang" << endl;
                 break;
             }
             //buy
         }
-        else if(strcmp(command, "combine")==0) {
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "combine") {
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
                 break;
             }
-            if(strcmp(argument[1], "")==0) {
+            if(argument[1] == "") {
                 cout << "argumen kurang" << endl;
                 break;
             }
             //combine
         }
-        else if(strcmp(command, "battle")==0) {
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "battle") {
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
             }
             //battle
         }
-        else if(strcmp(command, "move")==0) {
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "move") {
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
                 break;
             }
-            if(strcmp(argument[1], "")==0) {
+            if(argument[1] == "") {
                 cout << "argumen kurang" << endl;
                 break;
             }
             //move
-            int step = atoi(argument[1]);
+            int step = atoi(argument[1].c_str());
             p1.move(argument[0],step,k);
             k.setPosisiPlayer(p1.getCurX(), p1.getCurY());
             k.drawScreen(1);
 
         }
-        else if(strcmp(command, "list-monster")==0) {
+        else if(command == "list-monster") {
             //list-monster
         }
-        else if(strcmp(command, "list-item")==0) {
+        else if(command == "list-item") {
             //list-item
         }
-        else if(strcmp(command, "status")==0) {
+        else if(command == "status") {
             //status
         }
-        else if(strcmp(command, "set")==0) {
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "set") {
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
             }
             //set
         }
-        else if(strcmp(command, "dismiss")==0) {
-            if(strcmp(argument[0], "")==0) {
+        else if(command == "dismiss") {
+            if(argument[0] == "") {
                 cout << "argumen kurang" << endl;
             }
             //dismiss
         }
-        else if(strcmp(command, "help")==0) {
+        else if(command == "help") {
             //help
         }
-        else if(strcmp(command, "exit")==0) {
+        else if(command == "exit") {
             //
         }
         else { //command kosong
             cout << "command tidak ada" << endl;
-        }*/
-
-
-
-    }//end main*/
-
-
+        }
+		
+    }//end main
 
     return 0;
 }

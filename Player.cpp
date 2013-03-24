@@ -125,7 +125,7 @@ using namespace std;
         //nunggu monster
     }
 
-    void Player::sell(Item item){
+    void Player::sell(Item item,int x){
         for (int i=0; i< listItem.size(); i++){
             if(listItem.at(i)==item){
                     listItem.erase(listItem.begin()+i);
@@ -147,7 +147,7 @@ using namespace std;
         }
     }
 
-    void Player::teleport(int &currentState, int toState int xPosition, int yPosition, Screen &s) {
+    void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
         if (currentState==1) { //kota
             currentState = toState;
             s.drawScreen(currentState);
