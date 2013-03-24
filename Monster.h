@@ -5,15 +5,16 @@
 
 class SkillMonster;
 
+#include "SkillMonster.h"
 #include <string>
 #include <vector>
-#include "SkillMonster.h"
 
 using namespace std;
 
 class Monster{
     public :
         Monster();
+        Monster(string);
         Monster(string,int,int,string,string,int,int,int,int,int,string,int,string);
         Monster(const Monster&);
         Monster& operator=(const Monster&);
@@ -57,8 +58,9 @@ class Monster{
         void StatusEfek();
         void changeSpecies();
         void ShowStatus();
+        void addSkill();
 
-     private :
+        private :
         string Nama;
         int Level;
         int Exp;
@@ -74,6 +76,6 @@ class Monster{
         string Status;
         int Umur;
         string WarnaMonster;
-        vector<SkillMonster*> Skill;
+        vector<SkillMonster> ListSkill;
 };
 #endif

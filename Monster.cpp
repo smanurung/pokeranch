@@ -1,12 +1,12 @@
 //file : Monster.cpp
 
-#include <iostream>
 #include "Monster.h"
+#include <iostream>
 
 using namespace std;
 
-Monster::Monster(){
-    Nama = "xxxx";
+Monster::Monster(string nm){
+    Nama = nm;
     Level = 0;
     Exp = 0;
     Species = "xxxx";
@@ -29,8 +29,8 @@ Monster::Monster(string nm, int lvl, int ex, string sp, string el, int _hp, int 
     Exp = ex;
     Species = sp;
     Elm = el;
-    HP = _hp;
-    MP = _mp;
+    HP = HP;
+    MP = MP;
     Speed = spd;
     BonusUang = bu;
     BonusExp = be;
@@ -205,7 +205,7 @@ void Monster::setWarnaMonster(string wm){
 //fungsi combine monster
 //menghasilkan monster baru
 Monster Monster::Combine(Monster M){
-    Monster M3;
+    Monster M3(M.getNama());
     M3 = M;
     return M3;
 }
@@ -282,55 +282,50 @@ void Monster::StatusEfek(){
 
 //fungsi mengubah spesies
 void Monster::changeSpecies(){
-    if (Elm == "Api") {
-        if (Species == "Yi"){
+    if ((Level >= 6) && (Elm == "Api") && (Species == "Yi")) {
             this->setSpecies("Er");
-        } else if (Species == "Er"){
+        } else if ((Level >= 11) && (Elm == "Api") && (Species == "Er")){
             this->setSpecies("San");
-        } else if (Species == "San"){
+        } else if ((Level >= 16) && (Elm == "Api") && (Species == "San")){
             this->setSpecies("Shi");
-        } else if (Species == "Shi"){
+        } else if ((Level >= 21) && (Elm == "Api") && (Species == "Shi")){
             this->setSpecies("Wu");
-        } else if (Species == "Wu"){
+        } else if ((Level >= 26) && (Elm == "Api") &&(Species == "Wu")){
             this->setSpecies("Liu");
         }
-    } else if (Elm == "Air") {
-        if (Species == "One"){
+     else if ((Level >= 6) && (Elm == "Air") && (Species == "One")){
             this->setSpecies("Two");
-        } else if (Species == "Two"){
+        } else if ((Level >= 11) && (Elm == "Air") && (Species == "Two")){
             this->setSpecies("Three");
-        } else if (Species == "Three"){
+        } else if ((Level >= 16) && (Elm == "Air") && (Species == "Three")){
             this->setSpecies("Four");
-        } else if (Species == "Four"){
+        } else if ((Level >= 21) && (Elm == "Air") && (Species == "Four")){
             this->setSpecies("Five");
-        } else if (Species == "Five"){
+        } else if ((Level >= 26) && (Elm == "Air") && (Species == "Five")){
             this->setSpecies("Six");
         }
-    } else if (Elm == "Angin") {
-        if (Species == "Uno"){
+     else if ((Level >= 6) && (Elm == "Angin") && (Species == "Uno")){
             this->setSpecies("Dos");
-        } else if (Species == "Dos"){
+        } else if ((Level >= 11) && (Elm == "Angin") && (Species == "Dos")){
             this->setSpecies("Tres");
-        } else if (Species == "Tres"){
+        } else if ((Level >= 16) && (Elm == "Angin") && (Species == "Tres")){
             this->setSpecies("Cuatro");
-        } else if (Species == "Cuatro"){
+        } else if ((Level >= 21) && (Elm == "Angin") && (Species == "Cuatro")){
             this->setSpecies("Cinco");
-        } else if (Species == "Cinco"){
+        } else if ((Level >= 26) && (Elm == "Angin") && (Species == "Cinco")){
             this->setSpecies("Seis");
         }
-    } else if (Elm == "Tanah") {
-        if (Species == "Un"){
+     else if ((Level >= 6) && (Elm == "Tanah") && (Species == "Un")){
             this->setSpecies("Deux");
-        } else if (Species == "Deux"){
+        } else if ((Level >= 11) && (Elm == "Tanah") && (Species == "Deux")){
             this->setSpecies("Trois");
-        } else if (Species == "Trois"){
+        } else if ((Level >= 16) && (Elm == "Tanah") && (Species == "Trois")){
             this->setSpecies("Quatre");
-        } else if (Species == "Quatre"){
+        } else if ((Level >= 21) && (Elm == "Tanah") && (Species == "Quatre")){
             this->setSpecies("Cinq");
-        } else if (Species == "Cinq"){
+        } else if ((Level >= 26) && (Elm == "Tanah") && (Species == "Cinq")){
             this->setSpecies("Six");
         }
-    }
 }
 
 void Monster::ShowStatus(){
