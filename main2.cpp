@@ -163,6 +163,8 @@ int main() {
 		cout << "command :";
         getline(cin,input);
 
+        argument.clear();
+
 		//////////////////
 		istringstream iss(input);
 		vector<string> strInput;
@@ -269,7 +271,7 @@ int main() {
                 cout << "argumen kurang" << endl;
              }
             else{
-                //p1.sell(argument[0],atoi(argument[1]));
+                p1.sell(argument[0],atoi(argument[1].c_str()));
             }
 
             //sell
