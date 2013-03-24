@@ -17,7 +17,6 @@
 using namespace std;
 
 void parseFile(Player& _p){
-	//cout << "parse" << endl;
 	fstream f;
 	f.open("example.txt", ios::in | ios::out);
 	string _s;
@@ -112,7 +111,7 @@ void parseFile(Player& _p){
 		}
 		
 		//cout << isiFile[idx] << endl;
-		idx += 1;
+		idx += 1;9\
 		//jumlah menang
 		_p.setJumlahMenang(atoi(isiFile[idx++].c_str()));
 		_p.setJumlahKalah(atoi(isiFile[idx++].c_str()));
@@ -127,11 +126,7 @@ void parseFile(Player& _p){
 	f.close();
 }
 
-int main() {
-    //char input[500];
-    //char command[100];
-    //char argument[4][100];
-	
+int main() {	
 	string input;
 	string command;
 	vector<string> argument;
@@ -148,52 +143,18 @@ int main() {
 		cout << "command :";
         cin >> input;
 		
-		//////////////////
+		//splitting input
 		istringstream iss(input);
 		vector<string> strInput;
 		copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
-		
-		for (int j=0; j<strInput.size(); j++){
-			cout << "he" << strInput[j] << "halo" << endl;
-		}
 		
 		command = strInput[0];
 		for (int i = 1; i<strInput.size(); i++){
 			argument.push_back(strInput[i]);
 		}
-		///////////////////
 		
         int i = 0;
         //memasukkan command
-        /*while (input[i]!='\0' && input[i]!=' ') {
-            command[i] = input[i];
-            i++;
-        }
-        command[i] = '\0';
-        i++;
-
-        int arg_start = 0;
-        while (input[i]!='\0' && input[i]!=' ') {
-            argument[0][arg_start] = input[i];
-            //cout << input[i] << endl;
-            //cout << argument[0][i] << endl;
-            i++;
-            arg_start++;
-        }
-
-        argument[0][arg_start] = '\0';
-        i++;
-
-        cout << argument[0] << endl;
-
-        arg_start = 0;
-        while (input[i]!='\0' && input[i]!=' ') {
-            argument[1][i] = input[i];
-            i++;
-            arg_start++;
-        }
-        argument[1][arg_start] = '\0';*/
-
         if(command == "new") {
             //new game
         }
