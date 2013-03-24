@@ -107,15 +107,18 @@
         }
     }
 
-    void Player::teleport(int &currentState, int toState int xPosition, int yPosition) {
-    // return state tujuan player                                                                   belum selesai
-        if (currentState==0){
+    void Player::teleport(int &currentState, int toState int xPosition, int yPosition) {    
+        if (currentState==1) { //kota
             currentState = toState;
-            
-        } else if(currentState==1){
-            
+            //draw;
+        } else {
+            if (toState==1) {
+                currentState = toState;
+                //draw
+            } else {
+                cout << "Tidak bisa teleport" << endl;
+            }
         }
-
     }
 
     void Player::move(string s, int i, Screen sc){
