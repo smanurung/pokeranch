@@ -11,6 +11,19 @@
 #include <iostream>
 using namespace std;
 
+static int xHomeBound = 10;
+static int yHomeBound = 10;
+static int xLuarBound = 0;
+static int yLuarBound = 10;
+static int xStoreBound = 70;
+static int yStoreBound = 10;
+static int xStadiumBound = 70;
+static int yStadiumBound = 70;
+static int xBattlescreenBound = 10;
+static int yBattlescreenBound = 70;
+static int xCombinatoriumBound = 50;
+static int yCombinatoriumBound = 50;
+
 class Screen {
 public:
     Screen();
@@ -25,7 +38,7 @@ public:
 	void setMatriks(int,int,char); // X, Y, char pengganti
 
     int getXLength();
-    int getYLength();
+    int getYLength();        
 	
 protected:
     int xLength;
