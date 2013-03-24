@@ -49,16 +49,23 @@ public:
 	/*-----------------setter-------------- */
 	void setNama(string);
 	void setUang(int);
-
+	void addItem(Item&);
+	void addMonster(Monster&);
+	void setJumlahMenang(int);
+	void setJumlahKalah(int);
+	void setJumlahEscape(int);
+	void setWaktu(int);
+	void setWarna(string);
+	
     /*-----------------method utama-------------- */
     void bet(int, bool);                //parameter nambah bool
 //    void battle(string, NPC);
 //    void battle(string, Monster);
     void save(string);
     void sleep();
-    void sell(Item,int);
+    void sell(Item);
     void buy(Item);
-    int teleport(int,int,int);                        //parameter string dihapus
+    void teleport(int&,int,int,int);                        //parameter string dihapus
     void move(string, int, Screen);
     void showMonsterList();
     void showItemList();
@@ -69,7 +76,7 @@ public:
     void addMoney(int);
 
     /*-----------------method baru-------------- */
-    void addMonster(Monster&);
+    void addMonster(string,Monster&);
     void delMoney(int);
     void delItem(Item);
 
