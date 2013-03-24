@@ -71,35 +71,35 @@ using namespace std;
 	void Player::setNama(string _n){
 		this->nama = _n;
 	}
-	
+
 	void Player::setUang(int _u){
 		this->uang = _u;
 	}
-	
+
 	void Player::addItem(Item& _i){
 		this->listItem.push_back(_i);
 	}
-	
+
 	void Player::addMonster(string _nama, Monster& _mon){
 		this->listMonster.insert(pair<string,Monster>(_nama,_mon));
 	}
-	
+
 	void Player::setJumlahMenang(int _win){
 		this->jumlahMenang = _win;
 	}
-	
+
 	void Player::setJumlahKalah(int _lose){
 		this->jumlahKalah = _lose;
 	}
-	
+
 	void Player::setJumlahEscape(int _esc) {
 		this->jumlahEscape = _esc;
 	}
-	
+
 	void Player::setWaktu(int _time){
 		this->waktu = _time;
 	}
-	
+
 	void Player::setWarna(string _w){
 		this->warnaPlayer = _w;
 	}
@@ -125,16 +125,19 @@ using namespace std;
         //nunggu monster
     }
 
-    void Player::sell(Item item,int x){
-        for (int i=0; i< listItem.size(); i++){
-            if(listItem.at(i)==item){
-                    listItem.erase(listItem.begin()+i);
-                    cout << item.getItemName() << " dijual"<< endl;
-                    uang=uang + item.getHarga();
-            }else if(i==(listItem.size()-1)){
-                    cout << "item tidak tersedia" << endl;
-            }
-        }//end for
+    void Player::sell(Item item, int n){
+
+        for (int ii=0; ii<n;ii++){
+            for (int i=0; i< listItem.size(); i++){
+                if(listItem.at(i)==item){
+                        listItem.erase(listItem.begin()+i);
+                        cout << item.getItemName() << " dijual"<< endl;
+                        uang=uang + item.getHarga();
+                }else if(i==(listItem.size()-1)){
+                        cout << "item tidak tersedia" << endl;
+                }
+            }//end for 2
+        }//end for 1
     }
 
     void Player::buy(Item i){
@@ -154,13 +157,12 @@ using namespace std;
         } else {
             if (toState==1) {
                 currentState = toState;
-                s.drawScreen(currentState);
             } else {
                 cout << "Tidak bisa teleport" << endl;
             }
         }
     }
-	
+
     void Player::move(string s, int i, Screen sc){
         if(s=="bawah"){
             if( (curX+i)>sc.getXLength() ){
@@ -250,15 +252,15 @@ using namespace std;
 
 
 
-/*--------------------------------------------------------------------------------------method tambahan---------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------methodtambahan---------------------------------------------------------------------------------------*/
 
 void Player::printListItem(){
     cout << endl;
     cout << "list item: "<<endl;
     for(int i=0; i<listItem.size();i++){
-        Item &a = listItem.at(i);                                   //reference???
-        cout << a.getItemName()<<endl;
-    }//end for
+        cout << ">" << listItem[i].getItemName() << endl;
+		cout << ">> harga : " << listItem[i].getHarga() << endl;
+    }
 }
 
 void Player::printListMonster(){
@@ -266,7 +268,7 @@ void Player::printListMonster(){
     cout << "list monster: "<<endl;
     typedef map<string,Monster>::const_iterator mapIter;
     for(mapIter iter = listMonster.begin(); iter != listMonster.end(); iter++){
-        cout << iter->first << endl;
+        cout << ">" << iter->first << endl;
     }//end for
 }
 
@@ -276,4 +278,14 @@ void Player::addToListItem(Item item){
 
 void Player::addToListMonster(string namaMonster, Monster monster){
         listMonster.insert(make_pair(namaMonster, monster));
+}
+
+int Player::isContainMonster(string _s){
+	cout << _s;
+	map<string,Monster>::iterator it = this->listMonster.find(_s);
+	if (it == this->listMonster.end()){
+		return 0;
+	} else {
+		return 1;
+	}
 }

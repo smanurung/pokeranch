@@ -25,5 +25,5 @@ void Store::printAvailableItem(){
 }
 
 void Store::drawStore(){
-	this->screenStore.drawScreen(3);
+	this->screenStore.drawScreen(2);
 }

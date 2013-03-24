@@ -56,7 +56,7 @@ public:
 	void setJumlahEscape(int);
 	void setWaktu(int);
 	void setWarna(string);
-	
+
     /*-----------------method utama-------------- */
     void bet(int, bool);                //parameter nambah bool
 //    void battle(string, NPC);
@@ -86,7 +86,7 @@ public:
     void printListMonster();
     void addToListItem(Item);
     void addToListMonster(string, Monster);
-
+	int isContainMonster(string);
 
 };//end class
 
