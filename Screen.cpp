@@ -23,7 +23,7 @@
 #define COMBINATORIUM_WIDTH 40
 
 #define STADIUM_HEIGHT 25
-#define STADIUM_WIDTH 70
+#define STADIUM_WIDTH 35
 
 using namespace std;
 
@@ -55,7 +55,7 @@ Screen::Screen() {
 
     for(int i=0; i<yLength; i++){
         for(int j=0; j<xLength; j++){
-            matriks[i][j] = '.';
+            matriks[i][j] = ' ';
         }
     }
 }
@@ -71,7 +71,7 @@ Screen::Screen(int x, int y){
 
     for(int i=0; i<yLength; i++){
         for(int j=0; j<xLength; j++){
-            matriks[i][j] = '.';
+            matriks[i][j] = ' ';
         }
     }
 
@@ -98,7 +98,7 @@ int Screen::getYLength(){
 void Screen::drawMatriks(){
                 for(int i=0; i<yLength; i++){
                     for(int j=0; j<xLength; j++){
-                        if (matriks[i][j] == '.'){ //unsteppable place
+                        if (matriks[i][j] == ' '){ //unsteppable place
             				cout <<bgray<< matriks[i][j]<<normal<<bnormal ;
             			} else if (matriks[i][j] == '0'){ //orang/user
             				cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
@@ -116,9 +116,12 @@ void Screen::drawMatriksHome(){
 	Screen _s(HOME_WIDTH,HOME_HEIGHT);
 	
 	char N;
-	N = 'N';
-	_s.setMatriks(10,10,N);
-	
+	N = '-';
+	for	(int j=4; j<11; j++){
+		for (int i=1; i<6; i++){
+			_s.setMatriks(j,i,N);
+		}
+	}
 	char subs;
 	for (int i=0; i<4; i++){
 		switch (i) {
@@ -150,10 +153,12 @@ void Screen::drawMatriksHome(){
 	
 	for(int i=0; i<_s.yLength; i++){
         for(int j=0; j<_s.xLength; j++){
-        	if (_s.matriks[i][j] == '.'){ //unsteppable place
+        	if (_s.matriks[i][j] == ' '){ //unsteppable place
             	cout <<bcyan<< _s.matriks[i][j]<<normal<<bnormal ;
             } else if (_s.matriks[i][j] == '0'){ //orang/user
             	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == '-'){ //pura puranya kasur
+            	cout <<bmagenta<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
             }
@@ -167,6 +172,13 @@ void Screen::drawMatriksHome(){
 void Screen::drawMatriksStore(){
 	Screen _s(STORE_WIDTH, STORE_HEIGHT);
 	
+	char N;
+	N = '|';
+	for	(int j=2; j<4; j++){
+		for (int i=10; i<61; i++){
+			_s.setMatriks(j,i,N);
+		}
+	}
 	char subs;
 	for (int i=0; i<5; i++){
 		switch (i) {
@@ -203,9 +215,11 @@ void Screen::drawMatriksStore(){
 	
     for(int i=0; i<_s.yLength; i++){
         for(int j=0; j<_s.xLength; j++){
-        	if (_s.matriks[i][j] == '.'){ //unsteppable place
+        	if (_s.matriks[i][j] == ' '){ //unsteppable place
             	cout <<bgray<< _s.matriks[i][j]<<normal<<bnormal ;
             } else if (_s.matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == '|'){ //pura-puranya kayak kasir gitu
             	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
@@ -220,6 +234,21 @@ void Screen::drawMatriksStore(){
 void Screen::drawMatriksCombinatorium(){
 	Screen _s(COMBINATORIUM_WIDTH, COMBINATORIUM_HEIGHT);
 	
+	char N;
+	N = 'X';
+	for	(int j=6; j<9; j++){
+		for (int i=8; i<15; i++){
+			_s.setMatriks(j,i,N);
+		}
+	}
+	for	(int j=6; j<9; j++){
+		for (int i=25; i<32; i++){
+			_s.setMatriks(j,i,N);
+		}
+	}
+	for (int i=15; i<25; i++){
+		_s.setMatriks(7,i,N);
+	}
 	char subs;
 	for (int i=0; i<13; i++){
 		switch (i) {
@@ -296,10 +325,12 @@ void Screen::drawMatriksCombinatorium(){
 	
     for(int i=0; i<_s.yLength; i++){
         for(int j=0; j<_s.xLength; j++){
-        	if (_s.matriks[i][j] == '.'){ //unsteppable place
+        	if (_s.matriks[i][j] == ' '){ //unsteppable place
             	cout <<bmagenta<< _s.matriks[i][j]<<normal<<bnormal ;
             } else if (_s.matriks[i][j] == '0'){ //orang/user
             	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (_s.matriks[i][j] == 'X'){ //ceritanya meja buat combine
+            	cout <<bcyan<< _s.matriks[i][j]<<normal<<bnormal ;
             } else {
             	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
             }
@@ -315,7 +346,7 @@ void Screen::drawMatriksStadium(){
 	
 	char N;
 	N = 'N';
-	_s.setMatriks(19,50,N);
+	_s.setMatriks(19,30,N);
 	_s.setMatriks(10,10,N);
 	
 	char subs;
@@ -362,7 +393,7 @@ void Screen::drawMatriksStadium(){
 	
     for(int i=0; i<_s.yLength; i++){
         for(int j=0; j<_s.xLength; j++){
-        	if (_s.matriks[i][j] == '.'){ //unsteppable place
+        	if (_s.matriks[i][j] == ' '){ //unsteppable place
             	cout <<bred<< _s.matriks[i][j]<<normal<<bnormal ;
             } else if (_s.matriks[i][j] == '0'){ //orang/user
             	cout <<bgreen<< _s.matriks[i][j]<<normal<<bnormal ;

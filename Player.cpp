@@ -104,6 +104,14 @@ void Player::setWarna(string _w){
     this->warnaPlayer = _w;
 }
 
+	void Player::setCurX(int i){
+        curX=i;
+    }
+
+    void Player::setCurY(int i){
+        curY=i;
+    }
+
 /*----------------------------------------------------------------------------------method utama------------------------------------------------------------------------------- */
 
 void Player::bet(int jmlBet, bool isMenang){
@@ -244,6 +252,7 @@ void Player::teleport(int &currentState, int toState, int xPosition, int yPositi
                 if (xPosition==xLuarBound && yPosition==yLuarBound) {
                     allowTeleport = true;
                 }
+<<<<<<< HEAD
             } else if (currentState==3) {
                 allowTeleport = true;
             } else if (currentState==4) {
