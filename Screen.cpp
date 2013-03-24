@@ -16,8 +16,11 @@
 #define HOME_HEIGHT 20
 #define HOME_WIDTH 20
 
-#define STORE_HEIGHT 70
-#define STORE_WIDTH 10
+#define STORE_HEIGHT 10
+#define STORE_WIDTH 70
+
+#define COMBINATORIUM_HEIGHT 20
+#define COMBINATORIUM_WIDTH 40
 
 using namespace std;
 
@@ -107,7 +110,7 @@ void Screen::drawMatriks(){
 }
 
 void Screen::drawMatriksHome(){
-	Screen _s(HOME_HEIGHT,HOME_WIDTH);
+	Screen _s(HOME_WIDTH,HOME_HEIGHT);
 	
 	char subs;
 	for (int i=0; i<4; i++){
@@ -155,7 +158,7 @@ void Screen::drawMatriksHome(){
 }
 
 void Screen::drawMatriksStore(){
-	Screen _s(STORE_HEIGHT, STORE_WIDTH);
+	Screen _s(STORE_WIDTH, STORE_HEIGHT);
 	
 	char subs;
 	for (int i=0; i<5; i++){
@@ -188,13 +191,106 @@ void Screen::drawMatriksStore(){
 		}
 		
 		//_s.matriks[HOME_WIDTH-i,i] = subs;
-		_s.setMatriks(0,STORE_HEIGHT-i-1,subs);
+		_s.setMatriks(0,STORE_WIDTH-i-1,subs);
 	}
 	
     for(int i=0; i<_s.yLength; i++){
         for(int j=0; j<_s.xLength; j++){
         	if (_s.matriks[i][j] == '.'){ //unsteppable place
             	cout <<bgray<< _s.matriks[i][j]<<normal<<bnormal ;
+            } else if (matriks[i][j] == '0'){ //orang/user
+            	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
+            } else {
+            	cout <<byellow<<red<< _s.matriks[i][j]<<normal<<bnormal ;
+            }
+        }
+        cout<< endl;
+    }//end for
+    cout<< endl;
+    cout<< endl;
+}
+
+void Screen::drawMatriksCombinatorium(){
+	Screen _s(COMBINATORIUM_WIDTH, COMBINATORIUM_HEIGHT);
+	
+	char subs;
+	for (int i=0; i<13; i++){
+		switch (i) {
+			
+			case 0 : {
+				subs = 'M';
+				break;
+			}
+			
+			case 1 : {
+				subs = 'U';
+				break;
+			}
+			
+			case 2 : {
+				subs = 'I';
+				break;
+			}
+			
+			case 3 : {
+				subs = 'R';
+				break;
+			}
+			
+			case 4 : {
+				subs = 'O';
+				break;
+			}
+			
+			case 5 : {
+				subs = 'T';
+				break;
+			}
+			
+			case 6 : {
+				subs = 'A';
+				break;
+			}
+			
+			case 7 : {
+				subs = 'N';
+				break;
+			}
+			
+			case 8 : {
+				subs = 'I';
+				break;
+			}
+			
+			case 9 : {
+				subs = 'B';
+				break;
+			}
+			
+			case 10 : {
+				subs = 'M';
+				break;
+			}
+			
+			case 11 : {
+				subs = 'O';
+				break;
+			}
+			
+			case 12 : {
+				subs = 'C';
+				break;
+			}
+		}
+		
+		//_s.matriks[HOME_WIDTH-i,i] = subs;
+		_s.setMatriks(0,COMBINATORIUM_WIDTH-i-1,subs);
+	}
+	
+    for(int i=0; i<_s.yLength; i++){
+        for(int j=0; j<_s.xLength; j++){
+        	if (_s.matriks[i][j] == '.'){ //unsteppable place
+            	cout <<bmagenta<< _s.matriks[i][j]<<normal<<bnormal ;
             } else if (matriks[i][j] == '0'){ //orang/user
             	cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
             } else {
@@ -217,6 +313,9 @@ void Screen::drawScreen(int s){
 			
         case 2:                 //Store
 			drawMatriksStore();
+			break;
+		case 3:					//Combinatorium
+			drawMatriksCombinatorium();
 			break;
     }
 }
