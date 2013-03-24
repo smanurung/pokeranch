@@ -180,7 +180,6 @@ using namespace std;
             }            
         } else {
             if (toState==1) {
-<<<<<<< HEAD
                 if (currentState==0) {
                     if (xPosition==xHomeBound && yPosition==yHomeBound) {
                         allowTeleport = true;
@@ -206,14 +205,6 @@ using namespace std;
                         allowTeleport = true;
                     }
                 }
-                
-=======
-                currentState = toState;
-                cout<<tes;
-       //         s.drawScreen(currentState);
-            } else {
-                cout << "Tidak bisa teleport" << endl;
->>>>>>> 326595c78e38852d22a6fee79210e5c21e03faba
             }
         }        
         
