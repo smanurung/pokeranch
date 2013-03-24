@@ -56,6 +56,8 @@ public:
 	void setJumlahEscape(int);
 	void setWaktu(int);
 	void setWarna(string);
+	void setCurX(int);
+    void setCurY(int);
 
     /*-----------------method utama-------------- */
     void bet(int, bool);                //parameter nambah bool
