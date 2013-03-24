@@ -157,8 +157,7 @@ using namespace std;
         } else {
             if (toState==1) {
                 currentState = toState;
-                cout<<tes;
-       //         s.drawScreen(currentState);
+                s.drawScreen(currentState);
             } else {
                 cout << "Tidak bisa teleport" << endl;
             }

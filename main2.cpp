@@ -14,6 +14,14 @@
 #include <sstream>
 #include <iterator>
 
+
+#include "AreaLuar.h"
+#include "BattleScreen.h"
+#include "Combinatorium.h"
+#include "Home.h"
+#include "Kota.h"
+#include "Stadium.h"
+
 using namespace std;
 
 void parseFile(Player& _p){
@@ -140,22 +148,26 @@ int main() {
     Player p1;
 	parseFile(p1);
 
-    Kota k(p1.getCurX(),p1.getCurY());
+    Kota kota(p1.getCurX(),p1.getCurY());
+    AreaLuar areaLuar(50,50);
+    BattleScreen battleScreen;
+    Combinatorium combinatorium;
+    Home home;
+    Stadium stadium;
+    Store store;
+
 
 	cout << "---POKERANCH---" << endl;
 
     while (command != "exit") {
 		cout << "command :";
-        cin >> input;
+        getline(cin,input);
 
 		//////////////////
 		istringstream iss(input);
 		vector<string> strInput;
 		copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
 
-		for (int j=0; j<strInput.size(); j++){
-			cout << "he" << strInput[j] << "halo" << endl;
-		}
 
 		command = strInput[0];
 		for (int i = 1; i<strInput.size(); i++){
@@ -196,9 +208,11 @@ int main() {
 
         if(command == "new") {
             //new game
+            cout << "asu" << endl;
+            //cout << argument[0] << endl;
         }
         else if(command == "load") {
-            if(argument[0] == "") {
+            if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
             }
             //load game
@@ -216,44 +230,34 @@ int main() {
 
 /*----------------------------------------------------------------------------------------------------------------------teleport----------------------------------------------------------------------------------------------------------------------*/
         else if(command == "teleport"){
-            if(argument[0] == "") {
+            if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
-            }
+                cout<<argument[0];
+            }else
             //teleport
             //assign state
             if(argument[0] == "kota") {				 //toState  1
-                p1.teleport(state, 1, p1.getCurX(), p1.getCurY(), k);
+                p1.teleport(state, 1, p1.getCurX(), p1.getCurY(), kota);
             }//end if kota
 
 			else if((argument[0], "luar")==0) {                      //toState  2
-                p1.teleport(state, 2, p1.getCurX(), p1.getCurY(), k);/////////////////////////////////////////////////////////////////////////////////////////
+                p1.teleport(state, 2, p1.getCurX(), p1.getCurY(), areaLuar);
 
             }//end if luar
 
 
             else if((argument[0], "store")==0) {                  //toState  3
-                if(state==1){
-                    state = 3;
-
-                    //////////////////////////////////////////////////draw store
-                }else{
-                    cout << "tempat tidak dapat diakses"<<endl;
-                }
+                p1.teleport(state, 3, p1.getCurX(), p1.getCurY(), store);
 
             }
             else if((argument[0], "stadium")==0) {            //toState  4
-                if(state==1){
-                    state = 4;
+                p1.teleport(state, 4, p1.getCurX(), p1.getCurY(), stadium);
 
-                    //////////////////////////////////////////////////draw stadium
-                }else{
-                    cout << "tempat tidak dapat diakses"<<endl;
-                }
-
-            } else {
+            }
+            else {
                 cout << "tidak ada tempat tersebut" << endl;
             }
-        }
+        }//end if teleport
 
 
 /*----------------------------------------------------------------------------------------------------------------------sell----------------------------------------------------------------------------------------------------------------------*/
