@@ -54,7 +54,7 @@ public:
     void sleep();
     void sell(Item);
     void buy(Item);
-    int teleport(int,int,int);                        //parameter string dihapus
+    void teleport(int&,int,int,int);                        //parameter string dihapus
     void move(string, int, Screen);
     void showMonsterList();
     void showItemList();

@@ -107,12 +107,13 @@
         }
     }
 
-    int Player::teleport(int currentState, int xPosition, int yPosition){
+    void Player::teleport(int &currentState, int toState int xPosition, int yPosition) {
     // return state tujuan player                                                                   belum selesai
         if (currentState==0){
-            return 1;
-        }else if(currentState==1){
-            return 2;
+            currentState = toState;
+            
+        } else if(currentState==1){
+            
         }
 
     }
