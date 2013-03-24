@@ -5,8 +5,8 @@
 
 class Monster;
 
-#include <string>
 #include "Monster.h"
+#include <string>
 
 using namespace std;
 
@@ -31,7 +31,7 @@ class SkillMonster{
     int getMPCost();
     void setMPCost(int);
 
-    void CastSkill(Monster*);
+    void CastSkill(Monster);
     void ShowSkillStatus();
 
     private :
