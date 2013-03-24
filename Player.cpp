@@ -147,7 +147,7 @@ using namespace std;
         }
     }
 
-    void Player::teleport(int &currentState, int toState int xPosition, int yPosition) {    
+    void Player::teleport(int &currentState, int toState, int xPosition, int yPosition) {    
         if (currentState==1) { //kota
             currentState = toState;
             //draw;
