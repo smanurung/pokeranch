@@ -251,7 +251,6 @@ int main() {
         else if(command == "save") {
             //save
         }
-
 /*----------------------------------------------------------------------------------------------------------------------teleport----------------------------------------------------------------------------------------------------------------------*/
         else if(command == "teleport"){
             if(argument.size() == 0) {
@@ -311,9 +310,9 @@ int main() {
         else if(command == "combine") {
             if(argument.size() < 2) {
                 cout << "argumen kurang" << endl;
-            }/* else if (state != 6) {
+            } else if (state != 6) {
 				cout << "\nWARNING. Player tidak bisa melakukan combine!\n" << endl;
-			}*/ else {
+			} else {
 				string _monStr2 = argument[0];
 				string _monStr1 = argument[1];
 				if (p1.isContainMonster(_monStr1) && p1.isContainMonster(_monStr2)) {
@@ -326,7 +325,6 @@ int main() {
 					cout << "\nWARNING. Monster tidak dimiliki player\n" << endl;
 				}
 			}
-            //combine
         }
         else if(command == "battle") {
             if(argument.size() == 0) {
