@@ -87,9 +87,10 @@ Kota& Kota::operator =(const Kota& K){
 }
 
 void Kota::drawScreen(int i){
+	cout<<"KOTA POKERANCH"<<endl;
     drawMatriks(); //misalkan aja angka satu
 }
 
-int Kota::isSteppable(){
-
+int Kota::isSteppable(int y, int x){ //return 1 apabila dapat diinjak
+	return matriks[x][y] == ' ' || matriks[x][y] == 'H' || matriks[x][y] == 'S' || matriks[x][y] == 'C' || matriks[x][y] == 'T' || matriks[x][y] == 'L';
 }
