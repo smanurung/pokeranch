@@ -76,7 +76,7 @@ public:
     void buy(Item);
     void teleport(int&,int,int&,int&, Screen&);
     void teleport(int&,int,int&,int&, Stadium&);
-    void teleport(int&,int,int&,int&, zCombinatorium&);
+    void teleport(int&,int,int&,int&, Combinatorium&);
     void teleport(int&,int,int&,int&, Home&);
     void teleport(int&,int,int&,int&, Store&);
     void teleport(int&,int,int&,int&, BattleScreen&);

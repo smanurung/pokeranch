@@ -208,7 +208,7 @@ int main() {
 //    BattleScreen battleScreen;
     Combinatorium combinatorium;
    Home home;
-//    Stadium stadium;
+    Stadium stadium;
     Store store;
 
 
@@ -256,6 +256,7 @@ int main() {
 
 /*----------------------------------------------------------------------------------------------------------------------teleport----------------------------------------------------------------------------------------------------------------------*/
         else if(command == "teleport"){
+            
             if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
                 cout<<argument[0];
@@ -281,7 +282,7 @@ int main() {
                 p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
             }
             else if(argument[0] == "stadium") {            //toState  4
-//                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
+                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
             }
             else if(argument[0] == "combinatorium") {                  //toState  6
 				    posisiXPlayer=xCombinatoriumBound;
@@ -291,6 +292,8 @@ int main() {
             else {
                 cout << "tidak ada tempat tersebut" << endl;
             }
+                      
+            cout << posisiXPlayer << "," << posisiYPlayer;
         }//end if teleport
 
 
@@ -333,6 +336,8 @@ int main() {
             int step = atoi(argument[1].c_str());
             p1.move(argument[0],step,kota);
             kota.setPosisiPlayer(p1.getCurX(), p1.getCurY());
+            posisiXPlayer = p1.getCurX();
+            posisiYPlayer = p1.getCurY();
             kota.drawScreen(1);
         }
         else if(command == "list-monster") {
