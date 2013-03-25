@@ -58,7 +58,11 @@ class Monster{
         void StatusEfek();
         void changeSpecies();
         void ShowStatus();
+        void ShowBattleStatus();
         void addSkill();
+        void ShowListSkill();
+
+        vector<SkillMonster> ListSkill;
 
         private :
         string Nama;
@@ -76,6 +80,5 @@ class Monster{
         string Status;
         int Umur;
         string WarnaMonster;
-        vector<SkillMonster> ListSkill;
 };
 #endif

@@ -127,4 +127,5 @@ void SkillMonster::ShowSkillStatus(){
     cout << "Efek : " << Efek << endl;
     cout << "HPCost : " << HPCost << endl;
     cout << "MPCost : " << MPCost << endl;
+    cout << "-----------------------------" << endl;
 }

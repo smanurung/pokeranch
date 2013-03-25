@@ -55,7 +55,7 @@ void parseFile(Player& _p){
 		const string END_ITEM = "enditem";
 		const string END_MONSTER = "endmonster";
 		while (isiFile[idx].compare(END_ITEM)){
-			if (!isiFile[idx].compare("potion")) {				
+			if (!isiFile[idx].compare("potion")) {
 				idx += 1;
 
 				istringstream iss(isiFile[idx]);
@@ -206,7 +206,7 @@ int main() {
     vector<Monster> DataMonster;
 
 	parseFile(p1);
-	
+
     Kota kota(p1.getCurX(),p1.getCurY());
     AreaLuar areaLuar;
 
@@ -219,7 +219,7 @@ int main() {
 	cout << "---POKERANCH---" << endl;
 
     DatabaseMonster(DataMonster);
-	
+
     while (command != "exit") {
 		cout << "command :";
         getline(cin,input);
@@ -252,10 +252,10 @@ int main() {
         else if(command == "sleep") {
             //sleep
 			cout << "\nPlayer is sleeping ... \n" << endl;
-			
+
 			//merevitalisasi seluruh monster
-			
-			
+
+
 			sleep(5000);
 			cout << "\nPlayer sudah bangun kembali ^^\n" << endl;
         }
@@ -337,11 +337,78 @@ int main() {
 				}
 			}
         }
-        else if(command == "battle") {
-            if(argument.size() == 0) {
-                cout << "argumen kurang" << endl;
+            else if (command == "battle"){
+            if (argument.size() != 1){
+                cout << "argumen seharusnya battle <bet>" << endl;
+            } else if (argument.size() == 1) {
+                cout << "Mode Battle" << endl;
+                int d = atoi(argument[1].c_str());
+                Monster MPlayer = DataMonster[rand() %7];
+                cout << "Monster Player : " << endl;
+                MPlayer.ShowBattleStatus();
+                Monster MEnemy = DataMonster[rand() %7];
+                cout << "Monster Musuh : " << endl;
+                MEnemy.ShowBattleStatus();
+                while((MPlayer.getCurrentHP() > 0) && (MEnemy.getCurrentHP() > 0)){
+                    MPlayer.StatusEfek();
+                    MEnemy.StatusEfek();
+
+                    MPlayer.addSkill();
+                    MEnemy.addSkill();
+
+                    cout << "Monster Player : " << endl;
+                    MPlayer.ShowBattleStatus();
+
+                    cout << "Monster Musuh : " << endl;
+                    MEnemy.ShowBattleStatus();
+
+                    cout << "command : ";
+                    getline(cin,input);
+
+                    argument.clear();
+
+                    //splitting input
+                    istringstream iss(input);
+                    vector<string> strInput;
+                    copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+
+                    command = strInput[0];
+                    for (int i = 1; i<strInput.size(); i++){
+                        argument.push_back(strInput[i]);
+                    }
+
+                    int i = 0;
+
+                    if(command == "skill"){
+                        if (argument.size() == 1){
+                            int a = 0;
+                            while(MPlayer.ListSkill[a].getNamaSkill() != argument[0]){
+                                a++;
+                            }
+                            MEnemy.setCurrentHP(MEnemy.getCurrentHP() - MPlayer.ListSkill[a].getDamage());
+                            MEnemy.setStatus(MPlayer.ListSkill[a].getEfek());
+                        } else if (argument.size() == 0){
+                            MPlayer.ShowListSkill();
+                        } else {
+                            cout << "argumen seharusnya skill <nama-skill>" << endl;
+                        }
+                    } else if(command == "item"){
+                        if (argument.size() == 1){
+                            if(argument[0] == "Potion"){
+                                MPlayer.setCurrentHP(MPlayer.getCurrentHP() + 20);
+                            }
+                        } else {
+                            cout << "Argumen seharusnya item <nama-item>" << endl;
+                        }
+                    } else if(command == "change"){
+                        if(argument.size() == 1){
+                            Monster M = DataMonster[rand() %7];
+                            M.setNama(argument[0]);
+                            MPlayer = M;
+                        }
+                    }
+                }
             }
-            //battle
         }
         else if(command == "move") {
             if(argument.size() <2) {
