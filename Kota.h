@@ -27,7 +27,7 @@ public:
     void setPosisiPlayer(int,int);
 
     void drawScreen(int); //override dari kelas Screen
-    int isSteppable();
+    int isSteppable(int, int);
 
 private:
     map<string,Point> elmtPosition;
