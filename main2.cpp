@@ -242,15 +242,18 @@ int main() {
         else if(command == "buy") {
             if(argument.size() < 2) {
                 cout << "argumen kurang" << endl;
-                break;
             }
             //buy
         }
         else if(command == "combine") {
             if(argument.size() < 2) {
                 cout << "argumen kurang" << endl;
-                break;
-            }
+            } else if (state != 6) {
+				cout << "\nWARNING. Player tidak bisa melakukan combine!\n" << endl;
+			} else {
+				string _monStr = argument[1];
+				cout << _monStr << endl;
+			}
             //combine
         }
         else if(command == "battle") {
