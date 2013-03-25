@@ -38,6 +38,7 @@ char cyan[] = { 0x1b, '[', '1', ';', '3', '6', 'm', 0 };
 char bgreen[] = { 0x1b, '[', '1', ';', '4', '2', 'm', 0 };
 char green[] = { 0x1b, '[', '1', ';', '3', '2', 'm', 0 };
 char bblack[] = { 0x1b, '[', '1', ';', '4', '0', 'm', 0 };
+char bwhite[] = { 0x1b, '[', '0', ';', '4', '0', 'm', 0 };
 char black[] = { 0x1b, '[', '1', ';', '3', '0', 'm', 0 };
 char white[] = { 0x1b, '[', '0', ';', '3', '7', 'm', 0 };
 char bgray[] = { 0x1b, '[', '1', ';', '4', '7', 'm', 0 };
@@ -45,8 +46,8 @@ char bnormal[] = { 0x1b, '[', '0', ';', '4', '9', 'm', 0 };
 char normal[] = { 0x1b, '[', '0', ';', '3', '9', 'm', 0 };
 
 Screen::Screen() {
-    xLength = 100;
-    yLength = 100;
+    xLength = 70;
+    yLength = 32;
 
     matriks = new char * [yLength];
     for(int i=0; i<yLength; i++){
@@ -102,7 +103,17 @@ void Screen::drawMatriks(){
             				cout <<bgray<< matriks[i][j]<<normal<<bnormal ;
             			} else if (matriks[i][j] == '0'){ //orang/user
             				cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
-            			} else { //Lain-lain bisa ditambah
+            			} else if (matriks[i][j] == 'S'){ //Stadium
+            				cout <<bred<< matriks[i][j]<<normal<<bnormal ;
+            			} else if (matriks[i][j] == 'H'){ //Home
+            				cout <<bcyan<< matriks[i][j]<<normal<<bnormal ;
+            			} else if (matriks[i][j] == 'C'){ //Combinatorium
+            				cout <<bmagenta<< matriks[i][j]<<normal<<bnormal ;
+            			} else if (matriks[i][j] == 'T'){ //Store
+            				cout << matriks[i][j];
+            			} else if (matriks[i][j] == 'L'){ //ke Area Luar
+            				cout << matriks[i][j];
+            			} else {//Lain-lain bisa ditambah
             				cout <<byellow<<red<< matriks[i][j]<<normal<<bnormal ;
             			}
                     }
@@ -147,7 +158,6 @@ void Screen::drawMatriksHome(){
 			}
 		}
 		
-		//_s.matriks[HOME_WIDTH-i,i] = subs;
 		_s.setMatriks(0,HOME_WIDTH-i-1,subs);
 	}
 	
