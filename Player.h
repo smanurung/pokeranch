@@ -52,6 +52,7 @@ public:
     int getJumlahEscape();
     int getWaktu();
     string getWarnaPlayer();
+	Monster getMonster(string);
 
 	/*-----------------setter-------------- */
 	void setNama(string);

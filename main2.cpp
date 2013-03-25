@@ -193,7 +193,7 @@ int main() {
         else if(command == "teleport"){
             if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
-                cout<<argument[0];
+                //cout<<argument[0];
 				}else
 				//teleport
 				//assign state
@@ -232,7 +232,7 @@ int main() {
 /*----------------------------------------------------------------------------------------------------------------------sell----------------------------------------------------------------------------------------------------------------------*/
         else if(command == "sell") {
             if(argument.size() < 2) {
-                cout << "argumen kurang" << endl;
+                cout << "argumen combine kurang" << endl;
              }
             else{
                 p1.sell(argument[0],atoi(argument[1].c_str()));
@@ -248,11 +248,20 @@ int main() {
         else if(command == "combine") {
             if(argument.size() < 2) {
                 cout << "argumen kurang" << endl;
-            } else if (state != 6) {
+            }/* else if (state != 6) {
 				cout << "\nWARNING. Player tidak bisa melakukan combine!\n" << endl;
-			} else {
-				string _monStr = argument[1];
-				cout << _monStr << endl;
+			}*/ else {
+				string _monStr2 = argument[0];
+				string _monStr1 = argument[1];
+				if (p1.isContainMonster(_monStr1) && p1.isContainMonster(_monStr2)) {
+					Monster _m1 = p1.getMonster(_monStr1).Combine(p1.getMonster(_monStr2));
+					p1.addMonster(_m1);
+					p1.dismiss(_monStr1);
+					p1.dismiss(_monStr2);
+					cout << "\nSELAMAT. Combine berhasil dilakukan\n" << endl;
+				} else {
+					cout << "\nWARNING. Monster tidak dimiliki player\n" << endl;
+				}
 			}
             //combine
         }
@@ -265,7 +274,6 @@ int main() {
         else if(command == "move") {
             if(argument.size() <2) {
                 cout << "argumen kurang" << endl;
-                break;
             }
             //move
             int step = atoi(argument[1].c_str());

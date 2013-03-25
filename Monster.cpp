@@ -223,8 +223,14 @@ void Monster::setWarnaMonster(string wm){
 //fungsi combine monster
 //menghasilkan monster baru
 Monster Monster::Combine(Monster M){
-    Monster M3(M.getNama());
-    M3 = M;
+	//menggabungkan nama monster
+	string newName = this->getNama() + M.getNama();
+	
+    Monster M3(*this);
+	M3.setNama(newName);
+	M3.addExperience(M); //menambah experience kedua monster
+	M3.addLevel(); //menaikan level
+	
     return M3;
 }
 
@@ -361,5 +367,3 @@ void Monster::ShowStatus(){
     cout << "Current MP : " << CurrentMP << endl;
     cout << "Umur : " << Umur << endl;
 }
-
-
