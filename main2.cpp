@@ -199,9 +199,9 @@ int main() {
     vector<Monster> DataMonster;
 
 	parseFile(p1);
-
+	
     Kota kota(p1.getCurX(),p1.getCurY());
-    AreaLuar areaLuar(50,50);
+    AreaLuar areaLuar;
 
 //    BattleScreen battleScreen;
     Combinatorium combinatorium;
@@ -209,13 +209,10 @@ int main() {
     Stadium stadium;
     Store store;
 
-
 	cout << "---POKERANCH---" << endl;
 
     DatabaseMonster(DataMonster);
-
-
-
+	
     while (command != "exit") {
 		cout << "command :";
         getline(cin,input);
