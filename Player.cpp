@@ -208,8 +208,9 @@ void Player::teleport(int &currentState, int toState, int xPosition, int yPositi
             }
         }
     }
+}
 
-void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
+/*void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Screen &s) {
         if (currentState==1) { //kota
             currentState = toState;
             s.drawScreen(currentState);
@@ -218,13 +219,15 @@ void Player::teleport(int &currentState, int toState, int xPosition, int yPositi
                 currentState = toState;
             } else {
                 cout << "Tidak bisa teleport" << endl;
-    if (allowTeleport) {
-        currentState = toState;
-        s.drawScreen(currentState);
-    } else {
-        cout << "Tidak bisa teleport" << endl;
-    }
-}
+			}
+			if (allowTeleport) {
+				currentState = toState;
+				s.drawScreen(currentState);
+			} else {
+				cout << "Tidak bisa teleport" << endl;
+			}
+		}
+}*/
 
 void Player::teleport(int &currentState, int toState, int xPosition, int yPosition, Stadium &s) {
     bool allowTeleport = false;
@@ -278,7 +281,7 @@ void Player::teleport(int &currentState, int toState, int xPosition, int yPositi
 
     if (allowTeleport) {
         currentState = toState;
-        s.drawStadium();
+        //s.drawStadium(); //ERROR
     } else {
         cout << "Tidak bisa teleport" << endl;
     }
@@ -336,7 +339,7 @@ void Player::teleport(int &currentState, int toState, int xPosition, int yPositi
 
     if (allowTeleport) {
         currentState = toState;
-        s.drawCombinatorium();
+        //s.drawCombinatorium(); //ERROR
     } else {
         cout << "Tidak bisa teleport" << endl;
     }
@@ -547,8 +550,6 @@ void Player::move(string s, int i, Screen sc){
             curY= curY+i;
         }
     }
-
-
 }
 
 void Player::showMonsterList(){

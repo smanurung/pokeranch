@@ -18,6 +18,7 @@
 #include "Kota.h"
 #include "Stadium.h"
 #include "Store.h"
+
 using namespace std;
 
 class Player{
