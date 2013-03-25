@@ -174,7 +174,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             }
         } else if (toState==3) {
             if (xPosition==xStoreBound && yPosition==yStoreBound) {
-                allowTeleport = true;                
+                allowTeleport = true;
             }
         } else if (toState==4) {
             if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
@@ -184,7 +184,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             }
         } else if (toState==5) {
             if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
-                allowTeleport = true;               
+                allowTeleport = true;
             }
         } else if (toState==6) {
             if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
@@ -220,9 +220,16 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             } else if (currentState==6) {
                 allowTeleport = true;
                 xPosition = xCombinatoriumBound;
-                yPosition = yCombinatoriumBound
+                yPosition = yCombinatoriumBound;
             }
         }
+    }
+
+    if (allowTeleport) {
+        currentState = toState;
+        s.drawScreen(currentState);
+    } else {
+        cout << "Tidak bisa teleport" << endl;
     }
 }
 
@@ -287,7 +294,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             } else if (currentState==6) {
                 allowTeleport = true;
                 xPosition = xCombinatoriumBound;
-                yPosition = yCombinatoriumBound
+                yPosition = yCombinatoriumBound;
             }
         }
     }
@@ -361,7 +368,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             } else if (currentState==6) {
                 allowTeleport = true;
                 xPosition = xCombinatoriumBound;
-                yPosition = yCombinatoriumBound
+                yPosition = yCombinatoriumBound;
             }
         }
     }
@@ -435,7 +442,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             } else if (currentState==6) {
                 allowTeleport = true;
                 xPosition = xCombinatoriumBound;
-                yPosition = yCombinatoriumBound
+                yPosition = yCombinatoriumBound;
             }
         }
     }
@@ -509,7 +516,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             } else if (currentState==6) {
                 allowTeleport = true;
                 xPosition = xCombinatoriumBound;
-                yPosition = yCombinatoriumBound
+                yPosition = yCombinatoriumBound;
             }
         }
     }
@@ -583,7 +590,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             } else if (currentState==6) {
                 allowTeleport = true;
                 xPosition = xCombinatoriumBound;
-                yPosition = yCombinatoriumBound
+                yPosition = yCombinatoriumBound;
             }
         }
     }

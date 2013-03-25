@@ -134,13 +134,17 @@ void parseFile(Player& _p){
 	f.close();
 }
 
-int main() {	
+/*-------------------------------------------------------------------main----------------------------------------------------------------*/
+int main() {
 	string input;
 	string command;
 	vector<string> argument;
     int state = 0;
 
     Player p1;
+    int posisiXPlayer=p1.getCurX();
+    int posisiYPlayer=p1.getCurY();
+
 	parseFile(p1);
 
     Kota kota(p1.getCurX(),p1.getCurY());
@@ -158,9 +162,9 @@ int main() {
     while (command != "exit") {
 		cout << "command :";
         getline(cin,input);
-		
+
 		argument.clear();
-		
+
 		//splitting input
 		istringstream iss(input);
 		vector<string> strInput;
@@ -170,7 +174,7 @@ int main() {
 		for (int i = 1; i<strInput.size(); i++){
 			argument.push_back(strInput[i]);
 		}
-		
+
         int i = 0;
         //memasukkan command
         if(command == "new") {
@@ -190,6 +194,8 @@ int main() {
         else if(command == "save") {
             //save
         }
+
+/*----------------------------------------------------------------------------------------------------------------------teleport----------------------------------------------------------------------------------------------------------------------*/
         else if(command == "teleport"){
             if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
@@ -198,30 +204,23 @@ int main() {
 				//teleport
 				//assign state
 				if(argument[0] == "home") {				 //toState  0
-					p1.teleport(state, 0, p1.getCurX(), p1.getCurY(), home);
+					p1.teleport(state, 0, posisiXPlayer, posisiYPlayer, home);
 				}//end if home
 
 				else if(argument[0] == "kota") {				 //toState  1
-					p1.teleport(state, 1, p1.getCurX(), p1.getCurY(), kota);
+					p1.teleport(state, 1, posisiXPlayer, posisiYPlayer, kota);
 				}//end if kota
 
-				else if((argument[0]== "luar")==0) {                      //toState  2
-					p1.teleport(state, 2, p1.getCurX(), p1.getCurY(), areaLuar);
+				else if(argument[0]== "luar") {                      //toState  2
+//				    posisiXPlayer=xLuarBound;
+//				    posisiYPlayer=yLuarBound;
+					p1.teleport(state, 2, posisiXPlayer, posisiYPlayer, areaLuar);
             }//end if luar
             else if(argument[0] == "store") {                  //toState  3
-                if(state==1){
-                    state = 3;
-                }else{
-                    cout << "tempat tidak dapat diakses"<<endl;
-                }
-
+//                p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
             }
             else if(argument[0] == "stadium") {            //toState  4
-                if(state==1){
-                    state = 4;
-                }else{
-                    cout << "tempat tidak dapat diakses"<<endl;
-                }
+//                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
             }
             else {
                 cout << "tidak ada tempat tersebut" << endl;
@@ -334,6 +333,6 @@ int main() {
         }
 
     }//end main
-	
+
     return 0;
 }
