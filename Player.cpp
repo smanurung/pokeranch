@@ -224,6 +224,13 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             }
         }
     }
+    
+    if (allowTeleport) {
+        currentState = toState;
+        s.drawScreen(currentState);
+    } else {
+        cout << "Tidak bisa teleport" << endl;
+    }
 }
 
 void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosition, Stadium &s) {
