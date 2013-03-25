@@ -11,6 +11,13 @@
 #include "Item.h"
 #include "Kota.h"
 #include "Screen.h"
+#include "AreaLuar.h"
+#include "BattleScreen.h"
+#include "Combinatorium.h"
+#include "Home.h"
+#include "Kota.h"
+#include "Stadium.h"
+#include "Store.h"
 
 using namespace std;
 
@@ -65,7 +72,7 @@ public:
 //    void battle(string, Monster);
     void save(string);
     void sleep();
-    void sell(Item,int);
+    void sell(string,int);
     void buy(Item);
     void teleport(int&,int,int&,int&, Screen&);
     void teleport(int&,int,int&,int&, Stadium&);
@@ -93,7 +100,7 @@ public:
     void printListMonster();
     void addToListItem(Item);
     void addToListMonster(string, Monster);
-
+	int isContainMonster(string);
 
 };//end class
 

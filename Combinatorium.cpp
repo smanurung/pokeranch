@@ -1,4 +1,4 @@
-#include"Combinatorium.h"
+#include "Combinatorium.h"
 
 Combinatorium::Combinatorium(){
 	cout << "Masuk" << endl;

@@ -133,20 +133,21 @@ void Player::sleep(){
     //nunggu monster
 }
 
-void Player::sell(Item item, int n){
 
-    for (int ii=0; ii<n;ii++){
-        for (int i=0; i< listItem.size(); i++){
-            if(listItem.at(i)==item){
-                    listItem.erase(listItem.begin()+i);
-                    cout << item.getItemName() << " dijual"<< endl;
-                    uang=uang + item.getHarga();
-            }else if(i==(listItem.size()-1)){
-                    cout << "item tidak tersedia" << endl;
-            }
-        }//end for 2
-    }//end for 1
-}
+    void Player::sell(string item, int n){
+
+        for (int ii=0; ii<n;ii++){
+            for (int i=0; i< listItem.size(); i++){
+                if(listItem[i].getItemName()==item){
+                        listItem.erase(listItem.begin()+i);
+                        cout << listItem[i].getItemName() << " dijual"<< endl;
+                        uang=uang + listItem[i].getHarga();
+                }else if(i==(listItem.size()-1)){
+                        cout << "item tidak tersedia" << endl;
+                }
+            }//end for 2
+        }//end for 1
+    }
 
 void Player::buy(Item i){
     if(uang >= i.getHarga()){
@@ -186,10 +187,10 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
                 allowTeleport = true;               
             }
         } else if (toState==6) {
-            if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
-                allowTeleport = true;              
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
+                allowTeleport = true;
             }
-        }            
+        }
     } else {
         if (toState==1) {
             if (currentState==0) {
@@ -222,13 +223,6 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
                 yPosition = yCombinatoriumBound
             }
         }
-    }        
-    
-    if (allowTeleport) {
-        currentState = toState;
-        s.drawScreen(currentState);
-    } else {
-        cout << "Tidak bisa teleport" << endl;
     }
 }
 
@@ -260,7 +254,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
                 allowTeleport = true;
             }
         } else if (toState==6) {
-            if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
                 allowTeleport = true;
             }
         }
@@ -297,10 +291,10 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             }
         }
     }
-    
+
     if (allowTeleport) {
         currentState = toState;
-        s.drawStadium();
+        //s.drawStadium(); //ERROR
     } else {
         cout << "Tidak bisa teleport" << endl;
     }
@@ -334,7 +328,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
                 allowTeleport = true;
             }
         } else if (toState==6) {
-            if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
                 allowTeleport = true;
             }
         }
@@ -371,10 +365,10 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             }
         }
     }
-    
+
     if (allowTeleport) {
         currentState = toState;
-        s.drawCombinatorium();
+        //s.drawCombinatorium(); //ERROR
     } else {
         cout << "Tidak bisa teleport" << endl;
     }
@@ -408,7 +402,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
                 allowTeleport = true;
             }
         } else if (toState==6) {
-            if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
                 allowTeleport = true;
             }
         }
@@ -445,7 +439,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             }
         }
     }
-    
+
     if (allowTeleport) {
         currentState = toState;
         s.drawHome();
@@ -482,7 +476,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
                 allowTeleport = true;
             }
         } else if (toState==6) {
-            if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
                 allowTeleport = true;
             }
         }
@@ -519,7 +513,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             }
         }
     }
-    
+
     if (allowTeleport) {
         currentState = toState;
         s.drawStore();
@@ -556,7 +550,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
                 allowTeleport = true;
             }
         } else if (toState==6) {
-            if (xPosition==xCOmbinatoriumBound && yPosition==yCombinatoriumBound) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
                 allowTeleport = true;
             }
         }
@@ -593,7 +587,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
             }
         }
     }
-    
+
     if (allowTeleport) {
         currentState = toState;
         s.drawScreen(currentState);
@@ -633,8 +627,6 @@ void Player::move(string s, int i, Screen sc){
             curY= curY+i;
         }
     }
-
-
 }
 
 void Player::showMonsterList(){
@@ -691,15 +683,15 @@ void Player::delItem(Item item){
 
 
 
-/*--------------------------------------------------------------------------------------method tambahan---------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------methodtambahan---------------------------------------------------------------------------------------*/
 
 void Player::printListItem(){
     cout << endl;
     cout << "list item: "<<endl;
     for(int i=0; i<listItem.size();i++){
-        Item &a = listItem.at(i);                                   //reference???
-        cout << a.getItemName()<<endl;
-    }//end for
+        cout << ">" << listItem[i].getItemName() << endl;
+		cout << ">> harga : " << listItem[i].getHarga() << endl;
+    }
 }
 
 void Player::printListMonster(){
@@ -707,7 +699,7 @@ void Player::printListMonster(){
     cout << "list monster: "<<endl;
     typedef map<string,Monster>::const_iterator mapIter;
     for(mapIter iter = listMonster.begin(); iter != listMonster.end(); iter++){
-        cout << iter->first << endl;
+        cout << ">" << iter->first << endl;
     }//end for
 }
 
@@ -717,4 +709,14 @@ void Player::addToListItem(Item item){
 
 void Player::addToListMonster(string namaMonster, Monster monster){
         listMonster.insert(make_pair(namaMonster, monster));
+}
+
+int Player::isContainMonster(string _s){
+	cout << _s;
+	map<string,Monster>::iterator it = this->listMonster.find(_s);
+	if (it == this->listMonster.end()){
+		return 0;
+	} else {
+		return 1;
+	}
 }

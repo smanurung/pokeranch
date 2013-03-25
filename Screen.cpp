@@ -318,8 +318,6 @@ void Screen::drawMatriksCombinatorium(){
 				break;
 			}
 		}
-		
-		//_s.matriks[HOME_WIDTH-i,i] = subs;
 		_s.setMatriks(0,COMBINATORIUM_WIDTH-i-1,subs);
 	}
 	
