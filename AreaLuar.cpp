@@ -8,7 +8,7 @@
 #include "AreaLuar.h"
 
 AreaLuar::AreaLuar() {
-	
+
 }
 
 AreaLuar::AreaLuar(int x, int y){
@@ -77,7 +77,7 @@ AreaLuar::AreaLuar(int x, int y){
 			matriks[j][i] = '*';
 		}
 	}
-    
+
 }
 
 AreaLuar::AreaLuar(const AreaLuar& AL) {
@@ -114,6 +114,6 @@ void AreaLuar::drawScreen(int i){
     drawMatriks(); //misalkan aja angka satu
 }
 
-int Kota::isSteppable(int y, int x){ //return 1 apabila dapat diinjak
+int AreaLuar::isSteppable(int y, int x){ //return 1 apabila dapat diinjak
 	return matriks[x][y] == ' ' || matriks[x][y] == 'K' || matriks[x][y] == 'M';
 }

@@ -226,12 +226,12 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
         }
     }
     if (allowTeleport) {
-        
+
         currentState = toState;
         setCurX(xPosition);
         setCurY(yPosition);
         cout << curY << "," << curX << endl;
-        
+
         s.setPosisiPlayer(xPosition,yPosition);
         s.drawScreen(currentState);
     } else {
@@ -307,7 +307,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
         }
     }
     if (allowTeleport) {
-         
+
         currentState = toState;
         setCurX(xPosition);
         setCurY(yPosition);
@@ -392,8 +392,8 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
     if (allowTeleport) {
         currentState = toState;
         setCurX(xPosition);
-        setCurY(yPosition);        
-        s.drawStadium(); 
+        setCurY(yPosition);
+        s.drawStadium();
     } else {
         cout << "Tidak bisa teleport" << endl;
     }
@@ -733,7 +733,7 @@ void Player::move(string s, int i, Screen sc){
         }else {
             curY= curY+i;
         }
-    }    
+    }
     cout << curY << "," << curX << endl;
 }
 
@@ -795,7 +795,7 @@ void Player::delItem(Item item){
 
 void Player::printListItem(){
 	cout << this->listItem[0].getItemName() << endl;
-	
+
     cout << endl;
     cout << "list item: "<<endl;
     for(int i=0; i<listItem.size();i++){

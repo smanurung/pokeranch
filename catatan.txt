@@ -1,0 +1,4 @@
+
+	g++ -o pokeranch AreaLuar.cpp Battle.cpp BattleScreen.cpp Home.cpp Item.cpp Kota.cpp main2.cpp Monster.cpp MonsterBall.cpp MonsterEgg.cpp NPC.cpp Player.cpp Point.cpp Potion.cpp Screen.cpp SkillMonster.cpp Stadium.cpp StatusIncrease.cpp Store.cpp Combinatorium.cpp
+	
+	cd "d/kuliah/smstr 6/oop/tubes 1/PokeRanch

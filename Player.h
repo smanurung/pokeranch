@@ -27,7 +27,7 @@ private:
     string nama;
     int uang;
     vector<Item> listItem;
-    map<string,Monster> listMonster;
+
     int curX;
     int curY;
     int jumlahMenang;
@@ -38,6 +38,7 @@ private:
 
 public:
 
+    map<string,Monster> listMonster;
     Player();
     Player(string nama);
     ~Player();
