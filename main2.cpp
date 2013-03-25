@@ -13,6 +13,7 @@
 #include <vector>
 #include <sstream>
 #include <iterator>
+#include <ctime>
 
 
 #include "AreaLuar.h"
@@ -23,6 +24,12 @@
 #include "Stadium.h"
 
 using namespace std;
+
+void sleep(unsigned int mseconds)
+{
+    clock_t goal = mseconds + clock();
+    while (goal > clock());
+}
 
 void parseFile(Player& _p){
 	fstream f;
@@ -244,6 +251,13 @@ int main() {
         }
         else if(command == "sleep") {
             //sleep
+			cout << "\nPlayer is sleeping ... \n" << endl;
+			
+			//merevitalisasi seluruh monster
+			
+			
+			sleep(5000);
+			cout << "\nPlayer sudah bangun kembali ^^\n" << endl;
         }
         else if(command == "save") {
             //save
