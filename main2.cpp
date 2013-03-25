@@ -353,6 +353,16 @@ int main() {
         else if(command == "list-item") {
             //list-item
 			p1.printListItem();
+        } else if(command == "item"){
+            if (argument.size() < 1){
+                cout << "Argumen kurang" << endl;
+            } else if ((argument.size() == 1) && (argument[0] == "MonsterEgg")){
+                p1.addMonster(DataMonster[rand() %7]);
+            } else if ((argument.size() == 2) && (argument[0] == "MonsterEgg")){
+                Monster M = DataMonster[rand() %7];
+                M.setNama(argument[1]);
+                p1.addMonster(M);
+            }
         }
         else if(command == "status") {
             //status
