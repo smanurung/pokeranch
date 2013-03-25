@@ -4,7 +4,7 @@
 #define HOME_WIDTH 20
 
 Home::Home(){
-	cout << "Masuk" << endl;
+	//cout << "Masuk" << endl;
 }
 
 Home::~Home(){
