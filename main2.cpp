@@ -6,6 +6,8 @@
 #include "StatusIncrease.h"
 #include "MonsterEgg.h"
 #include "Kota.h"
+#include "Monster.h"
+#include "SkillMonster.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
@@ -134,8 +136,82 @@ void parseFile(Player& _p){
 	f.close();
 }
 
+void DatabaseMonster(vector<Monster>& listMonster){
+    ifstream f;
+    f.open("Monster.pr");
+    while(!f.eof()){
+        Monster M;
+        string a;
+        string b;
+        int d;
+        getline(f,a);
+        istringstream c(a);
+        c >> b;
+        M.setNama(b);
+        cout << M.getNama();
+        c >> b;
+        d = atoi(b.c_str());
+        M.setLevel(d);
+        cout << M.getLevel();
+        c >> b;
+        d = atoi (b.c_str());
+        M.setExp(d);
+        cout << M.getExp();
+        c >> b;
+        M.setSpecies(b);
+        cout << M.getSpecies();
+        c >> b;
+        M.setElm(b);
+        cout << M.getElm();
+        c >> b;
+        d = atoi(b.c_str());
+        M.setHP(d);
+        M.setCurrentHP(d);
+        cout << M.getHP();
+        cout << M.getCurrentHP();
+        c >> b;
+        d = atoi (b.c_str());
+        M.setMP(d);
+        M.setCurrentMP(d);
+        cout << M.getMP();
+        cout << M.getCurrentMP();
+        c >> b;
+        d = atoi (b.c_str());
+        M.setSpeed(d);
+        cout << M.getSpeed();
+        c >> b;
+        d = atoi (b.c_str());
+        M.setBonusUang(d);
+        cout << M.getBonusUang();
+        c >> b;
+        d = atoi (b.c_str());
+        M.setBonusExp(d);
+        cout << M.getBonusExp();
+        c >> b;
+        M.setStatus(b);
+        cout << M.getStatus();
+        c >> b;
+        d = atoi (b.c_str());
+        M.setUmur(d);
+        cout << M.getUmur();
+        c >> b;
+        M.setWarnaMonster(b);
+        cout << M.getWarnaMonster();
+        listMonster.push_back(M);
+    }
+    f.close();
+}
+
+
 /*-------------------------------------------------------------------main----------------------------------------------------------------*/
 int main() {
+=======
+int main() {
+    //char input[500];
+    //char command[100];
+    //char argument[4][100];
+	vector<Monster> DataMonster;
+	
 	string input;
 	string command;
 	vector<string> argument;
@@ -159,8 +235,11 @@ int main() {
 
 	cout << "---POKERANCH---" << endl;
 
+	DatabaseMonster(DataMonster);
+
     while (command != "exit") {
 		cout << "command :";
+
         getline(cin,input);
 
 		argument.clear();
@@ -335,4 +414,6 @@ int main() {
     }//end main
 
     return 0;
+
 }
+
