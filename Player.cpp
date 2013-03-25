@@ -690,7 +690,7 @@ void Player::addMoney(int i){
 
 /*-------------------------------------------------------------------------------------method baru---------------------------------------------------------------------------------- */
 void Player::addMonster(Monster& _m){
-    cout << "method add monster" << endl;
+    this->listMonster[_m.getNama()] = _m;
 }
 
 void Player::delMoney(int i){
@@ -713,6 +713,8 @@ void Player::delItem(Item item){
 /*--------------------------------------------------------------------------------------methodtambahan---------------------------------------------------------------------------------------*/
 
 void Player::printListItem(){
+	cout << this->listItem[0].getItemName() << endl;
+	
     cout << endl;
     cout << "list item: "<<endl;
     for(int i=0; i<listItem.size();i++){
@@ -745,5 +747,13 @@ int Player::isContainMonster(string _s){
 		return 0;
 	} else {
 		return 1;
+	}
+}
+
+Monster Player::getMonster(string _m) {
+	if (isContainMonster(_m)) {
+		return this->listMonster[_m];
+	} else {
+		return (*(Monster*)0);
 	}
 }

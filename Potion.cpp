@@ -1,6 +1,6 @@
 //
 //  Potion.cpp
-//  
+//
 //
 //  Created by Muhammad Sohibul Maromi on 3/15/13.
 //
@@ -24,13 +24,13 @@ Potion::Potion(const Potion& p) {
 }
 
 Potion::~Potion() {
-    
+
 }
 
 Potion& Potion::operator=(const Potion& p) {
     mpTambah = p.mpTambah;
     hpTambah = p.hpTambah;
-    
+
     return *this;
 }
 
@@ -38,8 +38,16 @@ void Potion::setMP(int _mp){
 	this->mpTambah = _mp;
 }
 
+int Potion::getMP(){
+    return mpTambah;
+}
+
 void Potion::setHP(int _hp){
 	this->hpTambah = _hp;
+}
+
+int Potion::getHP(){
+    return hpTambah;
 }
 
 void Potion::execute(Monster& m) {

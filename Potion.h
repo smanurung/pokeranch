@@ -1,6 +1,6 @@
 //
 //  Potion.h
-//  
+//
 //
 //  Created by Muhammad Sohibul Maromi on 3/15/13.
 //
@@ -19,12 +19,14 @@ public:
     Potion(const Potion&);
     ~Potion();
     Potion& operator=(const Potion&);
-    
+
     void execute(Monster&);
-	
+
 	void setMP(int);
+	int getHP();
 	void setHP(int);
-    
+	int getMP();
+
 private:
     int mpTambah;
     int hpTambah;

@@ -26,7 +26,7 @@ public:
 
     void execute();
 
-private:
+protected:
     int harga;
     string itemName;
 };

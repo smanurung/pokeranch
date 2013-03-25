@@ -13,6 +13,7 @@
 #include <vector>
 #include <sstream>
 #include <iterator>
+#include <ctime>
 
 
 #include "AreaLuar.h"
@@ -23,6 +24,12 @@
 #include "Stadium.h"
 
 using namespace std;
+
+void sleep(unsigned int mseconds)
+{
+    clock_t goal = mseconds + clock();
+    while (goal > clock());
+}
 
 void parseFile(Player& _p){
 	fstream f;
@@ -58,8 +65,6 @@ void parseFile(Player& _p){
 				int hp = atoi(tokens[1].c_str());
 				Potion _pot(mp,hp);
 				_p.addItem(_pot);
-				//item potion telah berhasil ditambahkan ke listitem player
-				//cout << tokens[0] << " " << tokens[1] << "berhasil aman" << endl;
 
 				idx += 1;
 			} else if (!isiFile[idx].compare("statusincrease")) {
@@ -203,20 +208,22 @@ int main() {
 	parseFile(p1);
 
     Kota kota(p1.getCurX(),p1.getCurY());
-    AreaLuar areaLuar(50,50);
+    AreaLuar areaLuar;
 
 //    BattleScreen battleScreen;
+<<<<<<< HEAD
     Combinatorium combinatorium;
    Home home;
+=======
+    Combinatorium combinatorium;
+    Home home;
+>>>>>>> cb5bb07020dd7eb13cf0f8dded01f7fc106ca616
     Stadium stadium;
     Store store;
-
 
 	cout << "---POKERANCH---" << endl;
 
     DatabaseMonster(DataMonster);
-
-
 
     while (command != "exit") {
 		cout << "command :";
@@ -249,18 +256,24 @@ int main() {
         }
         else if(command == "sleep") {
             //sleep
+			cout << "\nPlayer is sleeping ... \n" << endl;
+
+			//merevitalisasi seluruh monster
+
+
+			sleep(5000);
+			cout << "\nPlayer sudah bangun kembali ^^\n" << endl;
         }
         else if(command == "save") {
             //save
         }
-
 /*----------------------------------------------------------------------------------------------------------------------teleport----------------------------------------------------------------------------------------------------------------------*/
         else if(command == "teleport"){
             
             if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
-                cout<<argument[0];
-				}else
+                //cout<<argument[0];
+			}else
 				//teleport
 				//assign state
 				if(argument[0] == "home") {				 //toState  0
@@ -275,32 +288,31 @@ int main() {
 //				    posisiXPlayer=xLuarBound;
 //				    posisiYPlayer=yLuarBound;
 					p1.teleport(state, 2, posisiXPlayer, posisiYPlayer, areaLuar);
-            }//end if luar
-            else if(argument[0] == "store") {                  //toState  3
-//				    posisiXPlayer=xStoreBound;
-//				    posisiYPlayer=yStoreBound;
-                p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
-            }
-            else if(argument[0] == "stadium") {            //toState  4
-                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
-            }
-            else if(argument[0] == "combinatorium") {                  //toState  6
-				    posisiXPlayer=xCombinatoriumBound;
-				    posisiYPlayer=yCombinatoriumBound;
-                p1.teleport(state, 6, posisiXPlayer, posisiYPlayer, combinatorium);
-            }
-            else {
-                cout << "tidak ada tempat tersebut" << endl;
-            }
-                      
-            cout << posisiXPlayer << "," << posisiYPlayer;
-        }//end if teleport
+
+				}//end if luar
+				else if(argument[0] == "store") {                  //toState  3
+	//				    posisiXPlayer=xStoreBound;
+	//				    posisiYPlayer=yStoreBound;
+					p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
+				}
+				else if(argument[0] == "stadium") {            //toState  4
+	                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
+				}
+				else if(argument[0] == "combinatorium") {                  //toState  6
+						posisiXPlayer=xCombinatoriumBound;
+						posisiYPlayer=yCombinatoriumBound;
+					p1.teleport(state, 6, posisiXPlayer, posisiYPlayer, combinatorium);
+				}
+				else {
+					cout << "tidak ada tempat tersebut" << endl;
+				}
+			}//end if teleport
 
 
 /*----------------------------------------------------------------------------------------------------------------------sell----------------------------------------------------------------------------------------------------------------------*/
         else if(command == "sell") {
             if(argument.size() < 2) {
-                cout << "argumen kurang" << endl;
+                cout << "argumen combine kurang" << endl;
              }
             else{
                 p1.sell(argument[0],atoi(argument[1].c_str()));
@@ -310,27 +322,104 @@ int main() {
         else if(command == "buy") {
             if(argument.size() < 2) {
                 cout << "argumen kurang" << endl;
-                break;
             }
             //buy
         }
         else if(command == "combine") {
             if(argument.size() < 2) {
                 cout << "argumen kurang" << endl;
-                break;
-            }
-            //combine
+            } else if (state != 6) {
+				cout << "\nWARNING. Player tidak bisa melakukan combine!\n" << endl;
+			} else {
+				string _monStr2 = argument[0];
+				string _monStr1 = argument[1];
+				if (p1.isContainMonster(_monStr1) && p1.isContainMonster(_monStr2)) {
+					Monster _m1 = p1.getMonster(_monStr1).Combine(p1.getMonster(_monStr2));
+					p1.addMonster(_m1);
+					p1.dismiss(_monStr1);
+					p1.dismiss(_monStr2);
+					cout << "\nSELAMAT. Combine berhasil dilakukan\n" << endl;
+				} else {
+					cout << "\nWARNING. Monster tidak dimiliki player\n" << endl;
+				}
+			}
         }
-        else if(command == "battle") {
-            if(argument.size() == 0) {
-                cout << "argumen kurang" << endl;
+            else if (command == "battle"){
+            if (argument.size() != 1){
+                cout << "argumen seharusnya battle <bet>" << endl;
+            } else if (argument.size() == 1) {
+                cout << "Mode Battle" << endl;
+                int d = atoi(argument[1].c_str());
+                Monster MPlayer = DataMonster[rand() %7];
+                cout << "Monster Player : " << endl;
+                MPlayer.ShowBattleStatus();
+                Monster MEnemy = DataMonster[rand() %7];
+                cout << "Monster Musuh : " << endl;
+                MEnemy.ShowBattleStatus();
+                while((MPlayer.getCurrentHP() > 0) && (MEnemy.getCurrentHP() > 0)){
+                    MPlayer.StatusEfek();
+                    MEnemy.StatusEfek();
+
+                    MPlayer.addSkill();
+                    MEnemy.addSkill();
+
+                    cout << "Monster Player : " << endl;
+                    MPlayer.ShowBattleStatus();
+
+                    cout << "Monster Musuh : " << endl;
+                    MEnemy.ShowBattleStatus();
+
+                    cout << "command : ";
+                    getline(cin,input);
+
+                    argument.clear();
+
+                    //splitting input
+                    istringstream iss(input);
+                    vector<string> strInput;
+                    copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+
+                    command = strInput[0];
+                    for (int i = 1; i<strInput.size(); i++){
+                        argument.push_back(strInput[i]);
+                    }
+
+                    int i = 0;
+
+                    if(command == "skill"){
+                        if (argument.size() == 1){
+                            int a = 0;
+                            while(MPlayer.ListSkill[a].getNamaSkill() != argument[0]){
+                                a++;
+                            }
+                            MEnemy.setCurrentHP(MEnemy.getCurrentHP() - MPlayer.ListSkill[a].getDamage());
+                            MEnemy.setStatus(MPlayer.ListSkill[a].getEfek());
+                        } else if (argument.size() == 0){
+                            MPlayer.ShowListSkill();
+                        } else {
+                            cout << "argumen seharusnya skill <nama-skill>" << endl;
+                        }
+                    } else if(command == "item"){
+                        if (argument.size() == 1){
+                            if(argument[0] == "Potion"){
+                                MPlayer.setCurrentHP(MPlayer.getCurrentHP() + 20);
+                            }
+                        } else {
+                            cout << "Argumen seharusnya item <nama-item>" << endl;
+                        }
+                    } else if(command == "change"){
+                        if(argument.size() == 1){
+                            Monster M = DataMonster[rand() %7];
+                            M.setNama(argument[0]);
+                            MPlayer = M;
+                        }
+                    }
+                }
             }
-            //battle
         }
         else if(command == "move") {
             if(argument.size() <2) {
                 cout << "argumen kurang" << endl;
-                break;
             }
             //move
             int step = atoi(argument[1].c_str());
@@ -347,6 +436,16 @@ int main() {
         else if(command == "list-item") {
             //list-item
 			p1.printListItem();
+        } else if(command == "item"){
+            if (argument.size() < 1){
+                cout << "Argumen kurang" << endl;
+            } else if ((argument.size() == 1) && (argument[0] == "MonsterEgg")){
+                p1.addMonster(DataMonster[rand() %7]);
+            } else if ((argument.size() == 2) && (argument[0] == "MonsterEgg")){
+                Monster M = DataMonster[rand() %7];
+                M.setNama(argument[1]);
+                p1.addMonster(M);
+            }
         }
         else if(command == "status") {
             //status
