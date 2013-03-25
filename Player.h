@@ -81,6 +81,7 @@ public:
     void teleport(int&,int,int&,int&, Home&);
     void teleport(int&,int,int&,int&, Store&);
     void teleport(int&,int,int&,int&, BattleScreen&);
+    void teleport(int &currentState, int toState, int &xPosition, int &yPosition, Kota &s);
     void move(string, int, Screen);
     void showMonsterList();
     void showItemList();

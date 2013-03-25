@@ -159,6 +159,88 @@ void Player::buy(Item i){
     }
 }
 
+
+void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosition, Kota &s) {
+    bool allowTeleport = false;
+    if (currentState==1) { //kota
+        if (toState==0) {
+            if (xPosition==xHomeBound && yPosition==yHomeBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==2) {
+            if (xPosition==xLuarBound && yPosition==yLuarBound) {
+                allowTeleport = true;
+                xPosition = 1;
+                yPosition = 1;
+            }
+        } else if (toState==3) {
+            if (xPosition==xStoreBound && yPosition==yStoreBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==4) {
+            if (xPosition==xStadiumBound && yPosition==yStadiumBound) {
+                allowTeleport = true;
+                xPosition = 1;
+                yPosition = 1;
+            }
+        } else if (toState==5) {
+            if (xPosition==xBattlescreenBound && yPosition==yBattlescreenBound) {
+                allowTeleport = true;
+            }
+        } else if (toState==6) {
+            if (xPosition==xCombinatoriumBound && yPosition==yCombinatoriumBound) {
+                allowTeleport = true;
+            }
+        }
+    } else {
+        if (toState==1) {
+            if (currentState==0) {
+                allowTeleport = true;
+                xPosition = xHomeBound;
+                yPosition = yHomeBound;
+            } else if (currentState==2) {
+                if (xPosition==1 && yPosition==1) {
+                    allowTeleport = true;
+                    xPosition = xLuarBound;
+                    yPosition = yLuarBound;
+                }
+            } else if (currentState==3) {
+                allowTeleport = true;
+                xPosition = xStoreBound;
+                yPosition = yStoreBound;
+            } else if (currentState==4) {
+                if (xPosition==1 && yPosition==1) {
+                    allowTeleport = true;
+                    xPosition = xStadiumBound;
+                    yPosition = yStadiumBound;
+                }
+            } else if (currentState==5) {
+                allowTeleport = true;
+                xPosition = xBattlescreenBound;
+                yPosition = yBattlescreenBound;
+            } else if (currentState==6) {
+                allowTeleport = true;
+                xPosition = xCombinatoriumBound;
+                yPosition = yCombinatoriumBound;
+            }
+        }
+    }
+    if (allowTeleport) {
+        
+        currentState = toState;
+        setCurX(xPosition);
+        setCurY(yPosition);
+        cout << curY << "," << curX << endl;
+        
+        s.setPosisiPlayer(xPosition,yPosition);
+        s.drawScreen(currentState);
+    } else {
+        cout << "Tidak bisa teleport" << endl;
+    }
+}
+
+
+
 void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosition, Screen &s) {
     bool allowTeleport = false;
     if (currentState==1) { //kota
@@ -651,8 +733,7 @@ void Player::move(string s, int i, Screen sc){
         }else {
             curY= curY+i;
         }
-    }
-    
+    }    
     cout << curY << "," << curX << endl;
 }
 
