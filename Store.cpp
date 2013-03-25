@@ -15,7 +15,7 @@ Store::Store(int* i){
 }
 
 Store::~Store(){
-	
+
 }
 
 void Store::printAvailableItem(){
@@ -25,5 +25,6 @@ void Store::printAvailableItem(){
 }
 
 void Store::drawStore(){
-	this->screenStore.drawScreen(2);
+	this->screenStore.drawScreen(3);
+
 }

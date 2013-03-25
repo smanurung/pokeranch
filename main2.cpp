@@ -206,10 +206,10 @@ int main() {
     AreaLuar areaLuar(50,50);
 
 //    BattleScreen battleScreen;
-//    Combinatorium combinatorium;
+    Combinatorium combinatorium;
    Home home;
 //    Stadium stadium;
-//    Store store;
+    Store store;
 
 
 	cout << "---POKERANCH---" << endl;
@@ -276,10 +276,17 @@ int main() {
 					p1.teleport(state, 2, posisiXPlayer, posisiYPlayer, areaLuar);
             }//end if luar
             else if(argument[0] == "store") {                  //toState  3
-//                p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
+//				    posisiXPlayer=xStoreBound;
+//				    posisiYPlayer=yStoreBound;
+                p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
             }
             else if(argument[0] == "stadium") {            //toState  4
 //                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
+            }
+            else if(argument[0] == "combinatorium") {                  //toState  6
+				    posisiXPlayer=xCombinatoriumBound;
+				    posisiYPlayer=yCombinatoriumBound;
+                p1.teleport(state, 6, posisiXPlayer, posisiYPlayer, combinatorium);
             }
             else {
                 cout << "tidak ada tempat tersebut" << endl;

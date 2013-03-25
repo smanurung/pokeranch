@@ -8,12 +8,12 @@
 
 #include "StatusIncrease.h"
 
-StatusIncrease::StatusIncrease(int x, string s, int mp, int hp) : Item(100,"statusincrease") {
+StatusIncrease::StatusIncrease(int x, string s, int mp, int hp) {
     mpMaxAddition = mp;
     hpMaxAddition = hp;
 }
 
-StatusIncrease::StatusIncrease(int mpp,int hpp) : Item(100,"statusincrease"){
+StatusIncrease::StatusIncrease(int mpp,int hpp){
 	this->mpMaxAddition = mpp;
 	this->hpMaxAddition = hpp;
 }
@@ -21,19 +21,16 @@ StatusIncrease::StatusIncrease(int mpp,int hpp) : Item(100,"statusincrease"){
 StatusIncrease::StatusIncrease(const StatusIncrease& s) {
     mpMaxAddition = s.mpMaxAddition;
     hpMaxAddition = s.hpMaxAddition;
-	this->harga = s.harga;
-	this->itemName = s.itemName;
 }
 
 StatusIncrease::~StatusIncrease() {
+    
 }
 
 StatusIncrease& StatusIncrease::operator=(const StatusIncrease& s) {
     mpMaxAddition = s.mpMaxAddition;
     hpMaxAddition = s.hpMaxAddition;
-    this->itemName = s.itemName;
-	this->harga = s.harga;
-	
+    
     return *this;
 }
 

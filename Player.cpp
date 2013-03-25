@@ -375,7 +375,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
 
     if (allowTeleport) {
         currentState = toState;
-        //s.drawCombinatorium(); //ERROR
+        s.drawCombinatorium();
     } else {
         cout << "Tidak bisa teleport" << endl;
     }
