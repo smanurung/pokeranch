@@ -301,7 +301,7 @@ void Player::teleport(int &currentState, int toState, int &xPosition, int &yPosi
 
     if (allowTeleport) {
         currentState = toState;
-        //s.drawStadium(); //ERROR
+        s.drawStadium();
     } else {
         cout << "Tidak bisa teleport" << endl;
     }

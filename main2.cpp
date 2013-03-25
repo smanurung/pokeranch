@@ -259,7 +259,7 @@ int main() {
             if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
                 //cout<<argument[0];
-				}else
+			}else
 				//teleport
 				//assign state
 				if(argument[0] == "home") {				 //toState  0
@@ -274,24 +274,24 @@ int main() {
 //				    posisiXPlayer=xLuarBound;
 //				    posisiYPlayer=yLuarBound;
 					p1.teleport(state, 2, posisiXPlayer, posisiYPlayer, areaLuar);
-            }//end if luar
-            else if(argument[0] == "store") {                  //toState  3
-//				    posisiXPlayer=xStoreBound;
-//				    posisiYPlayer=yStoreBound;
-                p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
-            }
-            else if(argument[0] == "stadium") {            //toState  4
-//                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
-            }
-            else if(argument[0] == "combinatorium") {                  //toState  6
-				    posisiXPlayer=xCombinatoriumBound;
-				    posisiYPlayer=yCombinatoriumBound;
-                p1.teleport(state, 6, posisiXPlayer, posisiYPlayer, combinatorium);
-            }
-            else {
-                cout << "tidak ada tempat tersebut" << endl;
-            }
-        }//end if teleport
+				}//end if luar
+				else if(argument[0] == "store") {                  //toState  3
+	//				    posisiXPlayer=xStoreBound;
+	//				    posisiYPlayer=yStoreBound;
+					p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
+				}
+				else if(argument[0] == "stadium") {            //toState  4
+	//                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
+				}
+				else if(argument[0] == "combinatorium") {                  //toState  6
+						posisiXPlayer=xCombinatoriumBound;
+						posisiYPlayer=yCombinatoriumBound;
+					p1.teleport(state, 6, posisiXPlayer, posisiYPlayer, combinatorium);
+				}
+				else {
+					cout << "tidak ada tempat tersebut" << endl;
+				}
+			}//end if teleport
 
 
 /*----------------------------------------------------------------------------------------------------------------------sell----------------------------------------------------------------------------------------------------------------------*/
