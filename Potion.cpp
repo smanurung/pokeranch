@@ -8,12 +8,12 @@
 
 #include "Potion.h"
 
-Potion::Potion(int x, string s, int mp, int hp) { //ini kok x sama s ngga ada gunanya?
+Potion::Potion(int x, string s, int mp, int hp) : Item(100,"potion") { //ini kok x sama s ngga ada gunanya?
     mpTambah = mp;
     hpTambah = hp;
 }
 
-Potion::Potion(int _mp, int _hp){
+Potion::Potion(int _mp, int _hp) : Item(100,"potion"){
 	this->mpTambah = _mp;
 	this->hpTambah = _hp;
 }
@@ -21,6 +21,9 @@ Potion::Potion(int _mp, int _hp){
 Potion::Potion(const Potion& p) {
     mpTambah = p.mpTambah;
     hpTambah = p.hpTambah;
+	
+	harga = p.harga;
+	itemName = p.itemName;
 }
 
 Potion::~Potion() {
@@ -30,6 +33,9 @@ Potion::~Potion() {
 Potion& Potion::operator=(const Potion& p) {
     mpTambah = p.mpTambah;
     hpTambah = p.hpTambah;
+	
+	harga = p.harga;
+	itemName = p.itemName;
     
     return *this;
 }

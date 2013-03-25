@@ -48,7 +48,7 @@ void parseFile(Player& _p){
 		const string END_ITEM = "enditem";
 		const string END_MONSTER = "endmonster";
 		while (isiFile[idx].compare(END_ITEM)){
-			if (!isiFile[idx].compare("potion")) {
+			if (!isiFile[idx].compare("potion")) {				
 				idx += 1;
 
 				istringstream iss(isiFile[idx]);
@@ -58,8 +58,6 @@ void parseFile(Player& _p){
 				int hp = atoi(tokens[1].c_str());
 				Potion _pot(mp,hp);
 				_p.addItem(_pot);
-				//item potion telah berhasil ditambahkan ke listitem player
-				//cout << tokens[0] << " " << tokens[1] << "berhasil aman" << endl;
 
 				idx += 1;
 			} else if (!isiFile[idx].compare("statusincrease")) {
@@ -207,8 +205,8 @@ int main() {
 
 //    BattleScreen battleScreen;
     Combinatorium combinatorium;
-   Home home;
-//    Stadium stadium;
+    Home home;
+    Stadium stadium;
     Store store;
 
 
@@ -281,7 +279,7 @@ int main() {
 					p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
 				}
 				else if(argument[0] == "stadium") {            //toState  4
-	//                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
+	                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
 				}
 				else if(argument[0] == "combinatorium") {                  //toState  6
 						posisiXPlayer=xCombinatoriumBound;

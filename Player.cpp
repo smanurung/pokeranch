@@ -693,6 +693,8 @@ void Player::delItem(Item item){
 /*--------------------------------------------------------------------------------------methodtambahan---------------------------------------------------------------------------------------*/
 
 void Player::printListItem(){
+	cout << this->listItem[0].getItemName() << endl;
+	
     cout << endl;
     cout << "list item: "<<endl;
     for(int i=0; i<listItem.size();i++){
