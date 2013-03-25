@@ -19,13 +19,37 @@ public:
     ~AreaLuar();
     AreaLuar& operator=(const AreaLuar&);
 
-    void drawScreen(int);
-    int isSteppable(Point);
-    void implementRandom();
+    void setXPlayer(int);
+    void setYPlayer(int);
+
+    void setPosisiPlayer(int,int);
+
+    void drawScreen(int); //override dari kelas Screen
+    int isSteppable();
 
 private:
-    Point monsterPositionList[];
-    Point unsteppableList[];
+    int xPlayer;
+    int yPlayer;
+    int xM1; //Monster 1
+    int yM1;
+    int xM2; //Monster 2
+    int yM2;
+    int xM3; //Monster 3
+    int yM3;
+    int xM4; //Monster 4
+    int yM4;
+    int xM5; //Monster 5
+    int yM5;
+    int xM6; //Monster 6
+    int yM6;
+    int xM7; //Monster 7
+    int yM7;
+    int xM8; //Monster 8
+    int yM8;
+    int xM9; //Monster 8
+    int yM9;
+    int xM10; //Monster 10
+    int yM10;
 };
 
 #endif	/* AREALUAR_H */

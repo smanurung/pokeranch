@@ -110,7 +110,7 @@ void Screen::drawMatriks(){
             				cout <<bmagenta<< matriks[i][j]<<normal<<bnormal ;
             			} else if (matriks[i][j] == 'T' || matriks[i][j] == '|'){ //Store
             				cout <<byellow<< matriks[i][j]<<normal<<bnormal ;
-            			} else if (matriks[i][j] == 'L'){ //ke Area Luar
+            			} else if (matriks[i][j] == 'L' || matriks[i][j] == 'K' || matriks[i][j] == '+'){ //ke Area Luar
             				cout << matriks[i][j];
             			} else if (matriks[i][j] == '*'){ //Ceritanya pepohonan
             				cout <<bgreen<<green<< matriks[i][j]<<normal<<bnormal ;
