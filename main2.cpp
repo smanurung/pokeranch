@@ -208,7 +208,7 @@ int main() {
 //    BattleScreen battleScreen;
     Combinatorium combinatorium;
    Home home;
-//    Stadium stadium;
+    Stadium stadium;
     Store store;
 
 
@@ -281,11 +281,13 @@ int main() {
                 p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
             }
             else if(argument[0] == "stadium") {            //toState  4
-//                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
+//				    posisiXPlayer=xStadiumBound;
+//				    posisiYPlayer=yStadiumBound;
+                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
             }
             else if(argument[0] == "combinatorium") {                  //toState  6
-				    posisiXPlayer=xCombinatoriumBound;
-				    posisiYPlayer=yCombinatoriumBound;
+//				    posisiXPlayer=xCombinatoriumBound;
+//				    posisiYPlayer=yCombinatoriumBound;
                 p1.teleport(state, 6, posisiXPlayer, posisiYPlayer, combinatorium);
             }
             else {
