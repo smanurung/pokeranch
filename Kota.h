@@ -33,6 +33,14 @@ private:
     map<string,Point> elmtPosition;
     int xPlayer;
     int yPlayer;
+    int xHome;
+    int yHome;
+    int xStadium;
+    int yStadium;
+    int xCmb;
+    int yCmb;
+    int xStore;
+    int yStore;
 };
 
 #endif	/* KOTA_H */

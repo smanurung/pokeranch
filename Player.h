@@ -75,12 +75,12 @@ public:
     void sleep();
     void sell(string,int);
     void buy(Item);
-    void teleport(int&,int,int,int, Screen&);
-    void teleport(int&,int,int,int, Stadium&);
-    void teleport(int&,int,int,int, Combinatorium&);
-    void teleport(int&,int,int,int, Home&);
-    void teleport(int&,int,int,int, Store&);
-    void teleport(int&,int,int,int, BattleScreen&);
+    void teleport(int&,int,int&,int&, Screen&);
+    void teleport(int&,int,int&,int&, Stadium&);
+    void teleport(int&,int,int&,int&, Combinatorium&);
+    void teleport(int&,int,int&,int&, Home&);
+    void teleport(int&,int,int&,int&, Store&);
+    void teleport(int&,int,int&,int&, BattleScreen&);
     void move(string, int, Screen);
     void showMonsterList();
     void showItemList();
