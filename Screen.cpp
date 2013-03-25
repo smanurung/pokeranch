@@ -75,7 +75,6 @@ Screen::Screen(int x, int y){
             matriks[i][j] = ' ';
         }
     }
-
 }
 
 Screen::Screen(const Screen& S) {
@@ -103,16 +102,18 @@ void Screen::drawMatriks(){
             				cout <<bgray<< matriks[i][j]<<normal<<bnormal ;
             			} else if (matriks[i][j] == '0'){ //orang/user
             				cout <<bgreen<< matriks[i][j]<<normal<<bnormal ;
-            			} else if (matriks[i][j] == 'S'){ //Stadium
+            			} else if (matriks[i][j] == 'S' || matriks[i][j] == '_'){ //Stadium
             				cout <<bred<< matriks[i][j]<<normal<<bnormal ;
-            			} else if (matriks[i][j] == 'H'){ //Home
+            			} else if (matriks[i][j] == 'H' || matriks[i][j] == '.'){ //Home
             				cout <<bcyan<< matriks[i][j]<<normal<<bnormal ;
-            			} else if (matriks[i][j] == 'C'){ //Combinatorium
+            			} else if (matriks[i][j] == 'C' || matriks[i][j] == '-'){ //Combinatorium
             				cout <<bmagenta<< matriks[i][j]<<normal<<bnormal ;
-            			} else if (matriks[i][j] == 'T'){ //Store
-            				cout << matriks[i][j];
+            			} else if (matriks[i][j] == 'T' || matriks[i][j] == '|'){ //Store
+            				cout <<byellow<< matriks[i][j]<<normal<<bnormal ;
             			} else if (matriks[i][j] == 'L'){ //ke Area Luar
             				cout << matriks[i][j];
+            			} else if (matriks[i][j] == '*'){ //Ceritanya pepohonan
+            				cout <<bgreen<<green<< matriks[i][j]<<normal<<bnormal ;
             			} else {//Lain-lain bisa ditambah
             				cout <<byellow<<red<< matriks[i][j]<<normal<<bnormal ;
             			}
