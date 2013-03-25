@@ -5,9 +5,9 @@ Combinatorium::Combinatorium(){
 }
 
 Combinatorium::~Combinatorium(){
-	
+
 }
 
 void Combinatorium::drawCombinatorium(){
-	this->screenCmb.drawScreen(3);
+	this->screenCmb.drawScreen(6);
 }

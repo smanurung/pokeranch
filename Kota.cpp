@@ -16,6 +16,19 @@ Kota::Kota(int x, int y){
     xPlayer=x;
     yPlayer=y;
     matriks[xPlayer][yPlayer]='0';
+    xHome = xHomeBound;
+    yHome = yHomeBound;
+    matriks[xHome][yHome]='H';
+    xStadium = xStadiumBound;
+    yStadium = yStadiumBound;
+    matriks[xStadium][yStadium]='S';
+    xCmb = xCombinatoriumBound;
+    yCmb = yCombinatoriumBound;
+    matriks[xCmb][yCmb]='C';
+    xStore = xStoreBound;
+    yStore = yStoreBound;
+    matriks[xStore][yStore]='T';
+    matriks[xLuarBound][yLuarBound]='L';
 }
 
 Kota::Kota(const Kota& K) {
@@ -35,7 +48,7 @@ void Kota::setYPlayer(int i){
 }
 
 void Kota::setPosisiPlayer(int x,int y){
-    matriks[xPlayer][yPlayer]='.';
+    matriks[xPlayer][yPlayer]=' ';
     setXPlayer(x);
     setYPlayer(y);
     matriks[x][y]='0';
@@ -48,7 +61,7 @@ Kota& Kota::operator =(const Kota& K){
 }
 
 void Kota::drawScreen(int i){
-    drawMatriksHome(); //misalkan aja angka satu
+    drawMatriks(); //misalkan aja angka satu
 }
 
 int Kota::isSteppable(){

@@ -1,7 +1,7 @@
-/* 
+/*
  * File:   AreaLuar.cpp
  * Author: haniferidaputra
- * 
+ *
  * Created on March 14, 2013, 11:12 PM
  */
 
@@ -57,8 +57,6 @@ AreaLuar& AreaLuar::operator =(const AreaLuar& AL){
 }
 
 void AreaLuar::drawScreen(int s){
-    switch (s){
-        case 0:
             cout << "AREA LUAR" << endl;
             for(int i=0; i<yLength; i++){
                 for(int j=0; j<xLength; j++){
@@ -66,8 +64,8 @@ void AreaLuar::drawScreen(int s){
                 }
                 cout<< endl;
             }//end for
-        break;
-    }
+
+
 }
 
 int AreaLuar::isSteppable(Point P){
@@ -75,5 +73,5 @@ int AreaLuar::isSteppable(Point P){
 }
 
 void AreaLuar::implementRandom(){
-    
+
 }
