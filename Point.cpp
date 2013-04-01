@@ -5,7 +5,7 @@
  * Created on March 14, 2013, 11:40 PM
  */
 
-#include "point.h"
+#include "Point.h"
 
 
 //constructor

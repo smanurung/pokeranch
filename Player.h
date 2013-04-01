@@ -38,7 +38,9 @@ private:
 
 public:
 
+    Monster defaultMonster;
     map<string,Monster> listMonster;
+
     Player();
     Player(string nama);
     ~Player();

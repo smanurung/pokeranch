@@ -745,8 +745,10 @@ void Player::showItemList(){
 
 }
 
-void Player::setMonster(string){
+void Player::setMonster(string s){
     //set default pokemon untuk battle
+    defaultMonster=listMonster[s];
+    cout << "default monster = " << defaultMonster.getNama()<< endl;
 }
 
 void Player::dismiss(string s){
@@ -755,8 +757,6 @@ void Player::dismiss(string s){
 }
 
 void Player::escape(){
-////////////////////////////// belum selesai
-
     jumlahEscape++;
 }
 

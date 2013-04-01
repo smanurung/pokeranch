@@ -25,6 +25,7 @@
 
 using namespace std;
 
+
 void sleep(unsigned int mseconds)
 {
     clock_t goal = mseconds + clock();
@@ -205,9 +206,6 @@ int main() {
 
     vector<Monster> DataMonster;
 
-//    Monster firstMonster=p1.listMonster.begin()->second;
-
-
 	parseFile(p1);
 
     Kota kota(p1.getCurX(),p1.getCurY());
@@ -223,7 +221,10 @@ int main() {
 
     DatabaseMonster(DataMonster);
 
-    Monster firstMonster=p1.listMonster["jo"];            //sementara monster dari database
+    p1.setMonster("johannes");
+    Monster firstMonster=p1.defaultMonster;
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
     while (command != "exit") {
 		cout << "command :";
         getline(cin,input);
@@ -315,31 +316,75 @@ int main() {
 							posisiYPlayer = p1.getCurY();
 							areaLuar.setPosisiPlayer(p1.getCurX(), p1.getCurY());
 							areaLuar.drawScreen(1);
-						}//end move  //////////////////////////////////////////////////////////////////////////////////
+						}//end move
 						else if(command == "teleport"){
 							if(argument.size() == 0) {
 								cout << "argumen kurang" << endl;
 							}
 							if(argument[0] == "kota") {				 //toState  1
-								p1.teleport(state, 1, posisiXPlayer, posisiYPlayer, kota);							
+								p1.teleport(state, 1, posisiXPlayer, posisiYPlayer, kota);
 							}//end if kota
-						}//end teleport					
+						}//end teleport
 					}//end while
-					
-					
-					
+
+
+
 				}//end if luar
 				else if(argument[0] == "store") {                  //toState  3
 	//				    posisiXPlayer=xStoreBound;
 	//				    posisiYPlayer=yStoreBound;
 					p1.teleport(state, 3, posisiXPlayer, posisiYPlayer, store);
-				}
+					while(state==3){
+						cout << "command : ";
+						getline(cin,input);
+
+						argument.clear();
+
+						//splitting input
+						istringstream iss(input);
+						vector<string> strInput;
+						copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+
+						command = strInput[0];
+						for (int i = 1; i<strInput.size(); i++){
+							argument.push_back(strInput[i]);
+						}
+
+						int i = 0;
+
+						if(command == "sell") {
+                            if(argument.size() < 2) {
+                                cout << "argumen kurang" << endl;
+                             }
+                            else{
+                                p1.sell(argument[0],atoi(argument[1].c_str()));
+                            }
+						//sell
+						}
+						else if(command == "buy") {
+							if(argument.size() < 2) {
+								cout << "argumen kurang" << endl;
+							}
+							//buy
+						}
+						else if(command == "teleport") {
+							if(argument.size() < 1) {
+								cout << "argumen kurang" << endl;
+							}
+							else{
+                                p1.teleport(state, 1, posisiXPlayer, posisiYPlayer, kota);
+							}
+						}
+
+					}//end while
+
+				}//end if store
 				else if(argument[0] == "stadium") {            //toState  4
 	                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
 				}
 				else if(argument[0] == "combinatorium") {                  //toState  6
-						posisiXPlayer=xCombinatoriumBound;
-						posisiYPlayer=yCombinatoriumBound;
+//						posisiXPlayer=xCombinatoriumBound;
+//						posisiYPlayer=yCombinatoriumBound;
 					p1.teleport(state, 6, posisiXPlayer, posisiYPlayer, combinatorium);
 				}
 				else {
@@ -347,23 +392,6 @@ int main() {
 				}
 			}//end if teleport
 
-
-/*----------------------------------------------------------------------------------------------------------------------sell----------------------------------------------------------------------------------------------------------------------*/
-        else if(command == "sell") {
-            if(argument.size() < 2) {
-                cout << "argumen combine kurang" << endl;
-             }
-            else{
-                p1.sell(argument[0],atoi(argument[1].c_str()));
-            }
-            //sell
-        }
-        else if(command == "buy") {
-            if(argument.size() < 2) {
-                cout << "argumen kurang" << endl;
-            }
-            //buy
-        }
         else if(command == "combine") {
             if(argument.size() < 2) {
                 cout << "argumen kurang" << endl;
@@ -459,12 +487,14 @@ int main() {
                         }
                     }else if(command == "escape"){
                         cout<<"kabur"<<endl;
+                        p1.escape();
                         break;
                     }
                 }
                 if (firstMonster.getCurrentHP() <= 0){
                     cout << "Maaf anda kalah" << endl;
-                } else if (MEnemy.getCurrentHP() <=0){
+                }
+                else if (MEnemy.getCurrentHP() <=0){
                     cout << "Monster mendapatkan " << MEnemy.getBonusExp() << " experience" << endl;
                     firstMonster.addExperience(MEnemy);
                     p1.setUang(p1.getUang() + MEnemy.getBonusUang());
@@ -473,8 +503,10 @@ int main() {
                     cout << "Anda mendapatkan uang : " << MEnemy.getBonusUang() << endl;
                 }
             }
-        }
-        else if(command == "move") {
+        }//end battle
+
+
+        else if((command == "move") && (state==1)) {
             if(argument.size() <2) {
                 cout << "argumen kurang" << endl;
             }
@@ -485,7 +517,8 @@ int main() {
             posisiYPlayer = p1.getCurY();
             kota.setPosisiPlayer(p1.getCurX(), p1.getCurY());
             kota.drawScreen(1);
-        }
+        }//end move
+
         else if(command == "list-monster") {
             //list-monster
 			p1.printListMonster();
@@ -519,9 +552,12 @@ int main() {
         else if(command == "set") {
             if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
+            }else{
+                p1.setMonster(argument[0]);
+                firstMonster=p1.defaultMonster;
             }
-            //set
-        }
+
+        }//end set
         else if(command == "dismiss") {
             if(argument.size() == 0) {
                 cout << "argumen kurang" << endl;
