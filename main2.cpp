@@ -325,11 +325,106 @@ int main() {
 								p1.teleport(state, 1, posisiXPlayer, posisiYPlayer, kota);
 							}//end if kota
 						}//end teleport
+						/* ------------------------------------------------------------------battle-------------------------------------------------*/
+                        else if (command == "battle"){
+                            if (argument.size() != 1){
+                                cout << "argumen seharusnya battle <bet>" << endl;
+                            } else if (argument.size() == 1) {
+                                int d = atoi(argument[1].c_str());
+                //                firstMonster.ShowStatus();
+                                //firstMonster.ShowBattleStatus();
+                                Monster MEnemy = DataMonster[rand() %7];
+                                //cout << "Monster Musuh : " << endl;
+                                //MEnemy.ShowBattleStatus();
+                                while((firstMonster.getCurrentHP() > 0) && (MEnemy.getCurrentHP() > 0)){
+                                    firstMonster.setCurrentHP(firstMonster.getCurrentHP()-5);
+                                    firstMonster.StatusEfek();
+                                    MEnemy.StatusEfek();
+
+                                    battleScreen.drawScreen(1);
+
+                                    firstMonster.addSkill();
+                                    MEnemy.addSkill();
+
+                                    cout << "Monster Player : " << endl;
+                                    firstMonster.ShowBattleStatus();
+                                    firstMonster.ShowListSkill();
+
+                                    cout << "Monster Musuh : " << endl;
+                                    MEnemy.ShowBattleStatus();
+
+                                    cout << "command : ";
+                                    getline(cin,input);
+
+                                    argument.clear();
+
+                                    //splitting input
+                                    istringstream iss(input);
+                                    vector<string> strInput;
+                                    copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+
+                                    command = strInput[0];
+                                    for (int i = 1; i<strInput.size(); i++){
+                                        argument.push_back(strInput[i]);
+                                    }
+
+                                    int i = 0;
+
+                                    if(command == "skill"){
+                                        if (argument.size() == 1){
+                                            int a = 0;
+                                            while(firstMonster.ListSkill[a].getNamaSkill() != argument[0]){
+                                                a++;
+                                            }
+                                            MEnemy.setCurrentHP(MEnemy.getCurrentHP() - firstMonster.ListSkill[a].getDamage());
+                                            MEnemy.setStatus(firstMonster.ListSkill[a].getEfek());
+                                            firstMonster.setCurrentMP(firstMonster.getCurrentMP()-5);
+                                        } else {
+                                            cout << "argumen seharusnya skill <nama-skill>" << endl;
+                                        }
+                                    } else if(command == "item"){
+                                        if (argument.size() == 1){
+                                            if(argument[0] == "Potion"){
+                                                firstMonster.setCurrentHP(firstMonster.getCurrentHP() + 20);
+                                            }
+                                        } else {
+                                            cout << "Argumen seharusnya item <nama-item>" << endl;
+                                        }
+                                    } else if(command == "change"){
+                                        if((argument.size() == 1) && (p1.isContainMonster(argument[0]))){
+//                                            Monster M = DataMonster[rand() %7];
+//                                            M.setNama(argument[0]);
+//                                            firstMonster = M;
+                                            p1.setMonster(argument[0]);
+                                            firstMonster=p1.defaultMonster;
+                                        }
+                                        else{
+                                            cout << endl<<"argumen kurang atau monster tidak dimiliki"<<endl;
+                                        }
+                                    }else if(command == "escape"){
+                                        cout<<"kabur"<<endl;
+                                        p1.escape();
+                                        break;
+                                    }
+                                }
+                                if (firstMonster.getCurrentHP() <= 0){
+                                    cout << "Maaf anda kalah" << endl;
+                                }
+                                else if (MEnemy.getCurrentHP() <=0){
+                                    cout << "Monster mendapatkan " << MEnemy.getBonusExp() << " experience" << endl;
+                                    firstMonster.addExperience(MEnemy);
+                                    p1.setUang(p1.getUang() + MEnemy.getBonusUang());
+                                    firstMonster.changeSpecies();
+                                    cout << "Selamat anda menang pertempuran" << endl;
+                                    cout << "Anda mendapatkan uang : " << MEnemy.getBonusUang() << endl;
+                                }
+                            }//end argumentsize==1
+                    }//end battle
+                    /* ------------------------------------------------------------------end battle-------------------------------------------------*/
 					}//end while
 
-
-
 				}//end if luar
+
 				else if(argument[0] == "store") {                  //toState  3
 	//				    posisiXPlayer=xStoreBound;
 	//				    posisiYPlayer=yStoreBound;
@@ -381,129 +476,190 @@ int main() {
 				}//end if store
 				else if(argument[0] == "stadium") {            //toState  4
 	                p1.teleport(state, 4, posisiXPlayer, posisiYPlayer, stadium);
-				}
+
+                    while(state==4){
+						cout << "command : ";
+						getline(cin,input);
+
+						argument.clear();
+
+						//splitting input
+						istringstream iss(input);
+						vector<string> strInput;
+						copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+
+						command = strInput[0];
+						for (int i = 1; i<strInput.size(); i++){
+							argument.push_back(strInput[i]);
+						}
+
+						int i = 0;
+
+						if(command == "teleport") {
+							if(argument.size() < 1) {
+								cout << "argumen kurang" << endl;
+							}
+							else{
+                                p1.teleport(state, 1, posisiXPlayer, posisiYPlayer, kota);
+							}
+						}
+                        /* ------------------------------------------------------------------battle-------------------------------------------------*/
+                        else if (command == "battle"){
+                            if (argument.size() != 1){
+                                cout << "argumen seharusnya battle <bet>" << endl;
+                            } else if (argument.size() == 1) {
+                                int d = atoi(argument[1].c_str());
+                //                firstMonster.ShowStatus();
+                                //firstMonster.ShowBattleStatus();
+                                Monster MEnemy = DataMonster[rand() %7];
+                                //cout << "Monster Musuh : " << endl;
+                                //MEnemy.ShowBattleStatus();
+                                while((firstMonster.getCurrentHP() > 0) && (MEnemy.getCurrentHP() > 0)){
+                                    firstMonster.setCurrentHP(firstMonster.getCurrentHP()-5);
+                                    firstMonster.StatusEfek();
+                                    MEnemy.StatusEfek();
+
+                                    battleScreen.drawScreen(1);
+
+                                    firstMonster.addSkill();
+                                    MEnemy.addSkill();
+
+                                    cout << "Monster Player : " << endl;
+                                    firstMonster.ShowBattleStatus();
+                                    firstMonster.ShowListSkill();
+
+                                    cout << "Monster Musuh : " << endl;
+                                    MEnemy.ShowBattleStatus();
+
+                                    cout << "command : ";
+                                    getline(cin,input);
+
+                                    argument.clear();
+
+                                    //splitting input
+                                    istringstream iss(input);
+                                    vector<string> strInput;
+                                    copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+
+                                    command = strInput[0];
+                                    for (int i = 1; i<strInput.size(); i++){
+                                        argument.push_back(strInput[i]);
+                                    }
+
+                                    int i = 0;
+
+                                    if(command == "skill"){
+                                        if (argument.size() == 1){
+                                            int a = 0;
+                                            while(firstMonster.ListSkill[a].getNamaSkill() != argument[0]){
+                                                a++;
+                                            }
+                                            MEnemy.setCurrentHP(MEnemy.getCurrentHP() - firstMonster.ListSkill[a].getDamage());
+                                            MEnemy.setStatus(firstMonster.ListSkill[a].getEfek());
+                                            firstMonster.setCurrentMP(firstMonster.getCurrentMP()-5);
+                                        } else {
+                                            cout << "argumen seharusnya skill <nama-skill>" << endl;
+                                        }
+                                    } else if(command == "item"){
+                                        if (argument.size() == 1){
+                                            if(argument[0] == "Potion"){
+                                                firstMonster.setCurrentHP(firstMonster.getCurrentHP() + 20);
+                                            }
+                                        } else {
+                                            cout << "Argumen seharusnya item <nama-item>" << endl;
+                                        }
+                                    } else if(command == "change"){
+                                        if((argument.size() == 1) && (p1.isContainMonster(argument[0]))){
+//                                            Monster M = DataMonster[rand() %7];
+//                                            M.setNama(argument[0]);
+//                                            firstMonster = M;
+                                            p1.setMonster(argument[0]);
+                                            firstMonster=p1.defaultMonster;
+                                        }
+                                        else{
+                                            cout << endl<<"argumen kurang atau monster tidak dimiliki"<<endl;
+                                        }
+                                    }else if(command == "escape"){
+                                        cout<<"kabur"<<endl;
+                                        p1.escape();
+                                        break;
+                                    }
+                                }
+                                if (firstMonster.getCurrentHP() <= 0){
+                                    cout << "Maaf anda kalah" << endl;
+                                }
+                                else if (MEnemy.getCurrentHP() <=0){
+                                    cout << "Monster mendapatkan " << MEnemy.getBonusExp() << " experience" << endl;
+                                    firstMonster.addExperience(MEnemy);
+                                    p1.setUang(p1.getUang() + MEnemy.getBonusUang());
+                                    firstMonster.changeSpecies();
+                                    cout << "Selamat anda menang pertempuran" << endl;
+                                    cout << "Anda mendapatkan uang : " << MEnemy.getBonusUang() << endl;
+                                }
+                            }//end argumentsize==1
+                        }//end battle
+                    /* ------------------------------------------------------------------end battle-------------------------------------------------*/
+
+					}//end while
+				}//end stadium
+
+
 				else if(argument[0] == "combinatorium") {                  //toState  6
 //						posisiXPlayer=xCombinatoriumBound;
 //						posisiYPlayer=yCombinatoriumBound;
 					p1.teleport(state, 6, posisiXPlayer, posisiYPlayer, combinatorium);
-				}
+                    while(state==6){
+						cout << "command : ";
+						getline(cin,input);
+
+						argument.clear();
+
+						//splitting input
+						istringstream iss(input);
+						vector<string> strInput;
+						copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+
+						command = strInput[0];
+						for (int i = 1; i<strInput.size(); i++){
+							argument.push_back(strInput[i]);
+						}
+
+						int i = 0;
+
+						if(command == "teleport") {
+							if(argument.size() < 1) {
+								cout << "argumen kurang" << endl;
+							}
+							else{
+                                p1.teleport(state, 1, posisiXPlayer, posisiYPlayer, kota);
+							}
+						}
+                        else if(command == "combine") {
+                                    if(argument.size() < 2) {
+                                        cout << "argumen kurang" << endl;
+                                    } else if (state != 6) {
+                                        cout << "\nWARNING. Player tidak bisa melakukan combine!\n" << endl;
+                                    } else {
+                                        string _monStr2 = argument[0];
+                                        string _monStr1 = argument[1];
+                                        if (p1.isContainMonster(_monStr1) && p1.isContainMonster(_monStr2)) {
+                                            Monster _m1 = p1.getMonster(_monStr1).Combine(p1.getMonster(_monStr2));
+                                            p1.addMonster(_m1);
+                                            p1.dismiss(_monStr1);
+                                            p1.dismiss(_monStr2);
+                                            cout << "\nSELAMAT. Combine berhasil dilakukan\n" << endl;
+                                        } else {
+                                            cout << "\nWARNING. Monster tidak dimiliki player\n" << endl;
+                                        }
+                                    }
+                        }
+                    }//end while
+				}//end combinatorium
 				else {
 					cout << "tidak ada tempat tersebut" << endl;
 				}
+
 			}//end if teleport
-
-        else if(command == "combine") {
-            if(argument.size() < 2) {
-                cout << "argumen kurang" << endl;
-            } else if (state != 6) {
-				cout << "\nWARNING. Player tidak bisa melakukan combine!\n" << endl;
-			} else {
-				string _monStr2 = argument[0];
-				string _monStr1 = argument[1];
-				if (p1.isContainMonster(_monStr1) && p1.isContainMonster(_monStr2)) {
-					Monster _m1 = p1.getMonster(_monStr1).Combine(p1.getMonster(_monStr2));
-					p1.addMonster(_m1);
-					p1.dismiss(_monStr1);
-					p1.dismiss(_monStr2);
-					cout << "\nSELAMAT. Combine berhasil dilakukan\n" << endl;
-				} else {
-					cout << "\nWARNING. Monster tidak dimiliki player\n" << endl;
-				}
-			}
-        }
-/* ------------------------------------------------------------------battle-------------------------------------------------*/
-            else if (command == "battle"){
-            if (argument.size() != 1){
-                cout << "argumen seharusnya battle <bet>" << endl;
-            } else if (argument.size() == 1) {
-                battleScreen.drawScreen(1);
-//                cout << "Mode Battle" << endl;
-                int d = atoi(argument[1].c_str());
-//                firstMonster.ShowStatus();
-                //cout << "Monster Player : " << endl;
-                //firstMonster.ShowBattleStatus();
-                Monster MEnemy = DataMonster[rand() %7];
-                //cout << "Monster Musuh : " << endl;
-                //MEnemy.ShowBattleStatus();
-                while((firstMonster.getCurrentHP() > 0) && (MEnemy.getCurrentHP() > 0)){
-                    firstMonster.setCurrentHP(firstMonster.getCurrentHP()-5);
-                    firstMonster.StatusEfek();
-                    MEnemy.StatusEfek();
-
-                battleScreen.drawScreen(1);
-
-                    firstMonster.addSkill();
-                    MEnemy.addSkill();
-
-                    cout << "Monster Player : " << endl;
-                    firstMonster.ShowBattleStatus();
-
-                    cout << "Monster Musuh : " << endl;
-                    MEnemy.ShowBattleStatus();
-
-                    cout << "command : ";
-                    getline(cin,input);
-
-                    argument.clear();
-
-                    //splitting input
-                    istringstream iss(input);
-                    vector<string> strInput;
-                    copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
-
-                    command = strInput[0];
-                    for (int i = 1; i<strInput.size(); i++){
-                        argument.push_back(strInput[i]);
-                    }
-
-                    int i = 0;
-
-                    if(command == "skill"){
-                        if (argument.size() == 1){
-                            int a = 0;
-                            while(firstMonster.ListSkill[a].getNamaSkill() != argument[0]){
-                                a++;
-                            }
-                            MEnemy.setCurrentHP(MEnemy.getCurrentHP() - firstMonster.ListSkill[a].getDamage());
-                            MEnemy.setStatus(firstMonster.ListSkill[a].getEfek());
-                        } else if (argument.size() == 0){
-                            firstMonster.ShowListSkill();
-                        } else {
-                            cout << "argumen seharusnya skill <nama-skill>" << endl;
-                        }
-                    } else if(command == "item"){
-                        if (argument.size() == 1){
-                            if(argument[0] == "Potion"){
-                                firstMonster.setCurrentHP(firstMonster.getCurrentHP() + 20);
-                            }
-                        } else {
-                            cout << "Argumen seharusnya item <nama-item>" << endl;
-                        }
-                    } else if(command == "change"){
-                        if(argument.size() == 1){
-                            Monster M = DataMonster[rand() %7];
-                            M.setNama(argument[0]);
-                            firstMonster = M;
-                        }
-                    }else if(command == "escape"){
-                        cout<<"kabur"<<endl;
-                        p1.escape();
-                        break;
-                    }
-                }
-                if (firstMonster.getCurrentHP() <= 0){
-                    cout << "Maaf anda kalah" << endl;
-                }
-                else if (MEnemy.getCurrentHP() <=0){
-                    cout << "Monster mendapatkan " << MEnemy.getBonusExp() << " experience" << endl;
-                    firstMonster.addExperience(MEnemy);
-                    p1.setUang(p1.getUang() + MEnemy.getBonusUang());
-                    firstMonster.changeSpecies();
-                    cout << "Selamat anda menang pertempuran" << endl;
-                    cout << "Anda mendapatkan uang : " << MEnemy.getBonusUang() << endl;
-                }
-            }
-        }//end battle
 
 
         else if((command == "move") && (state==1)) {
