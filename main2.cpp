@@ -286,6 +286,48 @@ int main() {
 //				    posisiXPlayer=xLuarBound;
 //				    posisiYPlayer=yLuarBound;
 					p1.teleport(state, 2, posisiXPlayer, posisiYPlayer, areaLuar);
+					while(state==2){
+						cout << "command : ";
+						getline(cin,input);
+
+						argument.clear();
+
+						//splitting input
+						istringstream iss(input);
+						vector<string> strInput;
+						copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter<vector<string> >(strInput));
+
+						command = strInput[0];
+						for (int i = 1; i<strInput.size(); i++){
+							argument.push_back(strInput[i]);
+						}
+
+						int i = 0;
+
+						if(command == "move"){
+							if(argument.size() <2) {
+								cout << "argumen kurang" << endl;
+							}
+							//move
+							int step = atoi(argument[1].c_str());
+							p1.move(argument[0],step,areaLuar);
+							posisiXPlayer = p1.getCurX();
+							posisiYPlayer = p1.getCurY();
+							areaLuar.setPosisiPlayer(p1.getCurX(), p1.getCurY());
+							areaLuar.drawScreen(1);
+						}//end move  //////////////////////////////////////////////////////////////////////////////////
+						else if(command == "teleport"){
+							if(argument.size() == 0) {
+								cout << "argumen kurang" << endl;
+							}
+							if(argument[0] == "kota") {				 //toState  1
+								p1.teleport(state, 1, posisiXPlayer, posisiYPlayer, kota);							
+							}//end if kota
+						}//end teleport					
+					}//end while
+					
+					
+					
 				}//end if luar
 				else if(argument[0] == "store") {                  //toState  3
 	//				    posisiXPlayer=xStoreBound;
